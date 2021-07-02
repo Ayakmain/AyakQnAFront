@@ -1,0 +1,15 @@
+@import './dimensions.scss';
+
+@mixin font($fontSize:14px, $lineheight:14px, $weight:normal, $fontFamily:$font-family) {
+  font-size: $fontSize;
+  line-height: $lineheight;
+  font-weight: $weight;
+  font-family: $fontFamily;
+}
+
+@mixin textBox($overflow: hidden, $textOverflow: ellipsis, $wordWrap: break-word, $whiteSpace: nowrap) {
+  word-wrap: $wordWrap;
+  overflow: $overflow;
+  text-overflow: $textOverflow;
+  white-space: $whiteSpace;
+}

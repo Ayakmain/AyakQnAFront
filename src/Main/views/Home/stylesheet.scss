@@ -1,0 +1,73 @@
+@import 'common/stylesheet/index.scss';
+
+.home {
+  width: 100%;
+
+  &__main {
+    padding: 20px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &--text {
+      font-size: 4rem;
+      font-weight: lighter;
+
+      strong {
+        margin: 50px 0;
+      }
+    }
+  
+    &--btn {
+      border: 1px solid;
+      width: 35%;
+      height: 75px;
+      font-size: 2.3rem;
+      background-color: $color-secondary;
+      color: white;
+      border-radius: 30px;
+      margin-top: 30px;
+    }
+  }
+  
+  &__intro {
+    position: absolute;
+    bottom: 4rem;
+    padding-left: 20px;
+    margin-bottom: 10px;
+
+  }
+
+  &__introImg {
+    position: absolute;
+    right: 0;
+    bottom: 0.5rem;
+    text-align: center;
+    z-index: 10;
+    margin-right: 20px;
+
+      img {
+        width: 115px;
+        height: 115px;
+        border: 2px solid white;
+        border-radius: 50%;
+        margin: 0 auto 10px;
+      }
+
+      span {
+        padding-top: 20px;
+        font-size: 1.5rem;
+        color: white;
+      }
+    }
+
+  &__footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 800px;
+    height: 4rem;
+    background-color: $color-secondary;
+  }
+}

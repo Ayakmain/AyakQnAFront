@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'SeoulHangang';
+    //src: url('/font/seoulhangangjungm.eot');
+    //src: url('/font/seoulhangangjungm.eot?#iefix') format('embedded-opentype'),
+    //url('/font/seoulhangangjungm.woff2') format('woff2'),
+    //url('/font/seoulhangangjungm.woff') format('woff'),
+    //url('/font/seoulhangangjungm.ttf') format('truetype'),
+    //url('/font/seoulhangangjungm.svg#seoul-hangang-jung-m') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  html {
+    //font-family: 'SeoulHangang', sans-serif;
+    font-weight: normal;
+  }
+  
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  img {
+    display: block;
+  }
+  
+  a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  
+  input,
+  button,
+  textarea,
+  select,
+  pre {
+    display: block;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    padding: 0;
+    margin: 0;
+  }
+  
+  svg {
+    display: block;
+  }
+  
+  button,
+  input[type='checkbox'] + label {
+    cursor: pointer;
+  }
+  
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+  
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }

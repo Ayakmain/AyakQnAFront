@@ -3,7 +3,7 @@
 .qna {
   width: 100%;
 
-  &__main {
+  &__info {
     padding: 20px;
     width: 100%;
     position: absolute;
@@ -11,7 +11,7 @@
     transform: translateY(-50%);
     text-align: center;
 
-    &--text {
+    &--question {
       font-size: 3.5rem;
       font-weight: lighter;
       
@@ -36,6 +36,48 @@
       height: 144px;
       font-size: 48px;
       text-align: center;
+      background-color: white;
+
+      span {
+          color: gray;
+        }
+    }
+
+    &--select {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      overflow: auto;
+      border: 4px solid $color-secondary;
+      border-radius: 5px;
+      width: 70%;
+      height: 500px;
+      background-color: $color-theme;
+
+      button {
+        border: 2px solid $color-secondary;
+        width: 100%;
+        height: 80px;
+        font-size: $font_size-28;
+      }
+
+      button:hover {
+        background-color: darkcyan;
+        color: white;
+      }
+
+    }
+    &--select::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    &--select::-webkit-scrollbar-thumb {
+      background-color: #2f3542;
+    }
+
+    &--select::-webkit-scrollbar-track {
+      background-color: grey;
     }
 
     &--confirm {

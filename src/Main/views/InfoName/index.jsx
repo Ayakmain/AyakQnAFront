@@ -6,7 +6,15 @@ import Arrow from 'static/images/Arrow.png';
 
 const cx = classNames.bind(styles);
 
-const Info = ({ name, setName }) => {
+const InfoName = ({ changeInfo, history }) => {
+  const [name, setName] = useState('');
+
+  const nameConfirm = () => {
+    if (name !== '') {
+      changeInfo(name, 'name');
+      return history.push('/info/intro');
+    }
+  };
 
   return (
     <article className={cx('qna')}>
@@ -17,7 +25,7 @@ const Info = ({ name, setName }) => {
         </span>
         <div className={cx('qna__control')}>
           <input type="text" className={cx('qna__control--input')} value={name} placeholder="이름을 입력해주세요" onChange={e => setName(e.target.value)} />
-          <button>
+          <button onClick={nameConfirm}>
             <img src={Arrow} alt="확인버튼" className={cx('qna__control--confirm')} />
           </button>
         </div>
@@ -26,4 +34,4 @@ const Info = ({ name, setName }) => {
   );
 };
 
-export default withRouter(Info);
+export default withRouter(InfoName);

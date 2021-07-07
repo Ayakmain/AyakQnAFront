@@ -10,18 +10,6 @@
     top: 40%;
     transform: translateY(-50%);
     text-align: center;
-
-    &--question {
-      font-size: 3.5rem;
-      font-weight: lighter;
-      
-
-      span {
-        color: $color-secondary;
-        font-weight: bolder;
-      }
-    }
-
   }
   
   &__control {

@@ -1,0 +1,11 @@
+@import 'common/stylesheet/index.scss';
+
+.info__question {
+  font-size: 3.5rem;
+  font-weight: lighter;
+      
+  span {
+    color: $color-secondary;
+    font-weight: bolder;
+  }
+}

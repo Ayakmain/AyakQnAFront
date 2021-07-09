@@ -7,7 +7,7 @@ import moment from 'moment';
 
 const cx = classNames.bind(styles);
 
-const InfoName = ({ info, changeInfo, history, pageName }) => {
+const InfoQna = ({ info, changeInfo, history, pageName }) => {
   const [name, setName] = useState('');
   const [years, setYears] = useState([]);
   const [year, setYear] = useState('');
@@ -25,7 +25,11 @@ const InfoName = ({ info, changeInfo, history, pageName }) => {
     return setYears(yearList);
   }
 
-  useEffect(() => (pageName === 'age') && YEARS(), [])
+  // name이 없으면 이름 입력창으로 이동
+  useEffect(() => (pageName !== 'name' && !info.name) && history.push('/info/name'), [history, info, pageName])
+
+  // /info/age 일 때 년도를 불러 주는 부분
+  useEffect(() => (pageName === 'age') && YEARS(), [pageName])
 
   const controlFunc = (type, value) => {
     if (type === 'name') {
@@ -58,4 +62,4 @@ const InfoName = ({ info, changeInfo, history, pageName }) => {
   )
 };
 
-export default withRouter(InfoName);
+export default withRouter(InfoQna);

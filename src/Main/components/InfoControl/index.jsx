@@ -3,42 +3,43 @@ import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import Arrow from 'static/images/Arrow.png';
+import { Button } from 'components/index';
 
 const cx = classNames.bind(styles);
 
 const InfoControl = ({ pageName, toggle, years, setToggle, year, controlFunc, name, confirm }) => pageName === 'sex' ?
   <div className={cx('sex')}>
-    <button className={cx('sex__btn')} onClick={() => confirm('sex', 'male')}>
+    <Button className={cx('sex__btn')} onClick={() => confirm('sex', 'male')}>
       남성
-    </button>
-    <button className={cx('sex__btn')} onClick={() => confirm('sex', 'female')}>
+    </Button>
+    <Button className={cx('sex__btn')} onClick={() => confirm('sex', 'female')}>
       여성
-    </button>
+    </Button>
   </div> :
   <div className={cx('info__control')}>
     {
       pageName === 'name' ?
         <Fragment>
           <input type="text" className={cx('info__control--input')} value={name} placeholder="이름을 입력해주세요" onChange={e => controlFunc('name', e.target.value)} />
-          <button onClick={() => confirm('name')}>
+          <Button onClick={() => confirm('name')}>
             <img src={Arrow} alt="확인버튼" className={cx('info__control--confirm')} />
-          </button>
+          </Button>
         </Fragment>
         :
         <Fragment>
-          <button className={cx('info__control--input')} onClick={() => setToggle(true)}>
+          <Button className={cx('info__control--input')} onClick={() => setToggle(true)}>
             {year ? year : <span>나이를 입력해주세요</span>}
-          </button>
+          </Button>
           {
             toggle && <div className={cx('info__control--select')}>
               {years.length > 0 && years.map((year, i) =>
-                <button key={i} onClick={() => controlFunc('year', year)}>{year}</button>
+                <Button key={i} onClick={() => controlFunc('year', year)}>{year}</Button>
               )}
             </div>
           }
-          <button onClick={() => confirm('year', year)}>
+          <Button onClick={() => confirm('year', year)}>
             <img src={Arrow} alt="확인버튼" className={cx('qna__control--confirm')} />
-          </button>
+          </Button>
         </Fragment>
     }
   </div>;

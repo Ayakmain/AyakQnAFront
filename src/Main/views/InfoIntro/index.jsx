@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Redirect, Link } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import Img from 'static/images/image1.png';
@@ -21,7 +21,6 @@ const InfoIntro = ({ info }) =>
           <span>제시카</span> 약사 입니다.
         </p>
       </section>
-      <Link to="/info/sex">다음</Link>
     </article >
   ) : <Redirect to={{ pathname: '/info/name' }} />;
 

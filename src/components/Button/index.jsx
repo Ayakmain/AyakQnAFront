@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';

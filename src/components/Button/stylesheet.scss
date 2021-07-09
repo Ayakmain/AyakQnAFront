@@ -1,0 +1,20 @@
+@import "common/stylesheet/index.scss";
+
+.button {
+  display: block;
+  text-align: center;
+  outline: none;
+
+  &:empty:before {
+    content: attr(data-placeholder);
+  }
+
+  .svgContainer {
+    display: block;
+    font-size: 0;
+
+    .svg {
+      display: inline-block;
+    }
+  }
+}

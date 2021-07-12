@@ -7,7 +7,8 @@ import {
   Error,
   InfoIntro,
   InfoQna,
-  Qna
+  Qna,
+  QnaResult
 } from '../index';
 import { Header } from 'Main/components';
 
@@ -55,6 +56,8 @@ const Main = ({ location }) => {
         <Route exact path="/info/name" component={() => <InfoQna info={info} changeInfo={changeInfo} pageName={pageName} />} />
         <Route exact path="/info/age" component={() => <InfoQna info={info} changeInfo={changeInfo} pageName={pageName} />} />
         <Route exact path="/question" component={() => <Qna info={info} />} />
+        <Route exact path="/result" component={() => <QnaResult info={info} />} />
+        <Route exact path="/resultCart" component={() => <QnaResult info={info} />} />
         <Route exact path="/" component={Home} />
         <Route path="*" component={Error} />
       </Switch>

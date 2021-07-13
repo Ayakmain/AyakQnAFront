@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import {
@@ -24,6 +24,8 @@ const Main = ({ location }) => {
     sex: null,
     age: 0,
   });
+
+  const [pickList, setPickList] = useState([]);
 
   useEffect(() => {
     switch (pageName) {
@@ -55,11 +57,13 @@ const Main = ({ location }) => {
         <Route exact path="/info/sex" component={() => <InfoQna info={info} changeInfo={changeInfo} pageName={pageName} />} />
         <Route exact path="/info/name" component={() => <InfoQna info={info} changeInfo={changeInfo} pageName={pageName} />} />
         <Route exact path="/info/age" component={() => <InfoQna info={info} changeInfo={changeInfo} pageName={pageName} />} />
-        <Route exact path="/question" component={() => <Qna info={info} />} />
+        <Route exact path="/qna" component={() => <Qna info={info} setPickList={setPickList} />} />
+        <Route exact path="/qna/:index" component={() => <Qna info={info} />} />
         <Route exact path="/result" component={() => <QnaResult info={info} />} />
         <Route exact path="/resultCart" component={() => <QnaResult info={info} />} />
         <Route exact path="/" component={Home} />
-        <Route path="*" component={Error} />
+        <Route path="/404" component={Error} />
+        <Redirect path="*" to="/404" />
       </Switch>
     </div>
   );

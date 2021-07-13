@@ -11,7 +11,7 @@
     transform: translateY(-50%);
 
     &--text {
-      font-size: 4rem;
+      font-size: 3.5rem;
       font-weight: lighter;
 
       strong {
@@ -22,8 +22,8 @@
     &--btn {
       border: 1px solid;
       width: 35%;
-      height: 75px;
-      line-height: 75px;
+      height: 5vh;
+      line-height: 5vh;
       font-size: 2.3rem;
       background-color: $color-secondary;
       color: white;

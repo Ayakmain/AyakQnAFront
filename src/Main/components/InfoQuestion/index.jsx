@@ -32,7 +32,7 @@ const Question = ({ name, pageName }) => {
             <span>나이</span>가 궁금합니다.
           </Fragment>
         )
-      case 'question':
+      case 'qna':
         return setQa(
           <Fragment>
             {name}님의 요즘 고민은 <br />

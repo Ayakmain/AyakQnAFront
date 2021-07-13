@@ -6,11 +6,11 @@ import Logo from 'static/images/logo.png';
 import Publish from 'static/images/publish.png';
 import { Button } from 'components';
 import moment from 'moment';
+import { ResultList } from "./components";
 
 const cx = classNames.bind(styles);
 
 const QnaResult = ({ info, location }) => {
-  const pagename = location.pathname.split('/')[1];
   const [result, setResult] = useState([]);
 
   useEffect(() => {
@@ -41,31 +41,12 @@ const QnaResult = ({ info, location }) => {
           <p>DATE: {moment().format('YYYY.MM.DD')}</p>
         </div>
       </section>
-      <section className={cx('result__main')}>
-        {/* TODO: 결과 페이지 CSS 부분만 pagename 조건에 따라 변경 */}
-        {
-          result.length > 0 && result.map((item, i) =>
-            <div className={cx('result__main--wrap')} key={i}>
-              <div className={cx('result__main--wrap--medi')} />
-              <h4 className={cx('result__main--wrap--header')}>{item.name}</h4>
-              <ul>
-                {
-                  item.descriptions.length > 0 && item.descriptions.map((description, i) =>
-                    <li key={i}>{description}</li>
-                  )
-                }
-              </ul>
-
-              <Button className={cx('result__main--wrap--btn')}>자세히 보기</Button>
-            </div>
-          )
-        }
-      </section>
+      <ResultList result={result} />
       <section className={cx('result__control')}>
         <Button className={cx('result__control--pulish')}><img src={Publish} alt="공유하기 버튼" /></Button>
         <Button className={cx('result__control--confirm')}>선택완료</Button>
       </section>
-    </article>
+    </article >
   )
 };
 

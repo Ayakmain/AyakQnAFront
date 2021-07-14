@@ -1,7 +1,9 @@
 @import 'common/stylesheet/index.scss';
 
 .qna {
-  width: 100%;
+  position: absolute;
+  top: 10vh;
+  left: 0;
 
   &__info {
     padding: 20px;

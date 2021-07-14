@@ -1,13 +1,16 @@
-import React from 'react';
-import { withRouter, Redirect, Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { withRouter, Redirect } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import Img from 'static/images/image1.png';
 
 const cx = classNames.bind(styles);
 
-const InfoIntro = ({ info }) =>
-  info.name ? (
+const InfoIntro = ({ info, history }) => {
+  const moveNextPage = () => setTimeout(() => history.push('/info/sex'), 3000);
+  useEffect(() => moveNextPage(), []);
+
+  return info.name ? (
     <article className={cx('qna')}>
       <section className={cx('qna__info')}>
         <span className={cx('qna__info--intro')}>
@@ -21,8 +24,7 @@ const InfoIntro = ({ info }) =>
           <span>제시카</span> 약사 입니다.
         </p>
       </section>
-      <Link to="/info/sex">다음</Link>
     </article >
   ) : <Redirect to={{ pathname: '/info/name' }} />;
-
+};
 export default withRouter(InfoIntro);

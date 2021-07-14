@@ -8,4 +8,33 @@
   margin: 0 auto;
   position: relative;
   background-color: $color-theme;
+  overflow: hidden;
+}
+
+.transition-group {
+  height: 90vh;
+  position: relative;
+}
+
+.fade-enter, .fade-appear {
+  opacity: 0;
+  z-index: 1;
+  // transform: translateY(100%) ;
+
+  &-active {
+    opacity: 1;
+    // transform: translateY(-50%);
+    transition: opacity 300ms linear 150ms;
+  }  
+}
+
+.fade-exit {
+  opacity: 1;
+  // transform: translateY(-50%);
+
+  &-active {
+    opacity: 0;
+    // transform: translateY(-100%);
+    transition: opacity 150ms linear;
+  }
 }

@@ -1,0 +1,37 @@
+@import 'common/stylesheet/index.scss';
+
+.qna__list {
+  margin-top: 50px;
+
+  &--answer {
+    display: inline-block;
+    flex-wrap: wrap;
+    width: 30%;
+    line-height: 3rem;
+    margin: 2% 1.6%;
+    background-color: white;
+    border-radius: 25px;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  &--answer:hover {
+    background-color: $color-secondary;
+    color: white;
+  }
+
+  &--pick {
+    display: inline-block;
+    flex-wrap: wrap;
+    width: 30%;
+    line-height: 3rem;
+    margin: 2% 1.6%;
+    background-color: white;
+    border-radius: 25px;
+    border: 3px solid $color-secondary;
+    font-size: 1.3rem;
+    text-align: center;
+    color: $color-secondary;
+    font-weight: bold;
+  }
+}

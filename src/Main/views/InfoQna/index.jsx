@@ -7,7 +7,9 @@ import moment from 'moment';
 
 const cx = classNames.bind(styles);
 
-const InfoQna = ({ info, changeInfo, history, pageName }) => {
+const InfoQna = ({ info, changeInfo, history, location }) => {
+  const pageName = location.pathname.split('/')[2];
+
   const [name, setName] = useState('');
   const [years, setYears] = useState([]);
   const [year, setYear] = useState('');
@@ -48,7 +50,8 @@ const InfoQna = ({ info, changeInfo, history, pageName }) => {
       changeInfo(value, 'sex');
       return history.push('/info/age');
     } else {
-      console.log('Info 끝')
+      changeInfo(year, 'age');
+      return history.push('/qna');
     }
   }
 

@@ -5,8 +5,9 @@ import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
 
-const Question = ({ name, pageName }) => {
+const Question = ({ name, pageName, location }) => {
   const [qa, setQa] = useState('');
+  const pageNumber = location.pathname.split('/')[2];
 
   useEffect(() => {
     switch (pageName) {
@@ -29,16 +30,22 @@ const Question = ({ name, pageName }) => {
           <Fragment>
             {name}님의<br />
             건강체크를 위해<br />
-            <span>나이</span>가 궁금합니다.
+            <span>출생년도</span>가 궁금합니다.
           </Fragment>
         )
       case 'qna':
-        return setQa(
-          <Fragment>
-            {name}님의 요즘 고민은 <br />
-            무엇인가요?
-          </Fragment>
-        )
+        return pageNumber ?
+          setQa(
+            <Fragment>
+              개선하고 싶은 것들은
+            </Fragment>
+          ) :
+          setQa(
+            <Fragment>
+              {name}님의 요즘 고민은 <br />
+              무엇인가요?
+            </Fragment>
+          )
       default:
         return setQa(
           <Fragment>
@@ -47,7 +54,7 @@ const Question = ({ name, pageName }) => {
           </Fragment>
         )
     }
-  }, [pageName, name])
+  }, [pageName, name, pageNumber])
 
   return (
     <span className={cx('info__question')}>

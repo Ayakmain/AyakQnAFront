@@ -24,7 +24,8 @@ const Main = () => {
 
   const [pickList, setPickList] = useState([]);
   const [answerList, setAnswerList] = useState([]);
-  console.log(pickList, answerList);
+
+  // console.log(pickList, answerList);
   const changeInfo = (value, target) => setInfo({ ...info, [target]: value });
 
   return (
@@ -32,7 +33,7 @@ const Main = () => {
       <Header />
       <Route render={({ location }) => (
         <TransitionGroup className={cx('transition-group')}>
-          <CSSTransition timeout={450} key={location.key} className={cx('fade')}>
+          <CSSTransition timeout={450} key={location.key} classNames='fade'>
             <Switch location={location}>
               <Route exact path="/info/intro" component={() => <InfoIntro info={info} />} />
               <Route exact path="/info/name" component={() => <InfoQna info={info} changeInfo={changeInfo} />} />
@@ -40,11 +41,11 @@ const Main = () => {
               <Route exact path="/info/age" component={() => <InfoQna info={info} changeInfo={changeInfo} />} />
               <Route exact path="/qna" component={() => <Qna info={info} setPickList={setPickList} />} />
               <Route exact path="/qna/:index" component={() => <Qna info={info} setAnswerList={setAnswerList} />} />
-              <Route exact path="/result" component={() => <QnaResult info={info} />} />
+              <Route exact path="/result" component={() => <QnaResult info={info} pickList={pickList} answerList={answerList} />} />
               <Route exact path="/resultCart" component={() => <QnaResult info={info} />} />
               <Route exact path="/" component={Home} />
               <Route path="/404" component={Error} />
-              <Redirect path="*" to="/404" />
+              <Redirect path="*" to="/" />
             </Switch>
           </CSSTransition>
         </TransitionGroup>

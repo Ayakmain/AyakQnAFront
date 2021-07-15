@@ -11,8 +11,12 @@ const cx = classNames.bind(styles);
 
 const Header = ({ location }) => {
   const category = location.pathname.split('/')[1];
+  const categoryPage = location.pathname.split('/')[2];
   let history = useHistory();
-  const goToPreviousPath = () => history.goBack();
+  const goToPreviousPath = () => {
+    if (categoryPage === 'name') history.push('/');
+    else history.goBack();
+  }
 
   return (
     <div className={cx('header')}>

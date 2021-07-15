@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import Img from 'static/images/image1.png';
+import { Button } from "components";
 
 const cx = classNames.bind(styles);
 
 const InfoIntro = ({ info, history }) => {
-  const moveNextPage = () => setTimeout(() => history.push('/info/sex'), 3000);
-  useEffect(() => moveNextPage(), []);
+  // const moveNextPage = () => setTimeout(() => history.push('/info/sex'), 3000);
+  const moveNextPage = () => history.push('/info/sex');
 
   return info.name ? (
     <article className={cx('qna')}>
@@ -24,6 +25,7 @@ const InfoIntro = ({ info, history }) => {
           <span>제시카</span> 약사 입니다.
         </p>
       </section>
+      <Button onClick={moveNextPage}>다음 페이지</Button>
     </article >
   ) : <Redirect to={{ pathname: '/info/name' }} />;
 };

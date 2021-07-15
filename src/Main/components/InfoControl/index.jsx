@@ -28,12 +28,12 @@ const InfoControl = ({ pageName, toggle, years, setToggle, year, controlFunc, na
         :
         <Fragment>
           <Button className={cx('info__control--input')} onClick={() => setToggle(true)}>
-            {year ? year : <span>나이를 입력해주세요</span>}
+            {year ? year + ' 년생' : <span>나이를 입력해주세요</span>}
           </Button>
           {
             toggle && <div className={cx('info__control--select')}>
               {years.length > 0 && years.map((year, i) =>
-                <Button key={i} onClick={() => controlFunc('year', year)}>{year}</Button>
+                <Button key={i} onClick={() => controlFunc('year', year)}>{year} 년생</Button>
               )}
             </div>
           }

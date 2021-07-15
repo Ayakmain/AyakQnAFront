@@ -13,16 +13,16 @@
   &__confirm {
     width: 100%;
     position: absolute;
-    bottom: 30px;
+    bottom: 3vh;
 
     &__btn{
       margin: auto;
-      width: 30%;
-      line-height: 3.5rem;
+      width: 90%;
+      line-height: 5rem;
       background-color: $color-secondary;
       border-radius: 40px;
       color: white;
-      font-size: 1.5rem;
+      font-size: 2rem;
       text-align: center;
     }
 

@@ -2,34 +2,85 @@
 
 .qna__list {
   margin-top: 50px;
+  padding: 0 20px;
 
-  &--answer {
+  &--three {
     display: inline-block;
     flex-wrap: wrap;
     width: 30%;
-    line-height: 3rem;
-    margin: 2% 1.6%;
+    line-height: 5rem;
+    margin: 2% 1.5%;
     background-color: white;
-    border-radius: 25px;
-    font-size: 1.3rem;
+    border-radius: 50px;
+    font-size: 2rem;
     text-align: center;
   }
 
-  &--answer:hover {
+  &--one:hover {
     background-color: $color-secondary;
     color: white;
+  }
+
+  &--answer {
+    width: 90%;
+    height: 3rem;
+    margin: auto auto 10px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 25px;
+
+    &--one{
+      width: 90%;
+      height: 3rem;
+      line-height: 3rem;
+      font-size: 1.5rem;
+      text-align: left;
+    }
+
+    &--check {
+      width: 25px;
+      height: 25px;
+      border: 4px solid rgb(220, 220, 220);
+      border-radius: 50%;
+      margin: auto 30px;
+    }
+
+    &--pick {
+      width: 25px;
+      height: 25px;
+      border: 4px solid $color-secondary;
+      border-radius: 50%;
+      margin: auto 30px;
+      background-color: $color-secondary;
+    }
+  }
+
+  &--answer:hover {
+    border: 5px solid $color-secondary;
+  }
+
+  &--select {
+    width: 90%;
+    height: 3rem;
+    margin: auto auto 10px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 25px;
+    border: 5px solid $color-secondary;
   }
 
   &--pick {
     display: inline-block;
     flex-wrap: wrap;
     width: 30%;
-    line-height: 3rem;
+    line-height: 5rem;
     margin: 2% 1.6%;
     background-color: white;
-    border-radius: 25px;
+    border-radius: 50px;
     border: 3px solid $color-secondary;
-    font-size: 1.3rem;
+    font-size: 2rem;
     text-align: center;
     color: $color-secondary;
     font-weight: bold;

@@ -1,100 +1,13 @@
 @import 'common/stylesheet/index.scss';
 
-.result {
-  width: 100%;
-
-  &__header {
+  .prescription {
     width: 100%;
-    display: flex;
-    position: absolute;
-    top: 5%;
-    padding: 0 20px;
+    height: 60vh;
+    overflow: auto;
 
-    &--logo {
-      width: 100px;
-      height: 100px;
-      margin: auto 0;
-    }
-
-    &--title {
-      margin: auto 0 auto auto;
-      text-align: end;
-
-      h3 {
-        font-weight: normal;
-        font-size: 2.5rem;
-
-        span {
-          font-size: 3rem;
-          font-weight: bolder;
-        }
-      }
-
-      p {
-        font-size: 1.3rem;
-      }
-    }
-  }
-  
-  &__main {
-    width: 100%;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translateX(-50%);
-
-    &--wrap {
-      display: inline-block;
-      width: 45%;
-      background-color: white;
-      border-radius: 25px;
-      box-shadow: 5px 5px 5px grey;
-      margin-left: 3.3%;
-      margin-bottom: 2.5%;
-      padding: 20px;
-
-      &--medi {
-        width: 30%;
-        height:40px;
-        margin: 20px auto;
-        border-radius: 50px;
-        background-color: orange;
-      }
-          
-      &--header {
-        text-align: center;
-        font-size: 1.8rem;
-      }
-
-      ul {
-        margin-bottom: 12%;
-        
-        li {
-          font-size: 1.3rem;
-        }
-      }
-
-      &--detail {
-        width: 35%;
-        height: 3rem;
-        font-size: 1rem;
-        background-color: $color-secondary;
-        border-radius: 50px;
-        color: white;
-        margin: auto 0 auto auto;
-      }
-    }
-   
-    &--headerwrap {
-      width: 30%;
-      height: 100%;
-    }
-
-    &--section {
-      position: relative;
-      display: inline-block;
+    &__section {
       width: 95%;
-      height: 15vh;
+      height: 200px;
       background-color: white;
       border-radius: 25px;
       box-shadow: 5px 5px 5px grey;
@@ -102,76 +15,109 @@
       margin-bottom: 2.5%;
       padding: 20px;
       display: flex;
+      position: relative;
       overflow: hidden;
-      
-      &:first-child {
-        margin-top: -50px;
+
+      &--img {
+        width: 120px;
+        height: 120px;
+        border-radius: 5px;
+        margin: auto 0;
       }
 
-      &--medi {
-        width: 50%;
-        height:40px;
-        margin: 30px auto;
-        border-radius: 50px;
-        background-color: orange;
-      }
+      &--description {
+        width: 70%;
+        margin-left: 40px;
 
-      ul {
-        width: 65%;
-        margin: auto;
-        padding: 0;
+        &--header {
+          font-size: 2rem;
+          margin: 0;
+        }
 
-        li {
-          margin-bottom: 15px;
-          font-size: 22px;
+        ul {
+          overflow: hidden;
+          height: 100px;
+
+          li {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+          }
         }
       }
 
-      &--btn {
+      &--bottom {
+        width: 7%;
+        margin: 0 0 0 auto;
         position: absolute;
         top: 0;
+        bottom: 0;
         right: 0;
-        width: 5%;
-        height: 100%;
         background-color: $color-secondary;
-        display: flex;
-      }
-
-      &--add {
-        width: 100%;
         color: white;
-        font-size: $font-size_28;
+
+        &--add {
+          height: 200px;
+          margin: auto;
+          font-size: $font-size_28;
+        }
       }
     }
-  }
 
-  &__control {
-    width: 100%;
-    position: absolute;
-    bottom: 20px;
-    display: flex;
-
-    &--pulish {
-      width: 60px;
-      height: 60px;
+    &__detail {
+      width: 95%;
+      height: 100%;
       background-color: white;
-      border-radius: 10px;
-      margin: auto 50px auto 20%;
+      border-radius: 25px;
+      box-shadow: 5px 5px 5px grey;
+      margin-left: 2.5%;
+      margin-bottom: 2.5%;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      
+      &--section {
+        display: flex;
+        height: 200px;
 
-      img {
-        width: 85%;
-        height: 85%;
-        margin: auto;
+        &--img {
+          width: 120px;
+          height: 120px;
+          border-radius: 5px;
+          margin: auto 0;
+        }
+
+        &--description {
+          width: 70%;
+          margin-left: 40px;
+
+          &--header {
+            font-size: 2rem;
+            margin: 0;
+          }
+
+          ul {
+            overflow: hidden;
+            height: 100px;
+
+            li {
+              font-size: 1.2rem;
+              margin-bottom: 15px;
+            }
+          }
+        }
+
+        &--bottom {
+          position: absolute;
+          top: 30px;
+          right: 30px;
+          width: 30px;
+          height: 30px;
+          
+          &--close {
+            width: 100%;
+            height: 100%;
+          }
+        }
       }
     }
-
-    &--confirm {
-      width: 40%;
-      height: 80px;
-      background-color: $color-secondary;
-      border-radius: 40px;
-      color: white;
-      font-size: $font-size_28;
-    }
   }
-}

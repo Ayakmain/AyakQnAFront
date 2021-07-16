@@ -2,12 +2,11 @@
 
 .result {
   width: 100%;
-
+  position: absolute;
+  top: 70px;
+  
   &__header {
-    width: 100%;
     display: flex;
-    position: absolute;
-    top: 5%;
     padding: 0 20px;
 
     &--logo {
@@ -35,120 +34,12 @@
       }
     }
   }
-  
-  &__main {
-    width: 100%;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translateX(-50%);
 
-    &--wrap {
-      display: inline-block;
-      width: 45%;
-      background-color: white;
-      border-radius: 25px;
-      box-shadow: 5px 5px 5px grey;
-      margin-left: 3.3%;
-      margin-bottom: 2.5%;
-      padding: 20px;
-
-      &--medi {
-        width: 30%;
-        height:40px;
-        margin: 20px auto;
-        border-radius: 50px;
-        background-color: orange;
-      }
-          
-      &--header {
-        text-align: center;
-        font-size: 1.8rem;
-      }
-
-      ul {
-        margin-bottom: 12%;
-        
-        li {
-          font-size: 1.3rem;
-        }
-      }
-
-      &--detail {
-        width: 35%;
-        height: 3rem;
-        font-size: 1rem;
-        background-color: $color-secondary;
-        border-radius: 50px;
-        color: white;
-        margin: auto 0 auto auto;
-      }
-    }
-   
-    &--headerwrap {
-      width: 30%;
-      height: 100%;
-    }
-
-    &--section {
-      position: relative;
-      display: inline-block;
-      width: 95%;
-      height: 15vh;
-      background-color: white;
-      border-radius: 25px;
-      box-shadow: 5px 5px 5px grey;
-      margin-left: 2.5%;
-      margin-bottom: 2.5%;
-      padding: 20px;
-      display: flex;
-      overflow: hidden;
-      
-      &:first-child {
-        margin-top: -50px;
-      }
-
-      &--medi {
-        width: 50%;
-        height:40px;
-        margin: 30px auto;
-        border-radius: 50px;
-        background-color: orange;
-      }
-
-      ul {
-        width: 65%;
-        margin: auto;
-        padding: 0;
-
-        li {
-          margin-bottom: 15px;
-          font-size: 22px;
-        }
-      }
-
-      &--btn {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 5%;
-        height: 100%;
-        background-color: $color-secondary;
-        display: flex;
-      }
-
-      &--add {
-        width: 100%;
-        color: white;
-        font-size: $font-size_28;
-      }
-    }
-  }
 
   &__control {
     width: 100%;
     position: absolute;
-    bottom: 20px;
+    bottom: 30px;
     display: flex;
 
     &--pulish {

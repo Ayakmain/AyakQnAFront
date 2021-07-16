@@ -1,38 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import { Button } from 'components';
+import Logo from "static/images/logo.png";
+import Close from 'static/images/x.png';
 
 const cx = classNames.bind(styles);
 
-const ResultList = ({ result, location }) => {
-  const pagename = location.pathname.split('/')[1];
+const ResultList = ({ result }) => {
+  const [toggle, setToggle] = useState(false);
+  const [selectItem, setSelect] = useState(null);
+
+  const select = (item) => {
+    if (!toggle) {
+      setSelect(item);
+    } else {
+      setSelect(null);
+    }
+    setToggle(!toggle)
+  };
 
   return (
-    <section className={cx('result__main')}>
+    <section className={cx('prescription')}>
       {
-        result.length > 0 && result.map((item, i) =>
-          <div className={pagename === 'result' ? cx('result__main--wrap') : cx('result__main--section')} key={i}>
-            <div className={pagename === 'resultCart' && cx('result__main--headerwrap')}>
-              <div className={pagename === 'result' ? cx('result__main--wrap--medi') : cx('result__main--section--medi')} />
-              <h4 className={cx('result__main--wrap--header')}>{item.name}</h4>
+        toggle ? (
+          <div className={cx('prescription__detail')}>
+            <div className={cx('prescription__detail--section')}>
+              <img src={Logo} alt="리스트 대표 사진" className={cx('prescription__detail--section--img')} />
+              <div className={cx('prescription__detail--section--description')}>
+                <h4 className={cx('prescription__detail--section--description--header')}>{selectItem.name}</h4>
+                <ul>
+                  {
+                    selectItem.descriptions.length > 0 && selectItem.descriptions.map((description, i) =>
+                      <li key={i}>{description}</li>
+                    )
+                  }
+                </ul>
+              </div>
+              <div className={cx('prescription__detail--section--bottom')}>
+                <Button onClick={select}>
+                  <img src={Close} alt="닫기버튼" className={cx('prescription__detail--section--bottom--close')} />
+                </Button>
+              </div>
             </div>
-            <ul>
-              {
-                item.descriptions.length > 0 && item.descriptions.map((description, i) =>
-                  <li key={i}>{description}</li>
-                )
-              }
-            </ul>
-            {
-              pagename === 'result' ? <Button className={cx('result__main--wrap--detail')}>자세히 보기</Button> :
-                <div className={cx('result__main--section--btn')}>
-                  <Button className={cx('result__main--section--add')}>&#43;</Button>
-                </div>
-            }
+            <div>
+            </div>
           </div>
-        )
+        ) :
+          result.length > 0 && result.map((item, i) =>
+            <div className={cx('prescription__section')} key={i}>
+              <img src={Logo} alt="리스트 대표 사진" className={cx('prescription__section--img')} />
+              <div className={cx('prescription__section--description')}>
+                <h4 className={cx('prescription__section--description--header')}>{item.name}</h4>
+                <ul>
+                  {
+                    item.descriptions.length > 0 && item.descriptions.map((description, i) =>
+                      <li key={i}>{description}</li>
+                    )
+                  }
+                </ul>
+              </div>
+              <div className={cx('prescription__section--bottom')}>
+                <Button className={cx('prescription__section--bottom--add')} onClick={() => select(item)}>&#43;</Button>
+              </div>
+            </div>
+          )
       }
     </section>
   )

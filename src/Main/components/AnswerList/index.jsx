@@ -10,7 +10,11 @@ const AnswerList = ({ List, picks, pickQna, location }) => {
   return location.pathname === '/qna' ? (
     <section className={cx('qna__list')}>
       {
-        List.map((item, i) => <Button className={picks.includes(i) ? cx('qna__list--pick') : cx('qna__list--three')} key={i} onClick={() => pickQna(i)}>{item}</Button>)
+        List.map((item, i) =>
+          <Button className={picks.includes(i) ? cx('qna__list--pick') : cx('qna__list--three')} key={i} onClick={() => pickQna(i)}>
+            {item}
+          </Button>
+        )
       }
     </section>
   ) : (

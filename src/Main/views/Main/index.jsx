@@ -5,7 +5,6 @@ import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import {
   Home,
-  Error,
   InfoIntro,
   InfoQna,
   Qna,
@@ -42,9 +41,7 @@ const Main = () => {
               <Route exact path="/qna" component={() => <Qna info={info} setPickList={setPickList} />} />
               <Route exact path="/qna/:index" component={() => <Qna info={info} setAnswerList={setAnswerList} />} />
               <Route exact path="/result" component={() => <QnaResult info={info} pickList={pickList} answerList={answerList} />} />
-              <Route exact path="/resultCart" component={() => <QnaResult info={info} />} />
               <Route exact path="/" component={Home} />
-              <Route path="/404" component={Error} />
               <Redirect path="*" to="/" />
             </Switch>
           </CSSTransition>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
@@ -10,7 +10,7 @@ import { ResultList } from "./components";
 
 const cx = classNames.bind(styles);
 
-const QnaResult = ({ info, location }) => {
+const QnaResult = ({ info }) => {
   const [result, setResult] = useState([]);
 
   useEffect(() => {
@@ -30,23 +30,25 @@ const QnaResult = ({ info, location }) => {
   }, []);
 
   return (
-    <article className={cx('result')}>
-      <section className={cx('result__header')}>
-        <img className={cx('result__header--logo')} src={Logo} alt="메인 로고" />
-        <div className={cx('result__header--title')}>
-          <h3>
-            <span>{info.name}</span> 님의 처방전
-          </h3>
-          {/* TODO: 이부분 나중에 데이터에서 저장한 날짜로 받아와야함 */}
-          <p>DATE: {moment().format('YYYY.MM.DD')}</p>
-        </div>
-      </section>
-      <ResultList result={result} />
+    <Fragment>
+      <article className={cx('result')}>
+        <section className={cx('result__header')}>
+          <img className={cx('result__header--logo')} src={Logo} alt="메인 로고" />
+          <div className={cx('result__header--title')}>
+            <h3>
+              <span>{info.name}</span> 님의 처방전
+            </h3>
+            {/* TODO: 이부분 나중에 데이터에서 저장한 날짜로 받아와야함 */}
+            <p>DATE: {moment().format('YYYY.MM.DD')}</p>
+          </div>
+        </section>
+        <ResultList result={result} />
+      </article>
       <section className={cx('result__control')}>
         <Button className={cx('result__control--pulish')}><img src={Publish} alt="공유하기 버튼" /></Button>
         <Button className={cx('result__control--confirm')}>선택완료</Button>
       </section>
-    </article >
+    </Fragment >
   )
 };
 

@@ -4,4 +4,3 @@ export { default as InfoIntro } from './InfoIntro';
 export { default as InfoQna } from './InfoQna';
 export { default as Qna } from './Qna';
 export { default as QnaResult } from './QnaResult';
-export { default as Error } from './Error';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
@@ -32,7 +32,7 @@ const ResultList = ({ result }) => {
                 <h4 className={cx('prescription__detail--section--description--header')}>{selectItem.name}</h4>
                 <ul>
                   {
-                    selectItem.descriptions.length > 0 && selectItem.descriptions.map((description, i) =>
+                    selectItem.shortDescriptions.length > 0 && selectItem.shortDescriptions.map((description, i) =>
                       <li key={i}>{description}</li>
                     )
                   }
@@ -44,7 +44,21 @@ const ResultList = ({ result }) => {
                 </Button>
               </div>
             </div>
-            <div>
+            <div className={cx('prescription__detail--wrap')}>
+              {
+                selectItem.descriptions.length > 0 && selectItem.descriptions.map((item, i) =>
+                  <Fragment key={i}>
+                    <h5>{item.title}</h5>
+                    <ul>
+                      {
+                        item.detail.length > 0 && item.detail.map((description, i) =>
+                          <li key={i}>{description}</li>
+                        )
+                      }
+                    </ul>
+                  </Fragment>
+                )
+              }
             </div>
           </div>
         ) :
@@ -55,7 +69,7 @@ const ResultList = ({ result }) => {
                 <h4 className={cx('prescription__section--description--header')}>{item.name}</h4>
                 <ul>
                   {
-                    item.descriptions.length > 0 && item.descriptions.map((description, i) =>
+                    item.shortDescriptions.length > 0 && item.shortDescriptions.map((description, i) =>
                       <li key={i}>{description}</li>
                     )
                   }

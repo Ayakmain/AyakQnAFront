@@ -6,28 +6,21 @@ import Logo from 'static/images/logo.png';
 import Publish from 'static/images/publish.png';
 import { Button } from 'components';
 import moment from 'moment';
-import { ResultList } from "./components";
+import { ResultList, PublicPopup } from "./components";
+import { Nutrient } from "static/json/list";
 
 const cx = classNames.bind(styles);
 
 const QnaResult = ({ info }) => {
   const [result, setResult] = useState([]);
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
-    setResult([{
-      name: "루테인",
-      descriptions: ['눈 건강에 도움', '유산균증식 및 유해균 억제', '배변 활동 원활에 도움']
-    }, {
-      name: "루테인",
-      descriptions: ['눈 건강에 도움', '유산균증식 및 유해균 억제', '배변 활동 원활에 도움']
-    }, {
-      name: "루테인",
-      descriptions: ['눈 건강에 도움', '유산균증식 및 유해균 억제', '배변 활동 원활에 도움']
-    }, {
-      name: "루테인",
-      descriptions: ['눈 건강에 도움', '유산균증식 및 유해균 억제', '배변 활동 원활에 도움']
-    }])
+    let list = Nutrient.filter(item => item.type === 'lutein' || item.type === 'omega3');
+    setResult(list);
   }, []);
+
+  const toggleFunc = () => setToggle(!toggle);
 
   return (
     <Fragment>
@@ -45,9 +38,12 @@ const QnaResult = ({ info }) => {
         <ResultList result={result} />
       </article>
       <section className={cx('result__control')}>
-        <Button className={cx('result__control--pulish')}><img src={Publish} alt="공유하기 버튼" /></Button>
+        <Button className={cx('result__control--pulish')} onClick={toggleFunc}><img src={Publish} alt="공유하기 버튼" /></Button>
         <Button className={cx('result__control--confirm')}>선택완료</Button>
       </section>
+      {
+        toggle && <PublicPopup name={info.name} />
+      }
     </Fragment >
   )
 };

@@ -1,0 +1,73 @@
+@import 'common/stylesheet/index.scss';
+
+.popup__wrap {
+  overflow:hidden;
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index: 100;
+  width:100%;
+  height:100%;
+  background-color: rgba(0, 0, 0, .7);
+  
+  .public {
+    overflow: auto;
+    width: 50%;
+    background-color: white;
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50%);
+
+    &__header {
+      width: 90%;
+      height: 45%;
+      border-bottom: 3px solid;
+      text-align: center;
+      margin: auto;
+
+      &--logo {
+        width: 25%;
+        margin: 30px auto 0;
+      }
+
+      &--title {
+        margin-top: 15%;
+        font-size: $font_size-rem;
+        font-weight: lighter;
+
+        span {
+          font-weight: bolder;
+        }
+      }
+    }
+
+    &__btn {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      margin: 10% auto;
+      list-style: none;
+      padding-left: 0;
+      
+      &--list {
+        width: 23%;
+        text-align: center;
+        margin: auto;
+
+        &--img {
+          width: 70%;
+          margin: 20px auto;
+        }
+
+        &--span {
+          font-size: $font_size-18;
+        }
+      }
+    }
+  }
+}

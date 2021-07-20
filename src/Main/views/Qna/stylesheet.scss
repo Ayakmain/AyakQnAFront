@@ -14,15 +14,20 @@
     position: absolute;
     bottom: 3vh;
 
-    &__btn{
+    &__footer{
       margin: auto;
       width: 90%;
       line-height: 5rem;
+      background-color: white;
+      border-radius: 40px;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    &__btn{
       background-color: $color-secondary;
       border-radius: 40px;
       color: white;
-      font-size: 2rem;
-      text-align: center;
     }
 
     &__btn:hover {

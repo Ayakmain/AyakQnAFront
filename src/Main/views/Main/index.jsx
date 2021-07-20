@@ -19,12 +19,12 @@ const Main = () => {
     name: null,
     sex: null,
     age: 0,
+    email: null
   });
 
   const [pickList, setPickList] = useState([]);
   const [answerList, setAnswerList] = useState([]);
 
-  // console.log(pickList, answerList);
   const changeInfo = (value, target) => setInfo({ ...info, [target]: value });
 
   return (
@@ -40,6 +40,7 @@ const Main = () => {
               <Route exact path="/info/age" component={() => <InfoQna info={info} changeInfo={changeInfo} />} />
               <Route exact path="/qna" component={() => <Qna info={info} setPickList={setPickList} />} />
               <Route exact path="/qna/:index" component={() => <Qna info={info} setAnswerList={setAnswerList} />} />
+              <Route exact path="/info/email" component={() => <InfoQna info={info} changeInfo={changeInfo} />} />
               <Route exact path="/result" component={() => <QnaResult info={info} pickList={pickList} answerList={answerList} />} />
               <Route exact path="/" component={Home} />
               <Redirect path="*" to="/" />

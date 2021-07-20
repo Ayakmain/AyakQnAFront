@@ -13,6 +13,7 @@ const InfoQna = ({ info, changeInfo, history, location }) => {
   const [name, setName] = useState('');
   const [years, setYears] = useState([]);
   const [year, setYear] = useState('');
+  const [email, setEmail] = useState('');
   const [toggle, setToggle] = useState(false);
 
   const YEARS = () => {
@@ -36,6 +37,8 @@ const InfoQna = ({ info, changeInfo, history, location }) => {
   const controlFunc = (type, value) => {
     if (type === 'name') {
       return setName(value);
+    } else if (type === 'email') {
+      return setEmail(value);
     } else {
       setYear(value);
       return setToggle(false);
@@ -49,9 +52,13 @@ const InfoQna = ({ info, changeInfo, history, location }) => {
     } else if (type === 'sex') {
       changeInfo(value, 'sex');
       return history.push('/info/age');
-    } else {
+    } else if (type === 'year') {
       changeInfo(year, 'age');
       return history.push('/qna');
+    } else {
+      changeInfo(email, 'email');
+      // TODO: 이부분에서 이메일 체크하고 이메일 보내는 API 적용해야함
+      return history.push('/result');
     }
   }
 
@@ -59,7 +66,7 @@ const InfoQna = ({ info, changeInfo, history, location }) => {
     <article className={cx('qna')}>
       <section className={cx('qna__info')}>
         <InfoQuestion name={info.name && info.name} pageName={pageName} />
-        <InfoControl pageName={pageName} toggle={toggle} setToggle={setToggle} years={years} year={year} controlFunc={controlFunc} confirm={confirm} />
+        <InfoControl pageName={pageName} toggle={toggle} setToggle={setToggle} email={email} years={years} year={year} controlFunc={controlFunc} confirm={confirm} />
       </section>
     </article>
   )

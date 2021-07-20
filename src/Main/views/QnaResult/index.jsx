@@ -42,7 +42,7 @@ const QnaResult = ({ info }) => {
         <Button className={cx('result__control--confirm')}>선택완료</Button>
       </section>
       {
-        toggle && <PublicPopup name={info.name} />
+        toggle && <PublicPopup name={info.name} toggleFunc={toggleFunc} />
       }
     </Fragment >
   )

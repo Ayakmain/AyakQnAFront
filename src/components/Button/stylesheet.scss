@@ -4,6 +4,7 @@
   display: block;
   text-align: center;
   outline: none;
+  cursor: pointer;
 
   &:empty:before {
     content: attr(data-placeholder);

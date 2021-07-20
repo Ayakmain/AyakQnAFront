@@ -7,7 +7,7 @@ import { Button } from 'components/index';
 
 const cx = classNames.bind(styles);
 
-const InfoControl = ({ pageName, toggle, years, setToggle, year, controlFunc, name, confirm }) => pageName === 'sex' ?
+const InfoControl = ({ pageName, toggle, email, years, setToggle, year, controlFunc, name, confirm }) => pageName === 'sex' ?
   <div className={cx('sex')}>
     <Button className={cx('sex__btn')} onClick={() => confirm('sex', 'male')}>
       남성
@@ -18,10 +18,15 @@ const InfoControl = ({ pageName, toggle, years, setToggle, year, controlFunc, na
   </div> :
   <div className={cx('info__control')}>
     {
-      pageName === 'name' ?
+      (pageName === 'name' || pageName === 'email') ?
         <Fragment>
-          <input type="text" className={cx('info__control--input')} value={name} placeholder="이름을 입력해주세요" onChange={e => controlFunc('name', e.target.value)} />
-          <Button onClick={() => confirm('name')}>
+          {
+            pageName === 'email' ?
+              <input type="email" className={cx('info__control--input')} value={email} placeholder="Ayak@ayak.com" onChange={e => controlFunc(pageName, e.target.value)} />
+              :
+              <input type="text" className={cx('info__control--input')} value={name} placeholder="이름을 입력해주세요" onChange={e => controlFunc(pageName, e.target.value)} />
+          }
+          <Button onClick={() => confirm(pageName)}>
             <img src={Arrow} alt="확인버튼" className={cx('info__control--confirm')} />
           </Button>
         </Fragment>

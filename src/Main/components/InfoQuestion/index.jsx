@@ -46,6 +46,16 @@ const Question = ({ name, pageName, location }) => {
               무엇인가요?
             </Fragment>
           )
+      case 'email':
+        return setQa(
+          <Fragment>
+            <span>이메일</span>을 입력해주세요.
+            <div className={cx('info__question--sub')}>
+              이메일을 입력해주시면 바로 <br />
+              다음 단계에서 결과를 볼 수 있어요
+            </div>
+          </Fragment>
+        )
       default:
         return setQa(
           <Fragment>

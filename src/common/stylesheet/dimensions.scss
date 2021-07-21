@@ -1,20 +1,38 @@
+@import '~include-media/dist/include-media';
+
+$breakpoints: (small: 450px, medium: 800px);
+
 $font_size-28: 28px;
 $font_size-24: 24px;
+$font_size-20: 20px;
 $font_size-18: 18px;
 $font_size-16: 16px;
 $font_size-14: 14px;
+$font_size-13: 13px;
 $font_size-12: 12px;
+$font_size-10: 10px;
 $font_size-rem: 2rem;
-
-$line_height-15: 15px;
-$line_height-17: 17px;
+$font_size-vw: 2vw;
+$font_size-3vw: 3vw;
+$line_height-vh: 2.5vh;
+$line_height-5vh: 5vh;
+$line_height-34: 34px;
+$line_height-30: 30px;
+$line_height-28: 28px;
+$line_height-24: 24px;
+$line_height-22: 22px;
 $line_height-21: 21px;
-$line_height-rem: 2.5rem;
+$line_height-20: 20px;
+$line_height-18: 18px;
+$line_height-16: 16px;
+$line_height-14: 14px;
+$line_height-12: 12px;
+$line_height-10: 10px;
 
-$padding-horizontal: 114px;
-$padding-vertical: 26px;
+$padding-horizontal: 8px;
+$horizontal-max-width: calc(100vw - 180px);
 
-$height-footer: 100px;
-$height-mobile-nav: 52px;
-
-$font-family: 'Maven Pro', serif;
+$card-margin: 20px;
+$main-padding-top: 94px;
+$max-width: 1290px;
+$font-family: 'Noto Sans KR', sans-serif, serif;

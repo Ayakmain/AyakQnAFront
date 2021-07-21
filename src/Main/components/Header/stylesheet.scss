@@ -1,3 +1,5 @@
+@import 'common/stylesheet/index.scss';
+
 .header {
   position: absolute;
   top: 0;
@@ -9,18 +11,39 @@
   justify-content: space-between;
   z-index: 100;
 
-  &__logo {
-   width: 101px;
-   height: 101px;
+  @include media('>medium') {
+    &__logo {
+      width: 101px;
+      height: 101px;
+      border-radius: 5px;
+    }
+
+    &__btn {
+      width: 21px;
+      height: 21px;
+
+      &--close {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 
-  &__btn {
-    width: 21px;
-    height: 21px;
+  @include media('<=small') {
+    &__logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 5px;
+    }
 
-   &--close {
-    width: 100%;
-    height: 100%;
-   }
+    &__btn {
+      width: 15px;
+      height: 15px;
+
+      &--close {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 }

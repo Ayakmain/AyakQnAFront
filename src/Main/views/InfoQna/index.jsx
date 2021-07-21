@@ -53,8 +53,12 @@ const InfoQna = ({ info, changeInfo, history, location }) => {
       changeInfo(value, 'sex');
       return history.push('/info/age');
     } else if (type === 'year') {
-      changeInfo(year, 'age');
-      return history.push('/qna');
+      if (year !== '') {
+        changeInfo(year, 'age');
+        return history.push('/qna');
+      } else {
+        return
+      }
     } else {
       changeInfo(email, 'email');
       // TODO: 이부분에서 이메일 체크하고 이메일 보내는 API 적용해야함

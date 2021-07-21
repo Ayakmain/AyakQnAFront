@@ -26,8 +26,8 @@ const InfoControl = ({ pageName, toggle, email, years, setToggle, year, controlF
               :
               <input type="text" className={cx('info__control--input')} value={name} placeholder="이름을 입력해주세요" onChange={e => controlFunc(pageName, e.target.value)} />
           }
-          <Button onClick={() => confirm(pageName)}>
-            <img src={Arrow} alt="확인버튼" className={cx('info__control--confirm')} />
+          <Button onClick={() => confirm(pageName)} className={cx('info__control--confirm')} >
+            <img src={Arrow} alt="확인버튼" className={cx('info__control--confirm--img')} />
           </Button>
         </Fragment>
         :
@@ -42,8 +42,8 @@ const InfoControl = ({ pageName, toggle, email, years, setToggle, year, controlF
               )}
             </div>
           }
-          <Button onClick={() => confirm('year', year)}>
-            <img src={Arrow} alt="확인버튼" className={cx('qna__control--confirm')} />
+          <Button onClick={() => confirm('year', year)} className={cx('info__control--confirm')}>
+            <img src={Arrow} alt="확인버튼" className={cx('info__control--confirm--img')} />
           </Button>
         </Fragment>
     }

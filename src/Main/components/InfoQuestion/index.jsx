@@ -11,26 +11,18 @@ const Question = ({ name, pageName, location }) => {
 
   useEffect(() => {
     switch (pageName) {
-      case 'name':
-        return setQa(
-          <Fragment>
-            <span>아약</span>이 고객님을 <br />
-            어떻게 부르면 좋을까요?
-          </Fragment>
-        )
       case 'sex':
         return setQa(
           <Fragment>
             {name}님의<br />
-            <span>성별</span>은 무엇인가요?
+            <strong>성별</strong>은 무엇인가요?
           </Fragment>
         )
       case 'age':
         return setQa(
           <Fragment>
-            {name}님의<br />
-            건강체크를 위해<br />
-            <span>출생년도</span>가 궁금합니다.
+            {name}님의 건강체크를 위해<br />
+            <strong>출생년도</strong>가 궁금합니다.
           </Fragment>
         )
       case 'qna':
@@ -49,7 +41,7 @@ const Question = ({ name, pageName, location }) => {
       case 'email':
         return setQa(
           <Fragment>
-            <span>이메일</span>을 입력해주세요.
+            <strong>이메일</strong>을 입력해주세요.
             <div className={cx('info__question--sub')}>
               이메일을 입력해주시면 바로 <br />
               다음 단계에서 결과를 볼 수 있어요
@@ -59,7 +51,7 @@ const Question = ({ name, pageName, location }) => {
       default:
         return setQa(
           <Fragment>
-            <span>아약</span>이 고객님을 <br />
+            <strong>아약</strong>이 고객님을 <br />
             어떻게 부르면 좋을까요?
           </Fragment>
         )

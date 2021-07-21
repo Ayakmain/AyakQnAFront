@@ -1,72 +1,121 @@
-@font-face {
-    font-family: 'SeoulHangang';
-    //src: url('/font/seoulhangangjungm.eot');
-    //src: url('/font/seoulhangangjungm.eot?#iefix') format('embedded-opentype'),
-    //url('/font/seoulhangangjungm.woff2') format('woff2'),
-    //url('/font/seoulhangangjungm.woff') format('woff'),
-    //url('/font/seoulhangangjungm.ttf') format('truetype'),
-    //url('/font/seoulhangangjungm.svg#seoul-hangang-jung-m') format('svg');
-    font-weight: normal;
-    font-style: normal;
+@import 'common/stylesheet/index.scss';
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700&display=swap&subset=korean");
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  background: rgb(244, 244, 244);
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+tr {
+  margin-top: -1px;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* input 기본 스타일 초기화 */
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+input,
+button,
+textarea,
+select,
+pre {
+  display: block;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+@include media(">medium") {
+  html, body {
+    font-size: 16px;
   }
-  
-  html {
-    //font-family: 'SeoulHangang', sans-serif;
-    font-weight: normal;
+}
+
+@include media("<=medium", ">small") {
+  html, body {
+    font-size: 12px;
   }
-  
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
+}
+
+@include media("<=small") {
+  html, body {
+    font-size: 16px;
   }
-  
-  img {
-    display: block;
-  }
-  
-  a {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-  }
-  
-  input,
-  button,
-  textarea,
-  select,
-  pre {
-    display: block;
-    border: none;
-    background: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    color: inherit;
-    padding: 0;
-    margin: 0;
-  }
-  
-  svg {
-    display: block;
-  }
-  
-  button,
-  input[type='checkbox'] + label {
-    cursor: pointer;
-  }
-  
-  input[type='number'] {
-    -moz-appearance: textfield;
-  }
-  
-  input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
+}

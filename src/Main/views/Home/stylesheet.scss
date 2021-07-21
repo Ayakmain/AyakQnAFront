@@ -11,16 +11,13 @@
     transform: translateY(-50%);
 
     &--text {
+      display: block;
       font-size: 3.5rem;
       font-weight: lighter;
-
-      strong {
-        margin: 50px 0;
-      }
     }
   
     &--btn {
-      border: 1px solid;
+      display: block;
       width: 35%;
       height: 5vh;
       line-height: 5vh;
@@ -28,7 +25,7 @@
       background-color: $color-secondary;
       color: white;
       border-radius: 30px;
-      margin-top: 30px;
+      margin-top: 50px;
       text-align: center;
     }
   }

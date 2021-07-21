@@ -1,0 +1,133 @@
+@import './dimensions.scss';
+@import './colors.scss';
+
+@mixin backgroundImage() {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin errorInput() {
+  &.error {
+    border: 1px solid red;
+    box-sizing: border-box;
+    background: rgba(255, 0, 0, 0.1);
+  }
+}
+
+@mixin ellipsis($max-width: 300px, $height: 100%) {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: $max-width;
+  height: $height;
+}
+
+@mixin font($fontSize:14px, $lineheight:14px, $weight:normal, $fontFamily:$font-family) {
+  font-size: $fontSize;
+  line-height: $lineheight;
+  font-weight: $weight;
+  color: $color-black;
+  font-family: $fontFamily;
+}
+
+@mixin alignCenter() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin hoverShadow() {
+  &:hover {
+    position: relative;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@mixin clickEvent() {
+  @keyframes animation {
+    from{
+      transform:scale(0.8);
+    }
+    to{
+      transform:scale(1);
+    }
+  }
+  animation-name: animation;
+  animation-duration: 0.8s;
+}
+
+@mixin scrollStyle($width:5px) {
+  scrollbar-color: rgba(0, 0, 0, 0.2) $color-light-gray;
+  scrollbar-width: thin;
+  //chrome
+  &::-webkit-scrollbar {
+    width: 20px;
+    background: $color-light-gray;
+  }
+  &::-webkit-scrollbar-track {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-corner {
+    display: none;
+  }
+}
+
+@mixin activeSideNavBar($color, $size:3px) {
+  &:after {
+    content: '';
+    position: absolute;
+    background: $color;
+    height: $size;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    animation-name: animation;
+    animation-duration: 0.8s;
+  }
+}
+
+@mixin animationUnderBar($color, $size:3px) {
+  @keyframes animation {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    background: $color;
+    height: $size;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    animation-name: animation;
+    animation-duration: 0.8s;
+  }
+}
+
+@mixin activeNav($background:rgba(255,255,255,0)) {
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: $background;
+  }
+}

@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import Logo from 'static/images/logo.png';
 import Publish from 'static/images/publish.png';
-import { Button } from 'components';
+import { Button, MetaTag } from 'components';
 import moment from 'moment';
 import { ResultList, PublicPopup } from "./components";
 import { Nutrient } from "static/json/list";
@@ -24,6 +24,7 @@ const QnaResult = ({ info }) => {
 
   return (
     <Fragment>
+      <MetaTag keywords='Ayak,ayak,AYAK,아약,맞춤형추천' description='아약 맞춤형 추천' title='아약 맞춤형 추천 결과' />
       <article className={cx('result')}>
         <section className={cx('result__header')}>
           <img className={cx('result__header--logo')} src={Logo} alt="메인 로고" />
@@ -35,7 +36,13 @@ const QnaResult = ({ info }) => {
             <p>DATE: {moment().format('YYYY.MM.DD')}</p>
           </div>
         </section>
-        <ResultList result={result} />
+        <section className={cx('result__list')}>
+          {
+            result.length > 0 && result.map((item, i) =>
+              <ResultList key={i} item={item} />
+            )
+          }
+        </section>
       </article>
       <section className={cx('result__control')}>
         <Button className={cx('result__control--pulish')} onClick={toggleFunc}><img src={Publish} alt="공유하기 버튼" /></Button>

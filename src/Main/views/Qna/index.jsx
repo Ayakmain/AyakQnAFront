@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import { InfoQuestion, BarGauge, AnswerList } from 'Main/components';
-import { Button } from 'components';
+import { Button, MetaTag } from 'components';
 import { List } from "static/json/list.json";
 
 const cx = classNames.bind(styles);
@@ -41,18 +41,19 @@ const Qna = ({ info, location, history, setPickList, setAnswerList }) => {
 
   return (
     <Fragment>
-      <article className={cx('qna')}>
-        <div className={cx('qna__qusetion')}>
+      <MetaTag keywords='Ayak,ayak,AYAK,아약,맞춤형추천' description='아약 맞춤형 추천' title='아약 맞춤형 추천' />
+      <article className={cx('customized')}>
+        <div className={cx('customized__qusetion')}>
           <InfoQuestion name={info.name && info.name} pageName={pageName} />
         </div>
         <AnswerList picks={picks} List={List} pickQna={pickQna} />
       </article>
-      <section className={cx('qna__confirm')}>
+      <section className={cx('customized__confirm')}>
         {
           picks.length === 0 ?
-            <div className={cx('qna__confirm__footer')}>한개 이상을 선택해 주세요</div>
+            <div className={cx('customized__confirm__footer')}>한개 이상을 선택해 주세요</div>
             :
-            <Button className={cx('qna__confirm__footer', 'qna__confirm__btn')} onClick={() => confirmQna()}>선택 완료</Button>
+            <Button className={cx('customized__confirm__footer', 'customized__confirm__btn')} onClick={() => confirmQna()}>선택 완료</Button>
         }
       </section>
       <BarGauge />

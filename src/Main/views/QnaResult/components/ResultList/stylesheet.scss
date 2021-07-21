@@ -1,123 +1,145 @@
 @import 'common/stylesheet/index.scss';
 
-  .prescription {
-    width: 100%;
-    height: 60vh;
-    overflow: auto;
+.prescription {
+  width: 95%;
+  height: 200px;
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px grey;
+  margin: 2.5%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
 
-    &__section {
-      width: 95%;
-      height: 200px;
-      background-color: white;
-      border-radius: 25px;
-      box-shadow: 5px 5px 5px grey;
-      margin-left: 2.5%;
-      margin-bottom: 2.5%;
-      padding: 20px;
-      display: flex;
-      position: relative;
-      overflow: hidden;
+  &__img {
+    width: 120px;
+    height: 120px;
+    border-radius: 5px;
+    margin: auto 40px auto 20px;
+  }
 
-      &--img {
-        width: 120px;
-        height: 120px;
-        border-radius: 5px;
-        margin: auto 0;
-      }
+  &__description {
+    width: 65%;
+    height: 90%;
+    margin: auto 0;
 
-      &--description {
-        width: 70%;
-        margin-left: 40px;
-
-        &--header {
-          font-size: 2rem;
-          margin: 0;
-        }
-
-        ul {
-          overflow: hidden;
-          height: 100px;
-
-          li {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-          }
-        }
-      }
-
-      &--bottom {
-        width: 7%;
-        margin: 0 0 0 auto;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        background-color: $color-secondary;
-        color: white;
-
-        &--add {
-          height: 200px;
-          margin: auto;
-          font-size: $font-size_28;
-        }
-      }
+    &--header {
+      font-size: 2rem;
+      margin: 10px;
+      font-weight: bolder;
     }
 
-    &__detail {
-      width: 95%;
-      height: 100%;
-      background-color: white;
-      border-radius: 25px;
-      box-shadow: 5px 5px 5px grey;
-      margin-left: 2.5%;
-      margin-bottom: 2.5%;
-      padding: 20px;
-      position: relative;
+    ul {
       overflow: hidden;
-      
-      &--section {
-        display: flex;
-        height: 200px;
+      height: 100px;
+      margin-top: 20px;
+      padding-left: 5%;
+      list-style-type: circle;
 
-        &--img {
-          width: 120px;
-          height: 120px;
-          border-radius: 5px;
-          margin: auto 0;
-        }
-
-        &--description {
-          width: 70%;
-          margin-left: 40px;
-
-          &--header {
-            font-size: 2rem;
-            margin: 0;
-          }
-
-          ul {
-            overflow: hidden;
-            height: 100px;
-
-            li {
-              font-size: 1.2rem;
-              margin-bottom: 15px;
-            }
-          }
-        }
-
-        &--bottom {
-          position: absolute;
-          top: 30px;
-          right: 30px;
-          width: 30px;
-          height: 30px;
-          
-          &--close {
-            width: 100%;
-            height: 100%;
-          }
-        }
+      li {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
       }
     }
   }
+
+  &__bottom {
+    width: 7%;
+    margin: 0 0 0 auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: $color-secondary;
+    color: white;
+
+    &--add {
+      height: 200px;
+      margin: auto;
+      font-size: 40px;
+    }
+  }
+}
+
+.prescription__detail {
+  margin: auto;
+  width: 95%;
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px grey;
+  margin-left: 2.5%;
+  margin-bottom: 2.5%;
+  position: relative;
+  overflow: hidden;
+  margin: 2.5%;
+      
+  &--section {
+    height: 200px;
+    display: flex;
+    position: relative;
+
+    &--img {
+      width: 120px;
+      height: 120px;
+      border-radius: 5px;
+      margin: auto 40px auto 20px;
+    }
+
+    &--description {
+      width: 65%;
+      height: 90%;
+      margin: auto 0;
+
+      &--header {
+        margin: 10px;
+        font-size: 2rem;
+        font-weight: bolder;
+      }
+
+      ul {
+        overflow: hidden;
+        height: 100px;
+        margin-top: 20px;
+        padding-left: 5%;
+        list-style-type: circle;
+        
+        li {
+          font-size: 1.2rem;
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    &--bottom {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      width: 20px;
+      height: 20px;
+
+      &--close {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &--wrap {
+    width: 90%;
+    margin: 0 auto 5% auto;
+
+    &--title {
+      display: block;
+      margin-top: 30px;
+      font-size: 1.5rem;
+      font-weight: bolder;
+    }
+
+    ul {
+      li {
+        margin-top: 15px;
+        font-size: 1.1rem;
+      }
+    }
+  }
+}

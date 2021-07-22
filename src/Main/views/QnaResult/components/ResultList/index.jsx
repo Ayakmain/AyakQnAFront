@@ -21,61 +21,54 @@ const ResultList = ({ key, item }) => {
     setToggle(!toggle)
   };
 
-  return (selectItem && item.name === selectItem.name) ? (
-    <div className={cx('prescription__detail')}>
-      <div className={cx('prescription__detail--section')}>
-        <img src={Logo} alt="리스트 대표 사진" className={cx('prescription__detail--section--img')} />
-        <div className={cx('prescription__detail--section--description')}>
-          <h4 className={cx('prescription__detail--section--description--header')}>{selectItem.name}</h4>
+  return (
+    <div className={cx('prescription', (selectItem === item) && 'prescription__on')} key={key}>
+      <div className={cx('prescription__section')}>
+        <img src={Logo} alt="리스트 대표 사진" className={cx('prescription__section--img')} />
+        <div className={cx('prescription__section--description')}>
+          <h4 className={cx('prescription__section--description--header')}>{item.name}</h4>
           <ul>
             {
-              selectItem.shortDescriptions.length > 0 && selectItem.shortDescriptions.map((description, i) =>
+              item.shortDescriptions.length > 0 && item.shortDescriptions.map((description, i) =>
                 <li key={i}>{description}</li>
               )
             }
           </ul>
         </div>
-        <div className={cx('prescription__detail--section--bottom')}>
-          <Button onClick={select}>
-            <img src={Close} alt="닫기버튼" className={cx('prescription__detail--section--bottom--close')} />
-          </Button>
-        </div>
-      </div>
-      <div className={cx('prescription__detail--wrap')}>
         {
-          selectItem.descriptions.length > 0 && selectItem.descriptions.map((item, i) =>
-            <Fragment key={i}>
-              <span className={cx('prescription__detail--wrap--title')}>{item.title}</span>
-              <ul>
-                {
-                  item.detail.length > 0 && item.detail.map((description, i) =>
-                    <li key={i}>{description}</li>
-                  )
-                }
-              </ul>
-            </Fragment>
-          )
+          (selectItem && item.name === selectItem.name) ?
+            <div className={cx('prescription__section--bottom')}>
+              <Button onClick={select}>
+                <img src={Close} alt="닫기버튼" className={cx('prescription__section--bottom--close')} />
+              </Button>
+            </div> :
+            <div className={cx('prescription__bottom')}>
+              <Button className={cx('prescription__bottom--add')} onClick={() => select(item)}>
+                &#43;
+              </Button>
+            </div>
         }
       </div>
-    </div>
-  ) : (
-    <div className={cx('prescription')} key={key}>
-      <img src={Logo} alt="리스트 대표 사진" className={cx('prescription__img')} />
-      <div className={cx('prescription__description')}>
-        <h4 className={cx('prescription__description--header')}>{item.name}</h4>
-        <ul>
-          {
-            item.shortDescriptions.length > 0 && item.shortDescriptions.map((description, i) =>
-              <li key={i}>{description}</li>
-            )
-          }
-        </ul>
-      </div>
-      <div className={cx('prescription__bottom')}>
-        <Button className={cx('prescription__bottom--add')} onClick={() => select(item)}>
-          &#43;
-        </Button>
-      </div>
+      {
+        (selectItem === item) && (
+          <div className={cx('prescription__wrap')}>
+            {
+              item.descriptions.length > 0 && item.descriptions.map((description, i) =>
+                <Fragment key={i}>
+                  <span className={cx('prescription__wrap--title')}>{description.title}</span>
+                  <ul>
+                    {
+                      description.detail.length > 0 && description.detail.map((el, index) =>
+                        <li key={index}>{el}</li>
+                      )
+                    }
+                  </ul>
+                </Fragment>
+              )
+            }
+          </div>
+        )
+      }
     </div>
   )
 };

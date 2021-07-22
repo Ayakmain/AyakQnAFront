@@ -1,38 +1,79 @@
 @import 'common/stylesheet/index.scss';
 
-.customized {
-  position: absolute;
-  top: 70px;
-  width: 100%;
-
-  &__qusetion {
-    text-align: center;
-  }
-
-  &__confirm {
-    width: 100%;
+@include media('>medium') {
+  .customized {
     position: absolute;
-    bottom: 3vh;
+    top: 70px;
+    width: 100%;
 
-    &__footer{
-      margin: auto;
-      width: 90%;
-      line-height: 5rem;
-      background-color: white;
-      border-radius: 40px;
-      font-size: 2rem;
+    &__qusetion {
       text-align: center;
     }
 
-    &__btn{
-      background-color: $color-secondary;
-      border-radius: 40px;
-      color: white;
+    &__confirm {
+      width: 100%;
+      position: absolute;
+      bottom: 3vh;
+
+      &__footer{
+        margin: auto;
+        width: 90%;
+        line-height: 5rem;
+        background-color: white;
+        border-radius: 40px;
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      &__btn{
+        background-color: $color-secondary;
+        border-radius: 40px;
+        color: white;
+      }
+
+      &__btn:hover {
+        background-color: white;
+        color: $color-secondary;
+      }
+    }
+  }
+}
+
+@include media('<=small') {
+  .customized {
+    position: absolute;
+    top: 70px;
+    width: 100%;
+
+    &__qusetion {
+      text-align: center;
     }
 
-    &__btn:hover {
-      background-color: white;
-      color: $color-secondary;
+    &__confirm {
+      width: 100%;
+      position: absolute;
+      bottom: 3vh;
+
+      &__footer{
+        margin: auto;
+        width: 90%;
+        line-height: 3rem;
+        background-color: white;
+        border-radius: 40px;
+        font-size: 1.2rem;
+        text-align: center;
+      }
+
+      &__btn{
+        background-color: $color-secondary;
+        border-radius: 40px;
+        color: white;
+      }
+
+      &__btn:hover {
+        background-color: white;
+        color: $color-secondary;
+      }
     }
   }
 }

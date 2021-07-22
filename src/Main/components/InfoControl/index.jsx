@@ -37,13 +37,15 @@ const InfoControl = ({ pageName, toggle, email, years, setToggle, year, controlF
           </Button>
           {
             toggle && <div className={cx('info__control--select')}>
-              {years.length > 0 && years.map((year, i) =>
-                <Button key={i} onClick={() => controlFunc('year', year)}>{year} 년생</Button>
-              )}
+              {
+                years.length > 0 && years.map((year, i) =>
+                  <Button key={i} onClick={() => controlFunc('year', year)}>{year} 년생</Button>
+                )
+              }
             </div>
           }
-          <Button onClick={() => confirm('year', year)} className={cx('info__control--confirm')}>
-            <img src={Arrow} alt="확인버튼" className={cx('info__control--confirm--img')} />
+          <Button onClick={() => confirm('year', year)} className={cx('info__control--check')}>
+            <img src={Arrow} alt="확인버튼" className={cx('info__control--check--img')} />
           </Button>
         </Fragment>
     }

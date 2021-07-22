@@ -67,7 +67,7 @@ const InfoQna = ({ info, changeInfo, history, location }) => {
   }
 
   return (
-    <article className={cx('qna')}>
+    <article className={cx('qna')} onClick={() => toggle && setToggle(false)}>
       <section className={cx('qna__info')}>
         <InfoQuestion name={info.name && info.name} pageName={pageName} />
         <InfoControl pageName={pageName} toggle={toggle} setToggle={setToggle} email={email} years={years} year={year} controlFunc={controlFunc} confirm={confirm} />

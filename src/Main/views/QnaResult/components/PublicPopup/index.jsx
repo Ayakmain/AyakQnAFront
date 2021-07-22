@@ -22,9 +22,6 @@ const PublicPopup = ({ name, toggleFunc }) => {
     // 흐름 2.
     const textarea = document.createElement("textarea");
     textarea.value = text;
-    textarea.style.top = 0;
-    textarea.style.left = 0;
-    textarea.style.display = "fixed";
 
     // 흐름 3.
     document.body.appendChild(textarea);
@@ -45,7 +42,7 @@ const PublicPopup = ({ name, toggleFunc }) => {
         <div className={cx('public__header')}>
           <img className={cx('public__header--logo')} src={Logo} alt="아약 로고" />
           <h3 className={cx('public__header--title')}>
-            <span>{name}</span> 님의 <br />
+            <strong>{name}</strong> 님의 <br />
             맞춤형 결과 공유하기
           </h3>
           <Button onClick={toggleFunc} className={cx('public__header--btn')}>

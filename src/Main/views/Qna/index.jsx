@@ -26,7 +26,7 @@ const Qna = ({ info, location, history, setPickList, setAnswerList }) => {
 
   const confirmQna = () => {
     if (picks.length > 0) {
-      if (Number(pageNumber) === 3) {
+      if (Number(pageNumber) === 1) {
         return history.push(`/info/email`);
       } else if (pageNumber) {
         setAnswerList();

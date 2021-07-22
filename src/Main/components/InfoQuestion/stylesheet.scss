@@ -1,16 +1,35 @@
 @import 'common/stylesheet/index.scss';
 
-.info__question {
-  width: 100%;
-  font-size: 3.5rem;
-  font-weight: lighter;
-      
-  strong {
-    color: $color-secondary;
-  }
+@include media('>medium') {
+  .info__question {
+    width: 100%;
+    font-size: 3.5rem;
+    font-weight: lighter;
+        
+    strong {
+      color: $color-secondary;
+    }
 
-  &--sub {
+    &--sub {
+      font-size: 2.2rem;
+      margin: 40px auto;
+    }
+  }
+}
+
+@include media('<=small') {
+  .info__question {
+    width: 100%;
     font-size: 2.2rem;
-    margin: 40px auto;
+    font-weight: lighter;
+        
+    strong {
+      color: $color-secondary;
+    }
+
+    &--sub {
+      font-size: 1.5rem;
+      margin: 40px auto;
+    }
   }
 }

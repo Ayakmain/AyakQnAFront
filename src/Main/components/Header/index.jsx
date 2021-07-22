@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
@@ -9,15 +9,21 @@ import { Button } from 'components/index';
 
 const cx = classNames.bind(styles);
 
-const Header = ({ location }) => {
-  const category = location.pathname.split('/')[1];
-  const categoryPage = location.pathname.split('/')[2];
+const Header = ({ location, history }) => {
+  const [pageList] = useState(['/', '/info/name', '/info/intro', '/info/sex', '/info/age', '/qna', '/info/email', '/result']);
+  const pathname = location.pathname;
+  const category = pathname.split('/')[1];
 
-  let history = useHistory();
+  const prevHistory = useHistory();
 
   const goToPreviousPath = () => {
-    if (categoryPage === 'name') history.push('/');
-    else history.goBack();
+    if (pathname === '/info/email' || category === '/qna') {
+      prevHistory();
+    } else {
+      const index = pageList.findIndex(item => item === pathname)
+      let prev = pageList[index - 1];
+      return history.push(prev);
+    }
   }
 
   return (

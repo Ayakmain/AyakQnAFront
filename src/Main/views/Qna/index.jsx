@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import { InfoQuestion, BarGauge, AnswerList } from 'Main/components';
 import { Button, MetaTag } from 'components';
-import { List } from "static/json/list.json";
+import { List } from 'static/json/list.json';
 
 const cx = classNames.bind(styles);
 
@@ -13,16 +13,16 @@ const Qna = ({ info, location, history, setPickList, setAnswerList }) => {
   const pageName = location.pathname.split('/')[1];
   const pageNumber = location.pathname.split('/')[2];
 
-  const pickQna = (i) => {
+  const pickQna = i => {
     if (picks.includes(i)) {
-      let states = picks.filter(state => state !== i);;
+      let states = picks.filter(state => state !== i);
       setPicks(states);
     } else if (picks.length >= 3) {
-      return
+      return;
     } else {
       setPicks([...picks, i]);
     }
-  }
+  };
 
   const confirmQna = () => {
     if (picks.length > 0) {
@@ -37,11 +37,15 @@ const Qna = ({ info, location, history, setPickList, setAnswerList }) => {
         return history.push(`/qna/1`);
       }
     }
-  }
+  };
 
   return (
     <Fragment>
-      <MetaTag keywords='Ayak,ayak,AYAK,아약,맞춤형추천' description='아약 맞춤형 추천' title='아약 맞춤형 추천' />
+      <MetaTag
+        keywords="Ayak,ayak,AYAK,아약,맞춤형추천"
+        description="아약 맞춤형 추천"
+        title="아약 맞춤형 추천"
+      />
       <article className={cx('customized')}>
         <div className={cx('customized__qusetion')}>
           <InfoQuestion name={info.name && info.name} pageName={pageName} />
@@ -49,16 +53,25 @@ const Qna = ({ info, location, history, setPickList, setAnswerList }) => {
         <AnswerList picks={picks} List={List} pickQna={pickQna} />
       </article>
       <section className={cx('customized__confirm')}>
-        {
-          picks.length === 0 ?
-            <div className={cx('customized__confirm__footer')}>한개 이상을 선택해 주세요</div>
-            :
-            <Button className={cx('customized__confirm__footer', 'customized__confirm__btn')} onClick={() => confirmQna()}>선택 완료</Button>
-        }
+        {picks.length === 0 ? (
+          <div className={cx('customized__confirm__footer')}>
+            한개 이상을 선택해 주세요
+          </div>
+        ) : (
+          <Button
+            className={cx(
+              'customized__confirm__footer',
+              'customized__confirm__btn'
+            )}
+            onClick={() => confirmQna()}
+          >
+            선택 완료
+          </Button>
+        )}
       </section>
       <BarGauge />
     </Fragment>
-  )
+  );
 };
 
 export default withRouter(Qna);

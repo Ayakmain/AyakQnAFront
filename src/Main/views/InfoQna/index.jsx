@@ -17,22 +17,25 @@ const InfoQna = ({ info, changeInfo, history, location }) => {
   const [toggle, setToggle] = useState(false);
 
   const YEARS = () => {
-    const yearList = []
-    const dateStart = moment().subtract(50, 'y')
-    const dateEnd = moment()
+    const yearList = [];
+    const dateStart = moment().subtract(50, 'y');
+    const dateEnd = moment();
     while (dateEnd.diff(dateStart, 'years') >= 0) {
-      yearList.push(dateStart.format('YYYY'))
-      dateStart.add(1, 'year')
+      yearList.push(dateStart.format('YYYY'));
+      dateStart.add(1, 'year');
     }
     yearList.reverse();
     return setYears(yearList);
-  }
+  };
 
   // name이 없으면 이름 입력창으로 이동
-  useEffect(() => (pageName !== 'name' && !info.name) && history.push('/info/name'), [history, info, pageName])
+  useEffect(
+    () => pageName !== 'name' && !info.name && history.push('/info/name'),
+    [history, info, pageName]
+  );
 
   // /info/age 일 때 년도를 불러 주는 부분
-  useEffect(() => (pageName === 'age') && YEARS(), [pageName])
+  useEffect(() => pageName === 'age' && YEARS(), [pageName]);
 
   const controlFunc = (type, value) => {
     if (type === 'name') {
@@ -57,23 +60,32 @@ const InfoQna = ({ info, changeInfo, history, location }) => {
         changeInfo(year, 'age');
         return history.push('/qna');
       } else {
-        return
+        return;
       }
     } else {
       changeInfo(email, 'email');
       // TODO: 이부분에서 이메일 체크하고 이메일 보내는 API 적용해야함
       return history.push('/result');
     }
-  }
+  };
 
   return (
     <article className={cx('qna')} onClick={() => toggle && setToggle(false)}>
       <section className={cx('qna__info')}>
         <InfoQuestion name={info.name && info.name} pageName={pageName} />
-        <InfoControl pageName={pageName} toggle={toggle} setToggle={setToggle} email={email} years={years} year={year} controlFunc={controlFunc} confirm={confirm} />
+        <InfoControl
+          pageName={pageName}
+          toggle={toggle}
+          setToggle={setToggle}
+          email={email}
+          years={years}
+          year={year}
+          controlFunc={controlFunc}
+          confirm={confirm}
+        />
       </section>
     </article>
-  )
+  );
 };
 
 export default withRouter(InfoQna);

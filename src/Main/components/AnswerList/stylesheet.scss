@@ -1,10 +1,10 @@
 @import 'common/stylesheet/index.scss';
 
 .qna__list {
-    margin-top: 50px;
-    padding: 0 20px;
-    height: 70vh;
-    overflow: auto;
+  margin-top: 50px;
+  padding: 0 20px;
+  height: 70vh;
+  overflow: auto;
 
   @include media('>medium') {
     &--three {
@@ -49,7 +49,7 @@
       border-radius: 25px;
       border: 5px solid $color-theme;
 
-      &--one{
+      &--one {
         width: 90%;
         height: 4rem;
         line-height: 3.6rem;
@@ -132,7 +132,7 @@
       border-radius: 25px;
       border: 5px solid $color-theme;
 
-      &--one{
+      &--one {
         width: 90%;
         height: 3rem;
         font-size: 1rem;

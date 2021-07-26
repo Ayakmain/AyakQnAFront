@@ -13,7 +13,7 @@ const BarGauge = () => {
     <div className={cx('bar')}>
       <div className={cx('bar__gauge')} />
     </div>
-  )
+  );
 };
 
 export default withRouter(BarGauge);

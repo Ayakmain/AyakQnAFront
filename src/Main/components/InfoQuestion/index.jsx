@@ -14,30 +14,28 @@ const Question = ({ name, pageName, location }) => {
       case 'sex':
         return setQa(
           <Fragment>
-            {name}님의<br />
+            {name}님의
+            <br />
             <strong>성별</strong>은 무엇인가요?
           </Fragment>
-        )
+        );
       case 'age':
         return setQa(
           <Fragment>
-            {name}님의 건강체크를 위해<br />
+            {name}님의 건강체크를 위해
+            <br />
             <strong>출생년도</strong>가 궁금합니다.
           </Fragment>
-        )
+        );
       case 'qna':
-        return pageNumber ?
-          setQa(
-            <Fragment>
-              개선하고 싶은 것들은
-            </Fragment>
-          ) :
-          setQa(
-            <Fragment>
-              {name}님의 요즘 고민은 <br />
-              무엇인가요?
-            </Fragment>
-          )
+        return pageNumber
+          ? setQa(<Fragment>개선하고 싶은 것들은</Fragment>)
+          : setQa(
+              <Fragment>
+                {name}님의 요즘 고민은 <br />
+                무엇인가요?
+              </Fragment>
+            );
       case 'email':
         return setQa(
           <Fragment>
@@ -47,22 +45,18 @@ const Question = ({ name, pageName, location }) => {
               다음 단계에서 결과를 볼 수 있어요
             </div>
           </Fragment>
-        )
+        );
       default:
         return setQa(
           <Fragment>
             <strong>아약</strong>이 고객님을 <br />
             어떻게 부르면 좋을까요?
           </Fragment>
-        )
+        );
     }
-  }, [pageName, name, pageNumber])
+  }, [pageName, name, pageNumber]);
 
-  return (
-    <span className={cx('info__question')}>
-      {qa}
-    </span>);
+  return <span className={cx('info__question')}>{qa}</span>;
 };
-
 
 export default withRouter(Question);

@@ -4,13 +4,26 @@ import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 const cx = classNames.bind(styles);
 
-const Button = ({ children, to, className, onClick, disabled, placeholder, svg: Svg, href, hrefSelf }) => {
+const Button = ({
+  children,
+  to,
+  className,
+  onClick,
+  disabled,
+  placeholder,
+  svg: Svg,
+  href,
+  hrefSelf,
+}) => {
   // 공통적으로 사용 되는 props들
-  const commonProps = { className: cx(styles.button, className), 'data-placeholder': placeholder };
+  const commonProps = {
+    className: cx(styles.button, className),
+    'data-placeholder': placeholder,
+  };
 
   const wrappedChilder = [
     Svg && (
-      <div className={styles.svgContainer} key='svgContainer'>
+      <div className={styles.svgContainer} key="svgContainer">
         <Svg className={styles.svg} />
       </div>
     ),
@@ -30,7 +43,12 @@ const Button = ({ children, to, className, onClick, disabled, placeholder, svg: 
       {wrappedChilder}
     </a>
   ) : onClick ? (
-    <button type="button" {...commonProps} onClick={onClick} disabled={disabled}>
+    <button
+      type="button"
+      {...commonProps}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {wrappedChilder}
     </button>
   ) : (

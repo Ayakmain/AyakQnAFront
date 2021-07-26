@@ -6,8 +6,8 @@ import Logo from 'static/images/logo.png';
 import Publish from 'static/images/publish.png';
 import { Button, MetaTag } from 'components';
 import moment from 'moment';
-import { ResultList, PublicPopup } from "./components";
-import { Nutrient } from "static/json/list";
+import { ResultList, PublicPopup } from './components';
+import { Nutrient } from 'static/json/list';
 
 const cx = classNames.bind(styles);
 
@@ -16,7 +16,9 @@ const QnaResult = ({ info }) => {
   const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
-    let list = Nutrient.filter(item => item.type === 'lutein' || item.type === 'omega3');
+    let list = Nutrient.filter(
+      item => item.type === 'lutein' || item.type === 'omega3'
+    );
     setResult(list);
   }, []);
 
@@ -24,10 +26,18 @@ const QnaResult = ({ info }) => {
 
   return (
     <Fragment>
-      <MetaTag keywords='Ayak,ayak,AYAK,아약,맞춤형추천' description='아약 맞춤형 추천' title='아약 맞춤형 추천 결과' />
+      <MetaTag
+        keywords="Ayak,ayak,AYAK,아약,맞춤형추천"
+        description="아약 맞춤형 추천"
+        title="아약 맞춤형 추천 결과"
+      />
       <article className={cx('result')}>
         <section className={cx('result__header')}>
-          <img className={cx('result__header--logo')} src={Logo} alt="메인 로고" />
+          <img
+            className={cx('result__header--logo')}
+            src={Logo}
+            alt="메인 로고"
+          />
           <div className={cx('result__header--title')}>
             <h3>
               <span>{info.name}</span> 님의 처방전
@@ -37,22 +47,19 @@ const QnaResult = ({ info }) => {
           </div>
         </section>
         <section className={cx('result__list')}>
-          {
-            result.length > 0 && result.map((item, i) =>
-              <ResultList key={i} item={item} />
-            )
-          }
+          {result.length > 0 &&
+            result.map((item, i) => <ResultList key={i} item={item} />)}
         </section>
       </article>
       <section className={cx('result__control')}>
-        <Button className={cx('result__control--pulish')} onClick={toggleFunc}><img src={Publish} alt="공유하기 버튼" /></Button>
+        <Button className={cx('result__control--pulish')} onClick={toggleFunc}>
+          <img src={Publish} alt="공유하기 버튼" />
+        </Button>
         <Button className={cx('result__control--confirm')}>선택완료</Button>
       </section>
-      {
-        toggle && <PublicPopup name={info.name} toggleFunc={toggleFunc} />
-      }
-    </Fragment >
-  )
+      {toggle && <PublicPopup name={info.name} toggleFunc={toggleFunc} />}
+    </Fragment>
+  );
 };
 
 export default withRouter(QnaResult);

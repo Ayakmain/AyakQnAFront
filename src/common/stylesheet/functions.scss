@@ -23,7 +23,12 @@
   height: $height;
 }
 
-@mixin font($fontSize:14px, $lineheight:14px, $weight:normal, $fontFamily:$font-family) {
+@mixin font(
+  $fontSize: 14px,
+  $lineheight: 14px,
+  $weight: normal,
+  $fontFamily: $font-family
+) {
   font-size: $fontSize;
   line-height: $lineheight;
   font-weight: $weight;
@@ -46,18 +51,18 @@
 
 @mixin clickEvent() {
   @keyframes animation {
-    from{
-      transform:scale(0.8);
+    from {
+      transform: scale(0.8);
     }
-    to{
-      transform:scale(1);
+    to {
+      transform: scale(1);
     }
   }
   animation-name: animation;
   animation-duration: 0.8s;
 }
 
-@mixin scrollStyle($width:5px) {
+@mixin scrollStyle($width: 5px) {
   scrollbar-color: rgba(0, 0, 0, 0.2) $color-light-gray;
   scrollbar-width: thin;
   //chrome
@@ -82,7 +87,7 @@
   }
 }
 
-@mixin activeSideNavBar($color, $size:3px) {
+@mixin activeSideNavBar($color, $size: 3px) {
   &:after {
     content: '';
     position: absolute;
@@ -97,7 +102,7 @@
   }
 }
 
-@mixin animationUnderBar($color, $size:3px) {
+@mixin animationUnderBar($color, $size: 3px) {
   @keyframes animation {
     from {
       width: 0;
@@ -120,7 +125,7 @@
   }
 }
 
-@mixin activeNav($background:rgba(255,255,255,0)) {
+@mixin activeNav($background: rgba(255, 255, 255, 0)) {
   &:after {
     content: '';
     position: absolute;

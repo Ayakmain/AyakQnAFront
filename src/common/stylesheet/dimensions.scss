@@ -1,6 +1,9 @@
 @import '~include-media/dist/include-media';
 
-$breakpoints: (small: 450px, medium: 800px);
+$breakpoints: (
+  small: 450px,
+  medium: 800px,
+);
 
 $font_size-28: 28px;
 $font_size-24: 24px;

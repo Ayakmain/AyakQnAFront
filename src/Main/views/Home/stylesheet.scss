@@ -3,7 +3,7 @@
 @include media('>medium') {
   .home {
     width: 100%;
-  
+
     &__main {
       padding: 20px;
       width: 90%;
@@ -14,8 +14,8 @@
       &--text {
         display: block;
         font-size: 3.5rem;
-        font-weight: lighter; 
-        
+        font-weight: lighter;
+
         strong {
           font-size: 3.6rem;
           font-weight: 900;
@@ -52,36 +52,36 @@
       z-index: 10;
       margin-right: 20px;
 
-        img {
-          width: 115px;
-          height: 115px;
-          border: 2px solid white;
-          border-radius: 50%;
-          margin: 0 auto 10px;
-        }
-
-        span {
-          padding-top: 20px;
-          font-size: 1.5rem;
-          color: white;
-        }
+      img {
+        width: 115px;
+        height: 115px;
+        border: 2px solid white;
+        border-radius: 50%;
+        margin: 0 auto 10px;
       }
 
-      &__footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        max-width: 800px;
-        height: 4rem;
-        background-color: $color-secondary;
+      span {
+        padding-top: 20px;
+        font-size: 1.5rem;
+        color: white;
       }
     }
+
+    &__footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 800px;
+      height: 4rem;
+      background-color: $color-secondary;
+    }
   }
+}
 
 @include media('<=small') {
   .home {
     width: 100%;
-  
+
     &__main {
       padding: 20px;
       width: 90%;

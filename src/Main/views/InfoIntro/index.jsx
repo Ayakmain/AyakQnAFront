@@ -3,7 +3,7 @@ import { withRouter, Redirect } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import Img from 'static/images/image1.png';
-import { MetaTag } from "components/index";
+import { MetaTag } from 'components/index';
 const cx = classNames.bind(styles);
 
 const InfoIntro = ({ info, history }) => {
@@ -11,7 +11,11 @@ const InfoIntro = ({ info, history }) => {
 
   return info.name ? (
     <article className={cx('intro')}>
-      <MetaTag keywords='Ayak,ayak,AYAK,아약,맞춤형추천' description='아약 맞춤형 추천' title='아약 맞춤형 추천' />
+      <MetaTag
+        keywords="Ayak,ayak,AYAK,아약,맞춤형추천"
+        description="아약 맞춤형 추천"
+        title="아약 맞춤형 추천"
+      />
       <section className={cx('intro__info')}>
         <span className={cx('intro__info--intro')}>
           반갑습니다! {info.name}님,
@@ -24,7 +28,9 @@ const InfoIntro = ({ info, history }) => {
           <span>제시카</span> 약사 입니다.
         </p>
       </section>
-    </article >
-  ) : <Redirect to={{ pathname: '/info/name' }} />;
+    </article>
+  ) : (
+    <Redirect to={{ pathname: '/info/name' }} />
+  );
 };
 export default withRouter(InfoIntro);

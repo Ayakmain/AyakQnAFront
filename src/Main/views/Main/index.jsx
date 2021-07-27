@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { actions as envActions } from 'store/reducers/env';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
@@ -8,18 +10,9 @@ import { Header } from 'Main/components';
 
 const cx = classNames.bind(styles);
 
-const Main = () => {
-  const [info, setInfo] = useState({
-    name: null,
-    sex: null,
-    age: 0,
-    email: null,
-  });
-
+const Main = ({ user }) => {
   const [pickList, setPickList] = useState([]);
   const [answerList, setAnswerList] = useState([]);
-
-  const changeInfo = (value, target) => setInfo({ ...info, [target]: value });
 
   return (
     <div className={cx('main')}>
@@ -29,59 +22,32 @@ const Main = () => {
           <TransitionGroup className={cx('transition-group')}>
             <CSSTransition timeout={450} key={location.key} classNames="fade">
               <Switch location={location}>
-                <Route
-                  exact
-                  path="/info/intro"
-                  component={() => <InfoIntro info={info} />}
-                />
-                <Route
-                  exact
-                  path="/info/name"
-                  component={() => (
-                    <InfoQna info={info} changeInfo={changeInfo} />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/info/sex"
-                  component={() => (
-                    <InfoQna info={info} changeInfo={changeInfo} />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/info/age"
-                  component={() => (
-                    <InfoQna info={info} changeInfo={changeInfo} />
-                  )}
-                />
+                <Route exact path="/info/name" component={InfoQna} />
+                {!user.name && <Redirect to="/info/name" />}
+                <Route exact path="/info/intro" component={InfoIntro} />
+                <Route exact path="/info/sex" component={InfoQna} />
+                {!user.sex && <Redirect to="/info/sex" />}
+                <Route exact path="/info/age" component={InfoQna} />
+                {!user.year && <Redirect to="/info/age" />}
                 <Route
                   exact
                   path="/qna"
-                  component={() => (
-                    <Qna info={info} setPickList={setPickList} />
-                  )}
+                  component={() => <Qna setPickList={setPickList} />}
                 />
                 <Route
                   exact
                   path="/qna/:index"
                   component={() => (
-                    <Qna info={info} setAnswerList={setAnswerList} />
+                    <Qna user={user} setAnswerList={setAnswerList} />
                   )}
                 />
-                <Route
-                  exact
-                  path="/info/email"
-                  component={() => (
-                    <InfoQna info={info} changeInfo={changeInfo} />
-                  )}
-                />
+                <Route exact path="/info/email" component={InfoQna} />
                 <Route
                   exact
                   path="/result"
                   component={() => (
                     <QnaResult
-                      info={info}
+                      user={user}
                       pickList={pickList}
                       answerList={answerList}
                     />
@@ -98,4 +64,8 @@ const Main = () => {
   );
 };
 
-export default withRouter(Main);
+const mapStateToProps = state => {
+  return { user: state.env.user };
+};
+
+export default connect(mapStateToProps, envActions)(withRouter(Main));

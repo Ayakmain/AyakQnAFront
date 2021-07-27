@@ -1,17 +1,19 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
+// import { connect } from 'react-redux';
+// import { actions as envActions } from 'store/reducers/env';
+import moment from 'moment';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import Logo from 'static/images/logo.png';
 import Publish from 'static/images/publish.png';
 import { Button, MetaTag } from 'components';
-import moment from 'moment';
 import { ResultList, PublicPopup } from './components';
 import { Nutrient } from 'static/json/list';
 
 const cx = classNames.bind(styles);
 
-const QnaResult = ({ info }) => {
+const QnaResult = ({ user }) => {
   const [result, setResult] = useState([]);
   const [toggle, setToggle] = useState(false);
 
@@ -40,7 +42,7 @@ const QnaResult = ({ info }) => {
           />
           <div className={cx('result__header--title')}>
             <h3>
-              <span>{info.name}</span> 님의 처방전
+              <span>{user.name}</span> 님의 처방전
             </h3>
             {/* TODO: 이부분 나중에 데이터에서 저장한 날짜로 받아와야함 */}
             <p>DATE: {moment().format('YYYY.MM.DD')}</p>
@@ -57,9 +59,14 @@ const QnaResult = ({ info }) => {
         </Button>
         <Button className={cx('result__control--confirm')}>선택완료</Button>
       </section>
-      {toggle && <PublicPopup name={info.name} toggleFunc={toggleFunc} />}
+      {toggle && <PublicPopup name={user.name} toggleFunc={toggleFunc} />}
     </Fragment>
   );
 };
 
+// const mapStateToProps = state => {
+//   return { user: state.env.user };
+// };
+
+// export default connect(mapStateToProps, envActions)(withRouter(QnaResult));
 export default withRouter(QnaResult);

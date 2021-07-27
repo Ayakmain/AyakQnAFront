@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { actions as envActions } from 'store/reducers/env';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import { InfoQuestion, InfoControl } from 'Main/components';
@@ -7,7 +9,7 @@ import moment from 'moment';
 
 const cx = classNames.bind(styles);
 
-const InfoQna = ({ info, changeInfo, history, location }) => {
+const InfoQna = ({ history, location, user, setUser }) => {
   const pageName = location.pathname.split('/')[2];
 
   const [name, setName] = useState('');
@@ -30,8 +32,8 @@ const InfoQna = ({ info, changeInfo, history, location }) => {
 
   // name이 없으면 이름 입력창으로 이동
   useEffect(
-    () => pageName !== 'name' && !info.name && history.push('/info/name'),
-    [history, info, pageName]
+    () => pageName !== 'name' && !user.name && history.push('/info/name'),
+    [pageName, history, user]
   );
 
   // /info/age 일 때 년도를 불러 주는 부분
@@ -50,20 +52,20 @@ const InfoQna = ({ info, changeInfo, history, location }) => {
 
   const confirm = (type, value) => {
     if (type === 'name') {
-      changeInfo(name, 'name');
+      setUser({ ...user, [type]: name });
       return history.push('/info/intro');
     } else if (type === 'sex') {
-      changeInfo(value, 'sex');
+      setUser({ ...user, [type]: value });
       return history.push('/info/age');
     } else if (type === 'year') {
       if (year !== '') {
-        changeInfo(year, 'age');
+        setUser({ ...user, [type]: year });
         return history.push('/qna');
       } else {
         return;
       }
     } else {
-      changeInfo(email, 'email');
+      setUser({ ...user, [type]: email });
       // TODO: 이부분에서 이메일 체크하고 이메일 보내는 API 적용해야함
       return history.push('/result');
     }
@@ -72,7 +74,7 @@ const InfoQna = ({ info, changeInfo, history, location }) => {
   return (
     <article className={cx('qna')} onClick={() => toggle && setToggle(false)}>
       <section className={cx('qna__info')}>
-        <InfoQuestion name={info.name && info.name} pageName={pageName} />
+        <InfoQuestion name={user.name && user.name} pageName={pageName} />
         <InfoControl
           pageName={pageName}
           toggle={toggle}
@@ -88,4 +90,8 @@ const InfoQna = ({ info, changeInfo, history, location }) => {
   );
 };
 
-export default withRouter(InfoQna);
+const mapStateToProps = state => {
+  return { user: state.env.user };
+};
+
+export default connect(mapStateToProps, envActions)(withRouter(InfoQna));

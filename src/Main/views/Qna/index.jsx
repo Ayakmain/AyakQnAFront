@@ -8,7 +8,7 @@ import { List } from 'static/json/list.json';
 
 const cx = classNames.bind(styles);
 
-const Qna = ({ info, location, history, setPickList, setAnswerList }) => {
+const Qna = ({ user, location, history, setPickList, setAnswerList }) => {
   const [picks, setPicks] = useState([]);
   const pageName = location.pathname.split('/')[1];
   const pageNumber = location.pathname.split('/')[2];
@@ -48,7 +48,7 @@ const Qna = ({ info, location, history, setPickList, setAnswerList }) => {
       />
       <article className={cx('customized')}>
         <div className={cx('customized__qusetion')}>
-          <InfoQuestion name={info.name && info.name} pageName={pageName} />
+          <InfoQuestion name={user.name && user.name} pageName={pageName} />
         </div>
         <AnswerList picks={picks} List={List} pickQna={pickQna} />
       </article>

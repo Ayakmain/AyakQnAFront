@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { actions as envActions } from 'store/reducers/env';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import Img from 'static/images/image1.png';
 import { MetaTag } from 'components/index';
+
 const cx = classNames.bind(styles);
 
-const InfoIntro = ({ info, history }) => {
+const InfoIntro = ({ user, history }) => {
   useEffect(() => setTimeout(() => history.push('/info/sex'), 3000), [history]);
 
-  return info.name ? (
+  return user.name ? (
     <article className={cx('intro')}>
       <MetaTag
         keywords="Ayak,ayak,AYAK,아약,맞춤형추천"
@@ -18,7 +21,7 @@ const InfoIntro = ({ info, history }) => {
       />
       <section className={cx('intro__info')}>
         <span className={cx('intro__info--intro')}>
-          반갑습니다! {info.name}님,
+          반갑습니다! {user.name}님,
         </span>
         <div className={cx('intro__info--img')}>
           <img src={Img} alt="약사 이미지" />
@@ -33,4 +36,9 @@ const InfoIntro = ({ info, history }) => {
     <Redirect to={{ pathname: '/info/name' }} />
   );
 };
-export default withRouter(InfoIntro);
+
+const mapStateToProps = state => {
+  return { user: state.env.user };
+};
+
+export default connect(mapStateToProps, envActions)(withRouter(InfoIntro));

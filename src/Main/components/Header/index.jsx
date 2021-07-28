@@ -28,6 +28,8 @@ const Header = ({ location, history }) => {
   const goToPreviousPath = () => {
     if (pathname === '/info/email' || category === '/qna') {
       prevHistory();
+    } else if (pathname === '/qna/1') {
+      return history.push('/qna');
     } else {
       const index = pageList.findIndex(item => item === pathname);
       let prev = pageList[index - 1];

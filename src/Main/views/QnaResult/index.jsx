@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
-// import { connect } from 'react-redux';
-// import { actions as envActions } from 'store/reducers/env';
+import { connect } from 'react-redux';
+import { actions as envActions } from 'store/reducers/env';
 import moment from 'moment';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
@@ -64,9 +64,9 @@ const QnaResult = ({ user }) => {
   );
 };
 
-// const mapStateToProps = state => {
-//   return { user: state.env.user };
-// };
+const mapStateToProps = state => {
+  return { user: state.env.user };
+};
 
-// export default connect(mapStateToProps, envActions)(withRouter(QnaResult));
-export default withRouter(QnaResult);
+export default connect(mapStateToProps, envActions)(withRouter(QnaResult));
+// export default withRouter(QnaResult);

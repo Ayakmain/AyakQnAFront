@@ -15,6 +15,7 @@
         display: block;
         font-size: 3.5rem;
         font-weight: lighter;
+        line-height: 5rem;
 
         strong {
           font-size: 3.6rem;
@@ -31,7 +32,7 @@
         background-color: $color-secondary;
         color: white;
         border-radius: 50px;
-        margin-top: 50px;
+        margin-top: 20px;
         text-align: center;
       }
     }
@@ -93,6 +94,7 @@
         display: block;
         font-size: 2.5rem;
         font-weight: 100;
+        line-height: 3.5rem;
 
         strong {
           font-weight: 900;
@@ -109,7 +111,7 @@
         background-color: $color-secondary;
         color: white;
         border-radius: 30px;
-        margin-top: 50px;
+        margin-top: 30px;
         text-align: center;
       }
     }

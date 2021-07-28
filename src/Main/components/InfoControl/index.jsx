@@ -10,12 +10,10 @@ const cx = classNames.bind(styles);
 const InfoControl = ({
   pageName,
   toggle,
-  email,
+  user,
   years,
   setToggle,
-  year,
   controlFunc,
-  name,
   confirm,
 }) =>
   pageName === 'sex' ? (
@@ -34,25 +32,21 @@ const InfoControl = ({
     <div className={cx('info__control')}>
       {pageName === 'name' || pageName === 'email' ? (
         <Fragment>
-          {pageName === 'email' ? (
-            <input
-              type="email"
-              className={cx('info__control--input')}
-              value={email}
-              placeholder="Ayak@ayak.com"
-              onChange={e => controlFunc(pageName, e.target.value)}
-            />
-          ) : (
-            <input
-              type="text"
-              className={cx('info__control--input')}
-              value={name}
-              placeholder="이름을 입력해주세요"
-              onChange={e => controlFunc(pageName, e.target.value)}
-            />
-          )}
+          <input
+            type="text"
+            className={cx('info__control--input')}
+            value={pageName === 'name' ? user.name : user.email}
+            placeholder={
+              pageName === 'name' ? '이름을 입력해주세요' : 'Ayak@ayak.com'
+            }
+            onChange={e => controlFunc(pageName, e.target.value)}
+          />
           <Button
-            onClick={() => confirm(pageName)}
+            onClick={() =>
+              pageName === 'name'
+                ? confirm(pageName, user.name)
+                : confirm(pageName, user.email)
+            }
             className={cx('info__control--confirm')}
           >
             <img
@@ -68,20 +62,24 @@ const InfoControl = ({
             className={cx('info__control--input')}
             onClick={() => setToggle(true)}
           >
-            {year ? year + ' 년생' : <span>나이를 입력해주세요</span>}
+            {user.birth ? (
+              user.birth + ' 년생'
+            ) : (
+              <span>나이를 입력해주세요</span>
+            )}
           </Button>
           {toggle && (
             <div className={cx('info__control--select')}>
               {years.length > 0 &&
                 years.map((year, i) => (
-                  <Button key={i} onClick={() => controlFunc('year', year)}>
+                  <Button key={i} onClick={() => controlFunc('birth', year)}>
                     {year} 년생
                   </Button>
                 ))}
             </div>
           )}
           <Button
-            onClick={() => confirm('year', year)}
+            onClick={() => confirm('birth', user.birth)}
             className={cx('info__control--check')}
           >
             <img

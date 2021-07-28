@@ -11,11 +11,10 @@ const cx = classNames.bind(styles);
 
 const InfoQna = ({ history, location, user, setUser }) => {
   const pageName = location.pathname.split('/')[2];
+  // localhost에서 user 가져오기
+  let localStorage = JSON.parse(window.localStorage.getItem('user'));
 
-  const [name, setName] = useState('');
   const [years, setYears] = useState([]);
-  const [year, setYear] = useState('');
-  const [email, setEmail] = useState('');
   const [toggle, setToggle] = useState(false);
 
   const YEARS = () => {
@@ -30,58 +29,69 @@ const InfoQna = ({ history, location, user, setUser }) => {
     return setYears(yearList);
   };
 
+  // Local에 저장되어 있는 값 state에 저장
   // name이 없으면 이름 입력창으로 이동
-  useEffect(
-    () => pageName !== 'name' && !user.name && history.push('/info/name'),
-    [pageName, history, user]
-  );
+  useEffect(() => {
+    // /info/name이 아니고 localstorage가 없거나 localStorage.name이 없을 시에 되돌려주는 부분
+    if (pageName !== 'name' && user.name === '' && localStorage.name === '') {
+      return history.push('/info/name');
+      // localStorage에 데이터가 있으면 User에 데이터 넣어준다.
+    } else if (localStorage) {
+      return setUser({ ...localStorage });
+    } else {
+      // 위의 두 상황이 아닐때 user업데이트 해주는 부분
+      return window.localStorage.setItem('user', JSON.stringify({ ...user }));
+    }
+  }, [pageName, history]);
 
   // /info/age 일 때 년도를 불러 주는 부분
   useEffect(() => pageName === 'age' && YEARS(), [pageName]);
 
   const controlFunc = (type, value) => {
-    if (type === 'name') {
-      return setName(value);
-    } else if (type === 'email') {
-      return setEmail(value);
-    } else {
-      setYear(value);
-      return setToggle(false);
-    }
+    type === 'year' && setToggle(false);
+    return setUser({ ...user, [type]: value });
   };
 
   const confirm = (type, value) => {
-    if (type === 'name') {
-      setUser({ ...user, [type]: name });
-      return history.push('/info/intro');
-    } else if (type === 'sex') {
-      setUser({ ...user, [type]: value });
-      return history.push('/info/age');
-    } else if (type === 'year') {
-      if (year !== '') {
-        setUser({ ...user, [type]: year });
-        return history.push('/qna');
-      } else {
-        return;
-      }
+    if (type === 'year' && user.birth !== '') {
+      window.localStorage.setItem(
+        'user',
+        JSON.stringify({ ...user, [type]: user.birth })
+      );
+      setUser({ ...user, [type]: user.birth });
+      return history.push('/qna');
     } else {
-      setUser({ ...user, [type]: email });
-      // TODO: 이부분에서 이메일 체크하고 이메일 보내는 API 적용해야함
-      return history.push('/result');
+      window.localStorage.setItem(
+        'user',
+        JSON.stringify({ ...user, [type]: value })
+      );
+      setUser({ ...user, [type]: value });
+
+      switch (type) {
+        case 'name':
+          return history.push('/info/intro');
+        case 'sex':
+          return history.push('/info/age');
+        // TODO: 이부분에서 이메일 체크하고 이메일 보내는 API 적용해야함
+        default:
+          return history.push('/result');
+      }
     }
   };
 
   return (
     <article className={cx('qna')} onClick={() => toggle && setToggle(false)}>
       <section className={cx('qna__info')}>
-        <InfoQuestion name={user.name && user.name} pageName={pageName} />
+        <InfoQuestion
+          name={user.name !== '' && user.name}
+          pageName={pageName}
+        />
         <InfoControl
           pageName={pageName}
           toggle={toggle}
           setToggle={setToggle}
-          email={email}
+          user={user}
           years={years}
-          year={year}
           controlFunc={controlFunc}
           confirm={confirm}
         />

@@ -9,10 +9,10 @@ export const actions = {
 // 변하지 않는 값이 들어가는 곳
 const immutables = {
   user: {
-    name: null,
+    name: '',
     sex: null,
-    age: null,
-    email: null,
+    birth: null,
+    email: '',
   },
 };
 

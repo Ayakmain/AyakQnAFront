@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import styles from './stylesheet.scss';
 import Logo from 'static/images/logo.png';
 import Close from 'static/images/x.png';
 import Back from 'static/images/arrow2.png';
 import { Button } from 'components/index';
+import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
 
@@ -20,7 +20,7 @@ const Header = ({ location, history }) => {
     '/info/email',
     '/result',
   ]);
-  const pathname = location.pathname;
+  const { pathname } = location;
   const category = pathname.split('/')[1];
 
   const prevHistory = useHistory();
@@ -32,7 +32,7 @@ const Header = ({ location, history }) => {
       return history.push('/qna');
     } else {
       const index = pageList.findIndex(item => item === pathname);
-      let prev = pageList[index - 1];
+      const prev = pageList[index - 1];
       return history.push(prev);
     }
   };

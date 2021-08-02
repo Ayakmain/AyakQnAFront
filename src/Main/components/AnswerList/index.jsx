@@ -1,13 +1,13 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import styles from './stylesheet.scss';
 import { Button } from 'components/index';
+import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
 
-const AnswerList = ({ List, picks, pickQna, location }) => {
-  return location.pathname === '/qna' ? (
+const AnswerList = ({ List, picks, pickQna, location }) =>
+  location.pathname === '/qna' ? (
     <section className={cx('qna__list')}>
       {List.map((item, i) => (
         <Button
@@ -45,6 +45,5 @@ const AnswerList = ({ List, picks, pickQna, location }) => {
       ))}
     </section>
   );
-};
 
 export default withRouter(AnswerList);

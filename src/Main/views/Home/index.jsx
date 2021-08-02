@@ -1,9 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import styles from './stylesheet.scss';
 import Image from 'static/images/image-small.png';
 import { Button, MetaTag } from 'components/index';
+import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
 

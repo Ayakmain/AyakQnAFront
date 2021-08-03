@@ -11,6 +11,13 @@ const Question = ({ name, pageName, location }) => {
 
   useEffect(() => {
     switch (pageName) {
+      case 'name':
+        return setQa(
+          <Fragment>
+            <strong>아약</strong>이 고객님을 <br />
+            어떻게 부르면 좋을까요?
+          </Fragment>
+        );
       case 'sex':
         return setQa(
           <Fragment>
@@ -29,7 +36,7 @@ const Question = ({ name, pageName, location }) => {
         );
       case 'qna':
         return pageNumber
-          ? setQa(<Fragment>개선하고 싶은 것들은</Fragment>)
+          ? setQa(<>개선하고 싶은 것들은</>)
           : setQa(
               <Fragment>
                 {name}님의 요즘 고민은 <br />

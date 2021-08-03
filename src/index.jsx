@@ -19,8 +19,8 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-const render = Component => {
-  return ReactDOM.render(
+const render = Component =>
+  ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
         <Component />
@@ -28,7 +28,6 @@ const render = Component => {
     </Provider>,
     MOUNT_NODE
   );
-};
 
 render(App);
 

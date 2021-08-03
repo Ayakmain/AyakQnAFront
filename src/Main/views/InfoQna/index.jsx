@@ -44,7 +44,7 @@ const InfoQna = ({ history, location, user, setUser }) => {
   // name이 없으면 이름 입력창으로 이동xw
   useEffect(() => {
     // /info/name이 아니고 localstorage가 없거나 localStorage.name이 없을 시에 되돌려주는 부분
-    if (pageName === 'name' && user.name === '' && localUser.name === '') {
+    if (pageName !== 'name' && user.name === '' && localUser.name === '') {
       return history.push('/info/name');
     }
     // localStorage에 데이터가 있으면 User에 데이터 넣어준다.
@@ -53,7 +53,6 @@ const InfoQna = ({ history, location, user, setUser }) => {
     }
     // 위의 두 상황이 아닐때 user업데이트 해주는 부분
     return window.localStorage.setItem('user', JSON.stringify({ ...user }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageName, location, history]);
 
   // /info/age 일 때 년도를 불러 주는 부분

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter, useHistory } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import Logo from 'static/images/logo.png';
 import Close from 'static/images/x.png';
@@ -13,7 +13,6 @@ const Header = ({ location, history }) => {
   const [pageList] = useState([
     '/',
     '/info/name',
-    '/info/intro',
     '/info/sex',
     '/info/age',
     '/qna',
@@ -23,12 +22,14 @@ const Header = ({ location, history }) => {
   const { pathname } = location;
   const category = pathname.split('/')[1];
 
-  const prevHistory = useHistory();
+  // const prevHistory = useHistory();
 
   const goToPreviousPath = () => {
-    if (pathname === '/info/email' || category === '/qna') {
-      prevHistory();
-    } else if (pathname === '/qna/1') {
+    // TODO: 이부분 수정해야함
+    // if (pathname === '/info/email' || category === '/qna') {
+    //   prevHistory();
+    // }
+    if (pathname === '/qna/1') {
       return history.push('/qna');
     } else {
       const index = pageList.findIndex(item => item === pathname);

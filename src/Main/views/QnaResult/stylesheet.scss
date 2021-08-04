@@ -49,7 +49,7 @@
       &--pulish {
         width: 60px;
         height: 60px;
-        background-color: white;
+        background-color: $color-box;
         border-radius: 10px;
         margin: auto 50px auto 20%;
 
@@ -66,7 +66,7 @@
         font-size: 2.2rem;
         background-color: $color-secondary;
         border-radius: 40px;
-        color: white;
+        color: $color-box;
       }
     }
   }
@@ -114,7 +114,7 @@
       &--pulish {
         width: 40px;
         height: 40px;
-        background-color: white;
+        background-color: $color-box;
         border-radius: 10px;
         margin: auto 30px auto 20%;
 
@@ -131,7 +131,7 @@
         font-size: 1.5rem;
         background-color: $color-secondary;
         border-radius: 40px;
-        color: white;
+        color: $color-box;
       }
     }
   }

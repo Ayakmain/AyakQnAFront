@@ -19,7 +19,7 @@
         margin: auto;
         width: 90%;
         line-height: 5rem;
-        background-color: white;
+        background-color: $color-box;
         border-radius: 40px;
         font-size: 2rem;
         text-align: center;
@@ -28,11 +28,11 @@
       &__btn {
         background-color: $color-secondary;
         border-radius: 40px;
-        color: white;
+        color: $color-box;
       }
 
       &__btn:hover {
-        background-color: white;
+        background-color: $color-box;
         color: $color-secondary;
       }
     }
@@ -58,7 +58,7 @@
         margin: auto;
         width: 90%;
         line-height: 3rem;
-        background-color: white;
+        background-color: $color-theme;
         border-radius: 40px;
         font-size: 1.2rem;
         text-align: center;
@@ -67,11 +67,11 @@
       &__btn {
         background-color: $color-secondary;
         border-radius: 40px;
-        color: white;
+        color: $color-box;
       }
 
       &__btn:hover {
-        background-color: white;
+        background-color: $color-box;
         color: $color-secondary;
       }
     }

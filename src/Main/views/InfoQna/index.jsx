@@ -5,20 +5,18 @@ import { actions as envActions } from 'store/reducers/env';
 import classNames from 'classnames/bind';
 import { InfoQuestion, InfoControl } from 'Main/components';
 import moment from 'moment';
+import { localStorage } from 'common/env';
 import { isEmail } from 'common/util';
 import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
 
 const InfoQna = ({ history, location, user, setUser }) => {
-  // localhost에서 user 가져오기
-  const localUser = JSON.parse(window.localStorage.getItem('user'));
-
   const [pageName] = useState(location.pathname.split('/')[2]);
   const [years, setYears] = useState([]);
   const [toggle, setToggle] = useState(false);
 
-  const YEARS = () => {
+  const Years = () => {
     const yearList = [];
     const dateStart = moment().subtract(50, 'y');
     const dateEnd = moment();
@@ -30,33 +28,24 @@ const InfoQna = ({ history, location, user, setUser }) => {
     return setYears(yearList);
   };
 
-  const localStorageUpdate = (type, value) => {
+  const localStorageUpdate = (type, value, url) => {
     setUser({ ...user, [type]: value });
-    return window.localStorage.setItem(
-      'user',
-      JSON.stringify({ ...user, [type]: value })
-    );
+    localStorage('user', user, { ...user, [type]: value });
+    return url && history.push(url);
   };
-
-  // const initialData = () => {};
 
   // Local에 저장되어 있는 값 state에 저장
   // name이 없으면 이름 입력창으로 이동xw
   useEffect(() => {
     // /info/name이 아니고 localstorage가 없거나 localStorage.name이 없을 시에 되돌려주는 부분
-    if (pageName !== 'name' && user.name === '' && localUser.name === '') {
+    if (pageName !== 'name' && user.name === '') {
       return history.push('/info/name');
     }
-    // localStorage에 데이터가 있으면 User에 데이터 넣어준다.
-    if (localUser) {
-      return setUser({ ...localUser });
+    // /info/age 일 때 년도를 불러 주는 부분
+    if (pageName === 'age') {
+      return Years();
     }
-    // 위의 두 상황이 아닐때 user업데이트 해주는 부분
-    return window.localStorage.setItem('user', JSON.stringify({ ...user }));
-  }, [pageName, location, history]);
-
-  // /info/age 일 때 년도를 불러 주는 부분
-  useEffect(() => pageName === 'age' && YEARS(), [pageName]);
+  }, [pageName, history, user]);
 
   const controlFunc = (type, value) => {
     type === 'year' && setToggle(false);
@@ -66,25 +55,21 @@ const InfoQna = ({ history, location, user, setUser }) => {
   const confirm = (type, value) => {
     switch (type) {
       case 'sex':
-        localStorageUpdate(type, value);
-        return history.push('/info/age');
+        return localStorageUpdate(type, value, '/info/age');
       case 'birth':
         if (user.birth !== '') {
-          localStorageUpdate(type, user.birth);
-          return history.push('/qna');
+          return localStorageUpdate(type, user.birth, '/qna');
         }
         break;
       case 'email':
         if (isEmail(value)) {
-          localStorageUpdate(type, value);
+          return localStorageUpdate(type, value, '/result');
           // TODO: 이부분에서 이메일 체크하고 이메일 보내는 API 적용해야함
-          return history.push('/result');
         }
         break;
 
       default:
-        localStorageUpdate(type, value);
-        return history.push('/info/intro');
+        return localStorageUpdate(type, value, '/info/intro');
     }
   };
 

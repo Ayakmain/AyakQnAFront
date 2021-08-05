@@ -14,8 +14,10 @@ const Header = ({ location, history }) => {
     '/',
     '/info/name',
     '/info/sex',
-    '/info/age',
+    '/info/birth',
     '/qna',
+    '/info/height',
+    '/info/weight',
     '/info/email',
     '/result',
   ]);

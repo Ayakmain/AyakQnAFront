@@ -1,0 +1,29 @@
+{
+  "QAList": [
+    {
+      "type": "name",
+      "qa": "<strong>아약</strong>이 고객님을 \n 어떻게 부르면 좋을까요?"
+    },{
+      "type": "sex",
+      "qa": "{name}님의 \n <strong>성별</strong>은 무엇인가요?"
+    },{
+      "type": "birth",
+      "qa": "{name}님의 건강체크를 위해 \n <strong>출생년도</strong>가 궁금합니다."
+    },{
+      "type": "height",
+      "qa": "{name}님의 \n 체질량지수(BMI) 확인을 위해 \n <strong>키</strong>를 적어주세요"
+    },{
+      "type": "weight",
+      "qa": "{name}님의 \n 체질량지수(BMI) 확인을 위해 \n <strong>몸무게</strong>를 적어주세요"
+    },{
+      "type": "email",
+      "qa": "<strong>이메일</strong>을 입력해주세요. <div className={'info__question--sub'}>이메일을 입력해주시면 바로 \n 다음 단계에서 결과를 볼 수 있어요</div>"
+    },{
+      "type": "healthy",
+      "qa": "일주일에 운동을 \n 얼마나 하시나요?"
+    },{
+      "type": "sun",
+      "qa": "하루에 햇빛에 놀출되는 시간이 \n 30분 이상인가요?"
+    }
+  ]
+}

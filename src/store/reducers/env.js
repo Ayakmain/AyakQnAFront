@@ -13,6 +13,8 @@ const immutables = {
     sex: null,
     birth: null,
     email: '',
+    height: null,
+    weight: null,
   },
 };
 

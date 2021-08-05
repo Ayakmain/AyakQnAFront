@@ -12,7 +12,7 @@ import styles from './stylesheet.scss';
 const cx = classNames.bind(styles);
 
 const InfoQna = ({ history, location, user, setUser }) => {
-  const [pageName] = useState(location.pathname.split('/')[2]);
+  const [pageName] = useState(location.pathname);
   const [years, setYears] = useState([]);
   const [toggle, setToggle] = useState(false);
 
@@ -37,12 +37,17 @@ const InfoQna = ({ history, location, user, setUser }) => {
   // Local에 저장되어 있는 값 state에 저장
   // name이 없으면 이름 입력창으로 이동xw
   useEffect(() => {
+    const localUser = JSON.parse(window.localStorage.getItem('user'));
     // /info/name이 아니고 localstorage가 없거나 localStorage.name이 없을 시에 되돌려주는 부분
-    if (pageName !== 'name' && user.name === '') {
+    if (
+      pageName !== '/info/name' &&
+      user.name === '' &&
+      localUser.user === ''
+    ) {
       return history.push('/info/name');
     }
     // /info/age 일 때 년도를 불러 주는 부분
-    if (pageName === 'age') {
+    if (pageName === '/info/birth') {
       return Years();
     }
   }, [pageName, history, user]);
@@ -55,12 +60,16 @@ const InfoQna = ({ history, location, user, setUser }) => {
   const confirm = (type, value) => {
     switch (type) {
       case 'sex':
-        return localStorageUpdate(type, value, '/info/age');
+        return localStorageUpdate(type, value, '/info/birth');
       case 'birth':
         if (user.birth !== '') {
           return localStorageUpdate(type, user.birth, '/qna');
         }
         break;
+      case 'height':
+        return localStorageUpdate(type, value, '/info/weight');
+      case 'weight':
+        return localStorageUpdate(type, value, '/info/email');
       case 'email':
         if (isEmail(value)) {
           return localStorageUpdate(type, value, '/result');
@@ -81,7 +90,7 @@ const InfoQna = ({ history, location, user, setUser }) => {
           pageName={pageName}
         />
         <InfoControl
-          pageName={pageName}
+          pageName={pageName.split('/')[2]}
           toggle={toggle}
           setToggle={setToggle}
           user={user}

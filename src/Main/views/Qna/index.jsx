@@ -39,7 +39,7 @@ const Qna = ({ user, location, history, questions, setQuestions }) => {
   const confirmQna = () => {
     if (list.length > 0) {
       if (Number(pageNumber) === 1) {
-        return history.push('/info/email');
+        return history.push('/info/height');
       }
       if (pageNumber) {
         // 이부분 수정해야함

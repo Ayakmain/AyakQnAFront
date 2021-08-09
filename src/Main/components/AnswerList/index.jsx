@@ -6,9 +6,9 @@ import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
 
-const AnswerList = ({ List, picks, pickQna, location }) =>
+const AnswerList = ({ List, picks, pickQna, location, className }) =>
   location.pathname === '/qna' ? (
-    <section className={cx('qna__list')}>
+    <section className={className ? className : cx('qna__list')}>
       {List.map((item, i) => (
         <Button
           className={
@@ -17,12 +17,12 @@ const AnswerList = ({ List, picks, pickQna, location }) =>
           key={i}
           onClick={() => pickQna(i)}
         >
-          {item}
+          {item.title}
         </Button>
       ))}
     </section>
   ) : (
-    <section className={cx('qna__list')}>
+    <section className={className ? className : cx('qna__list')}>
       {List.map((item, i) => (
         <Button
           key={i}
@@ -40,7 +40,7 @@ const AnswerList = ({ List, picks, pickQna, location }) =>
                 : cx('qna__list--answer--check')
             }
           />
-          <div className={cx('qna__list--answer--one')}>{item}</div>
+          <div className={cx('qna__list--answer--one')}>{item.title}</div>
         </Button>
       ))}
     </section>

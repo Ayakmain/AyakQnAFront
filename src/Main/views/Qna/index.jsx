@@ -3,17 +3,60 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actions as answerActions } from 'store/reducers/answer';
 import classNames from 'classnames/bind';
-import { InfoQuestion, BarGauge, AnswerList } from 'Main/components';
+import { Question, BarGauge, AnswerList, InfoControl } from 'Main/components';
 import { Button, MetaTag } from 'components';
 import { List } from 'static/json/list.json';
+import { staticQa as StaticList } from 'static/json/list.json';
 import styles from './stylesheet.scss';
+import Know from 'static/images/logo.png';
+import Sun from 'static/images/sun.png';
+import Drink from 'static/images/drink.png';
+import Healthy from 'static/images/healthy.png';
+import Smoke from 'static/images/smoke.png';
+import Pregnant from 'static/images/pregnant.png';
+import PMS from 'static/images/heart.png';
+import Eye from 'static/images/eye.png';
 
 const cx = classNames.bind(styles);
 
-const Qna = ({ user, location, history, questions, setQuestions }) => {
+const Qna = ({ user, location, history, questions, setQuestions, match }) => {
+  const imgList = [
+    {
+      type: 'eye',
+      img: Eye,
+    },
+    {
+      type: 'healthy',
+      img: Healthy,
+    },
+    {
+      type: 'sun',
+      img: Sun,
+    },
+    {
+      type: 'smoke',
+      img: Smoke,
+    },
+    {
+      type: 'drink',
+      img: Drink,
+    },
+    {
+      type: 'pregnant',
+      img: Pregnant,
+    },
+    {
+      type: 'pms',
+      img: PMS,
+    },
+    {
+      type: 'know',
+      img: Know,
+    },
+  ];
   const [list, setList] = useState([]);
+  const { type, qa } = match.params;
   const pageName = location.pathname.split('/')[1];
-  const pageNumber = location.pathname.split('/')[2];
 
   useEffect(() => {
     if (pageName === 'qna') {
@@ -22,8 +65,6 @@ const Qna = ({ user, location, history, questions, setQuestions }) => {
       );
       return setList(questionList);
     }
-    // const answerList = List.filter((item, i) => answers.includes(item) && i);
-    // return setList(answerList);
   }, [questions, pageName]);
 
   const pickQna = index => {
@@ -37,19 +78,20 @@ const Qna = ({ user, location, history, questions, setQuestions }) => {
   };
 
   const confirmQna = () => {
+    console.log(questions, 'qa: ', qa);
     if (list.length > 0) {
-      if (Number(pageNumber) === 1) {
+      // /qna일 때 다음 페이지로 넘어가주는 부분
+      // TODO: 이부분에서 API 호춣 해야함
+      if (pageName === 'qna' && !qa) {
+        // 낮은 순으로 재정렬 해주는 부분
+        list.sort((a, b) => a - b);
+        const lists = List.filter((item, i) => list.includes(i) && item);
+        setQuestions(lists);
+        return history.push(`/qna/${lists[0].type}`);
+      } else if (qa) {
+        // TODO: 마지막 질문일 경우 다음 질문 페이지로 이동시켜주는 부분
         return history.push('/info/height');
       }
-      if (pageNumber) {
-        // 이부분 수정해야함
-        // const lists = List.filter((item, i) => list.includes(i) && item);
-        // setAnswers(lists);
-        return history.push(`/qna/${Number(pageNumber) + 1}`);
-      }
-      const lists = List.filter((item, i) => list.includes(i) && item);
-      setQuestions(lists);
-      return history.push('/qna/1');
     }
   };
 
@@ -61,10 +103,38 @@ const Qna = ({ user, location, history, questions, setQuestions }) => {
         title="아약 맞춤형 추천"
       />
       <article className={cx('customized')}>
-        <div className={cx('customized__qusetion')}>
-          <InfoQuestion name={user.name && user.name} pageName={pageName} />
+        <div
+          className={
+            type ? cx('customized__match') : cx('customized__question')
+          }
+        >
+          {type && (
+            <img
+              className={cx('customized__match--img')}
+              src={imgList.find(item => item.type === type).img}
+              alt={`${type} 사진`}
+            />
+          )}
+          <Question
+            className={type && cx('customized__match--question')}
+            name={user.name && user.name}
+            pageName={type ? type : pageName}
+          />
         </div>
-        <AnswerList picks={list} List={List} pickQna={pickQna} />
+        {type === 'sun' || type === 'smoke' ? (
+          <InfoControl pageName={type} />
+        ) : (
+          <AnswerList
+            pageName={type}
+            List={
+              match.params.type
+                ? StaticList.find(item => item.type === type).qas
+                : List
+            }
+            picks={list}
+            pickQna={pickQna}
+          />
+        )}
       </article>
       <section className={cx('customized__confirm')}>
         {list.length === 0 ? (

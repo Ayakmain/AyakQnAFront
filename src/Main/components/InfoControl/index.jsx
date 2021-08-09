@@ -1,27 +1,31 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import classNames from 'classnames/bind';
-import styles from './stylesheet.scss';
-import Arrow from 'static/images/Arrow.png';
+import { connect } from 'react-redux';
+import { actions as envActions } from 'store/reducers/env';
 import { Button } from 'components/index';
-import { useEffect } from 'react';
+import Arrow from 'static/images/Arrow.png';
+import classNames from 'classnames/bind';
+
+import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
 
 const InfoControl = ({
   pageName,
   toggle,
-  user,
   years,
   setToggle,
   controlFunc,
   confirm,
+  user,
+  setUser,
 }) => {
   const [placeholder, setPlaceholder] = useState('');
   const [type, setType] = useState('input');
   const [inputValue, setValue] = useState('');
 
-  const initialFunc = (place, form) => {
+  const initialFunc = (place, form, vlaue) => {
+    setValue(vlaue ?? '');
     setPlaceholder(place);
     return setType(form);
   };
@@ -29,17 +33,13 @@ const InfoControl = ({
   useEffect(() => {
     switch (pageName) {
       case 'name':
-        setValue(user.name);
-        return initialFunc('이름을 입력해주세요', 'input');
+        return initialFunc('이름을 입력해주세요', 'input', user.name);
       case 'email':
-        setValue(user.email);
-        return initialFunc('Ayak@ayak.com', 'input');
+        return initialFunc('Ayak@ayak.com', 'input', user.email);
       case 'height':
-        setValue(user.height);
-        return initialFunc('', 'number');
+        return initialFunc('', 'number', user.height);
       case 'weight':
-        setValue(user.weight);
-        return initialFunc('', 'number');
+        return initialFunc('', 'number', user.weight);
       case 'birth':
         return initialFunc('', 'selectBox');
       default:
@@ -54,6 +54,27 @@ const InfoControl = ({
         : confirm(pageName, 'Female');
     } else {
       return confirm(pageName, value);
+    }
+  };
+
+  const inputConfirm = (type, value) => {
+    let confirmValue = '';
+
+    if (pageName === 'name') {
+      confirmValue = user.name;
+    } else if (pageName === 'email') {
+      confirmValue = user.email;
+    } else if (pageName === 'height') {
+      confirmValue = user.height;
+    } else if (pageName === 'weight') {
+      confirmValue = user.weight;
+    }
+
+    if (type === 'confirm') {
+      return confirm(pageName, confirmValue);
+    } else {
+      setUser({ ...user, [pageName]: value });
+      return setValue(value);
     }
   };
 
@@ -75,7 +96,7 @@ const InfoControl = ({
             className={cx('info__control--input')}
             value={inputValue}
             placeholder={placeholder}
-            onChange={e => controlFunc(pageName, e.target.value)}
+            onChange={e => inputConfirm('', e.target.value)}
           />
           {pageName === 'height' ? (
             <div className={cx('info__control--place')}>cm</div>
@@ -86,11 +107,7 @@ const InfoControl = ({
           )}
           {/*  TODO: 이부분 수정 해야함 */}
           <Button
-            onClick={() =>
-              pageName === 'name'
-                ? confirm(pageName, user.name)
-                : confirm(pageName, user.email)
-            }
+            onClick={() => inputConfirm('confirm')}
             className={cx('info__control--confirm')}
           >
             <img
@@ -143,4 +160,6 @@ const InfoControl = ({
   );
 };
 
-export default withRouter(InfoControl);
+const mapStateToProps = state => ({ user: state.env.user });
+
+export default connect(mapStateToProps, envActions)(withRouter(InfoControl));

@@ -19,11 +19,33 @@
       "type": "email",
       "qa": "<strong>이메일</strong>을 입력해주세요. <div className={'info__question--sub'}>이메일을 입력해주시면 바로 \n 다음 단계에서 결과를 볼 수 있어요</div>"
     },{
+      "img": "static/images/healthy.png",
       "type": "healthy",
       "qa": "일주일에 운동을 \n 얼마나 하시나요?"
     },{
+      "img": "static/images/sun.png",
       "type": "sun",
-      "qa": "하루에 햇빛에 놀출되는 시간이 \n 30분 이상인가요?"
+      "qa": "하루에 햇빛에 노출되는 시간이 \n 30분 이상인가요?"
+    },{
+      "img": "static/images/smoke.png",
+      "type": "smoke",
+      "qa": "흡연을 하시나요?"
+    },{
+      "img": "static/images/drink.png",
+      "type": "drink",
+      "qa": "일주일에 \n 몇번 술을 마시나요?"
+    },{
+      "img": "static/images/pragnent.png",
+      "type": "pragnent",
+      "qa": "임신 중 혹은 \n 임신 준비 중이신가요?"
+    },{
+      "img": "static/images/pms.png",
+      "type": "pms",
+      "qa": "월경증후군(PMS)의 \n 통증 정도가 어떠한가요?"
+    },{
+      "img": "static/images/logo.png",
+      "type": "know",
+      "qa": "아약을 \n 어떻게 알게 되셨나요?"
     }
   ]
 }

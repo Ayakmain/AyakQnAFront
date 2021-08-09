@@ -36,10 +36,11 @@ const Main = ({ setUser }) => {
                 <Route exact path="/info/sex" component={InfoQna} />
                 <Route exact path="/info/birth" component={InfoQna} />
                 <Route exact path="/qna" component={Qna} />
-                <Route exact path="/qna/:index" component={Qna} />
+                <Route exact path="/qna/:qa" component={Qna} />
                 <Route exact path="/info/height" component={InfoQna} />
                 <Route exact path="/info/weight" component={InfoQna} />
                 <Route exact path="/info/height" component={InfoQna} />
+                <Route exact path="/:type" component={Qna} />
                 <Route exact path="/info/email" component={InfoQna} />
                 <Route exact path="/result" component={QnaResult} />
                 <Redirect path="*" to="/" />

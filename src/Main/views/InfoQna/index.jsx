@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actions as envActions } from 'store/reducers/env';
 import classNames from 'classnames/bind';
-import { InfoQuestion, InfoControl } from 'Main/components';
+import { Question, InfoControl } from 'Main/components';
 import moment from 'moment';
 import { localStorage } from 'common/env';
 import { isEmail } from 'common/util';
@@ -28,10 +28,12 @@ const InfoQna = ({ history, location, user, setUser }) => {
     return setYears(yearList);
   };
 
-  const localStorageUpdate = (type, value, url) => {
+  const localStorageUpdate = (type, value, url, controll) => {
     setUser({ ...user, [type]: value });
     localStorage('user', user, { ...user, [type]: value });
-    return url && history.push(url);
+    if (controll === 'confirm') {
+      return url && history.push(url);
+    }
   };
 
   // Local에 저장되어 있는 값 state에 저장
@@ -60,43 +62,40 @@ const InfoQna = ({ history, location, user, setUser }) => {
   const confirm = (type, value) => {
     switch (type) {
       case 'sex':
-        return localStorageUpdate(type, value, '/info/birth');
+        return localStorageUpdate(type, value, '/info/birth', 'confirm');
       case 'birth':
         if (user.birth !== '') {
-          return localStorageUpdate(type, user.birth, '/qna');
+          return localStorageUpdate(type, user.birth, '/qna', 'confirm');
         }
         break;
       case 'height':
-        return localStorageUpdate(type, value, '/info/weight');
+        return localStorageUpdate(type, value, '/info/weight', 'confirm');
       case 'weight':
-        return localStorageUpdate(type, value, '/info/email');
+        return localStorageUpdate(type, value, '/healthy', 'confirm');
       case 'email':
         if (isEmail(value)) {
-          return localStorageUpdate(type, value, '/result');
+          return localStorageUpdate(type, value, '/result', 'confirm');
           // TODO: 이부분에서 이메일 체크하고 이메일 보내는 API 적용해야함
         }
         break;
 
       default:
-        return localStorageUpdate(type, value, '/info/intro');
+        return localStorageUpdate(type, value, '/info/intro', 'confirm');
     }
   };
 
   return (
     <article className={cx('qna')} onClick={() => toggle && setToggle(false)}>
       <section className={cx('qna__info')}>
-        <InfoQuestion
-          name={user.name !== '' && user.name}
-          pageName={pageName}
-        />
+        <Question name={user.name !== '' && user.name} pageName={pageName} />
         <InfoControl
           pageName={pageName.split('/')[2]}
           toggle={toggle}
           setToggle={setToggle}
-          user={user}
           years={years}
           controlFunc={controlFunc}
           confirm={confirm}
+          localStorageUpdate={localStorageUpdate}
         />
       </section>
     </article>

@@ -18,6 +18,13 @@ const Header = ({ location, history }) => {
     '/qna',
     '/info/height',
     '/info/weight',
+    '/healthy',
+    '/sun',
+    '/smoke',
+    '/drink',
+    '/pragnent',
+    '/pms',
+    '/know',
     '/info/email',
     '/result',
   ]);

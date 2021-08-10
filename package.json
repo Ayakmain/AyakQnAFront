@@ -30,6 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "publish": "git add . && git commit && git push",
     "eslint": "eslint . --ext .jsx --fix, --ignore-pattern node_modules/"
   },
   "eslintConfig": {

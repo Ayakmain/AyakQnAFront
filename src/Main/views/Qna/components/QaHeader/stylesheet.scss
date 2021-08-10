@@ -1,0 +1,85 @@
+@import 'common/stylesheet/index.scss';
+
+@include media('>medium') {
+  .qa {
+    &__question {
+      text-align: center;
+    }
+
+    &__section {
+      display: flex;
+      position: relative;
+      top: 80px;
+      left: 0;
+      right: 0;
+      width: 90%;
+      margin: auto;
+      height: 200px;
+      margin-bottom: 100px;
+      border-bottom: 3px solid $color-box;
+
+      &--img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 150px;
+        height: auto;
+        margin: auto;
+      }
+
+      &--question {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: left;
+        width: 70%;
+        font-size: 3.5rem;
+        font-weight: lighter;
+        line-height: 4.5rem;
+      }
+    }
+  }
+}
+
+@include media('<=small') {
+  .qa {
+    &__question {
+      text-align: center;
+    }
+
+    &__section {
+      display: flex;
+      position: relative;
+      top: 80px;
+      left: 0;
+      right: 0;
+      width: 90%;
+      margin: auto;
+      height: 100px;
+      margin-bottom: 100px;
+      border-bottom: 3px solid $color-box;
+
+      &--img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 80px;
+        height: auto;
+        margin: auto;
+      }
+
+      &--question {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: left;
+        width: 70%;
+        font-size: 2rem;
+        font-weight: lighter;
+        line-height: 3rem;
+      }
+    }
+  }
+}

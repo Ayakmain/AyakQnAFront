@@ -12,6 +12,7 @@ import { Home, InfoIntro, InfoQna, Qna, QnaResult } from '../index';
 const cx = classNames.bind(styles);
 
 const Main = ({ setUser }) => {
+  // const qas = [];
   // localstorage에 있는 데이터들 user로 업데이트 해주는 부분
   useEffect(() => {
     // localhost에서 user 가져오기
@@ -36,7 +37,11 @@ const Main = ({ setUser }) => {
                 <Route exact path="/info/sex" component={InfoQna} />
                 <Route exact path="/info/birth" component={InfoQna} />
                 <Route exact path="/qna" component={Qna} />
-                <Route exact path="/qna/:qa" component={Qna} />
+                {/* {qas.length > 0 ? ( */}
+                <Route exact path="/qna/:qa/:index" component={Qna} />
+                {/* ) : ( */}
+                {/* <Redirect to="/qna" /> */}
+                {/* )} */}
                 <Route exact path="/info/height" component={InfoQna} />
                 <Route exact path="/info/weight" component={InfoQna} />
                 <Route exact path="/info/height" component={InfoQna} />

@@ -38,7 +38,7 @@ const Header = ({ location, history }) => {
     // if (pathname === '/info/email' || category === '/qna') {
     //   prevHistory();
     // }
-    if (pathname === '/qna/1') {
+    if (pathname.includes('qna') && pathname.split('/')[2]) {
       return history.push('/qna');
     } else {
       const index = pageList.findIndex(item => item === pathname);

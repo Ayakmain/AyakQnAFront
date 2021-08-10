@@ -6,8 +6,8 @@ import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
 
-const AnswerList = ({ List, picks, pickQna, location, className }) =>
-  location.pathname === '/qna' ? (
+const AnswerList = ({ List, picks, pickQna, location, className, match }) => {
+  return location.pathname === '/qna' ? (
     <section className={className ? className : cx('qna__list')}>
       {List.map((item, i) => (
         <Button
@@ -40,10 +40,13 @@ const AnswerList = ({ List, picks, pickQna, location, className }) =>
                 : cx('qna__list--answer--check')
             }
           />
-          <div className={cx('qna__list--answer--one')}>{item.title}</div>
+          <div className={cx('qna__list--answer--one')}>
+            {match.params.type ? item : item.title}
+          </div>
         </Button>
       ))}
     </section>
   );
+};
 
 export default withRouter(AnswerList);

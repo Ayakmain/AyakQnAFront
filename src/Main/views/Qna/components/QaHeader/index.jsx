@@ -118,16 +118,33 @@ const QaHeader = ({ name, location, match, question }) => {
   const pageName = location.pathname.split('/')[1];
 
   return (
-    <div className={type || qa ? cx('qa__section') : cx('qa__question')}>
+    <div
+      className={
+        type || qa
+          ? type === 'sun' || type === 'smoke'
+            ? cx('qa__wrap')
+            : cx('qa__section')
+          : cx('qa__question')
+      }
+    >
       {(type || qa) && (
         <img
-          className={cx('qa__section--img')}
+          className={
+            type === 'sun' || type === 'smoke'
+              ? cx('qa__wrap--img')
+              : cx('qa__section--img')
+          }
           src={imgList.find(item => item.type === (type ?? qa)).img}
           alt={`${type} 사진`}
         />
       )}
       <Question
-        className={(type || qa) && cx('qa__section--question')}
+        className={
+          (type || qa) &&
+          type !== 'sun' &&
+          type !== 'smoke' &&
+          cx('qa__section--question')
+        }
         questionSelect={question}
         name={name && name}
         pageName={type ? (qa ? qa : type) : pageName}

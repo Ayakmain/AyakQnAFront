@@ -34,9 +34,28 @@
         transform: translateY(-50%);
         text-align: left;
         width: 70%;
-        font-size: 3.5rem;
+        font-size: 3.2rem;
         font-weight: lighter;
         line-height: 4.5rem;
+      }
+    }
+
+    &__wrap {
+      display: block !important;
+      position: relative;
+      top: 80px;
+      left: 0;
+      right: 0;
+      width: 90%;
+      margin: auto;
+      height: 450px;
+      text-align: center;
+
+      &--img {
+        width: 150px;
+        height: auto;
+        margin: auto;
+        margin-bottom: 50px;
       }
     }
   }
@@ -79,6 +98,24 @@
         font-size: 2rem;
         font-weight: lighter;
         line-height: 3rem;
+      }
+    }
+
+    &__wrap {
+      position: relative;
+      top: 80px;
+      left: 0;
+      right: 0;
+      width: 90%;
+      margin: auto;
+      height: 350px;
+      text-align: center;
+
+      &--img {
+        width: 100px;
+        height: auto;
+        margin: auto;
+        margin-bottom: 30px;
       }
     }
   }

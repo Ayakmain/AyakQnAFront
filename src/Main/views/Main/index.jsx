@@ -45,9 +45,9 @@ const Main = ({ setUser }) => {
                 <Route exact path="/info/height" component={InfoQna} />
                 <Route exact path="/info/weight" component={InfoQna} />
                 <Route exact path="/info/height" component={InfoQna} />
-                <Route exact path="/:type" component={Qna} />
                 <Route exact path="/info/email" component={InfoQna} />
                 <Route exact path="/result" component={QnaResult} />
+                <Route exact path="/:type" component={Qna} />
                 <Redirect path="*" to="/" />
               </Switch>
             </CSSTransition>

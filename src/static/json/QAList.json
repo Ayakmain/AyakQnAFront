@@ -36,7 +36,7 @@
       "qa": "일주일에 \n 몇번 술을 마시나요?"
     },{
       "img": "static/images/pragnent.png",
-      "type": "pragnent",
+      "type": "pregnant",
       "qa": "임신 중 혹은 \n 임신 준비 중이신가요?"
     },{
       "img": "static/images/pms.png",

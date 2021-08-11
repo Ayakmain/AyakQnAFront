@@ -24,7 +24,7 @@ const Qna = ({ user, location, history, questions, setQuestions, match }) => {
     'sun',
     'smoke',
     'drink',
-    'pragnent',
+    'pregnant',
     'pms',
     'know',
   ];
@@ -53,7 +53,7 @@ const Qna = ({ user, location, history, questions, setQuestions, match }) => {
     }
   };
 
-  const confirmQna = () => {
+  const confirmQna = (page, value) => {
     if (list.length > 0) {
       // /qna일 때 다음 페이지로 넘어가주는 부분
       if (pageName === 'qna' && !qa) {
@@ -76,10 +76,17 @@ const Qna = ({ user, location, history, questions, setQuestions, match }) => {
       } else if (qa) {
         // TODO: 마지막 질문일 경우 다음 질문 페이지로 이동시켜주는 부분
         return history.push('/info/height');
+      } else if (type === 'know') {
+        // TODO: 이부분에서 KnowAPi 보내기
+        return history.push(`/result`);
       } else if (type) {
-        console.log('dsdsdsads');
+        localStorage('user', user, { ...user, [type]: value });
         return history.push(`/${statics[statics.indexOf(type) + 1]}`);
       }
+    }
+    if (type) {
+      localStorage('user', user, { ...user, [type]: value });
+      return history.push(`/${statics[statics.indexOf(type) + 1]}`);
     }
   };
 
@@ -112,27 +119,25 @@ const Qna = ({ user, location, history, questions, setQuestions, match }) => {
           />
         )}
       </article>
-      {type === 'sun' ||
-        (type !== 'smoke' && (
-          <section className={cx('customized__confirm')}>
-            {list.length === 0 ? (
-              <div className={cx('customized__confirm__footer')}>
-                한개 이상을 선택해 주세요
-              </div>
-            ) : (
-              <Button
-                className={cx(
-                  'customized__confirm__footer',
-                  'customized__confirm__btn'
-                )}
-                onClick={() => confirmQna()}
-              >
-                선택 완료
-              </Button>
-            )}
-          </section>
-        ))}
-
+      {type !== 'sun' && type !== 'smoke' && (
+        <section className={cx('customized__confirm')}>
+          {list.length === 0 ? (
+            <div className={cx('customized__confirm__footer')}>
+              한개 이상을 선택해 주세요
+            </div>
+          ) : (
+            <Button
+              className={cx(
+                'customized__confirm__footer',
+                'customized__confirm__btn'
+              )}
+              onClick={() => confirmQna()}
+            >
+              선택 완료
+            </Button>
+          )}
+        </section>
+      )}
       <BarGauge />
     </Fragment>
   );

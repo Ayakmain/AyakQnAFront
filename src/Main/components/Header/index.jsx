@@ -16,30 +16,36 @@ const Header = ({ location, history }) => {
     '/info/sex',
     '/info/birth',
     '/qna',
-    '/info/height',
-    '/info/weight',
+    '/height',
+    '/weight',
     '/healthy',
     '/sun',
     '/smoke',
     '/drink',
-    '/pragnent',
+    '/pregnant',
     '/pms',
     '/know',
-    '/info/email',
+    '/email',
     '/result',
   ]);
   const { pathname } = location;
   const category = pathname.split('/')[1];
-
-  // const prevHistory = useHistory();
+  const qa = pathname.split('/')[2];
+  const questionList = JSON.parse(window.localStorage.getItem('qa'));
 
   const goToPreviousPath = () => {
     // TODO: 이부분 수정해야함
-    // if (pathname === '/info/email' || category === '/qna') {
-    //   prevHistory();
-    // }
+    if (pathname === '/height') {
+      return history.push(`/qna/${questionList[questionList.length - 1].type}`);
+    }
     if (pathname.includes('qna') && pathname.split('/')[2]) {
-      return history.push('/qna');
+      const index = questionList.findIndex(item => item.type === qa);
+
+      if (index === 0) {
+        return history.push('/qna');
+      } else {
+        return history.push(`/qna/${questionList[index - 1].type}`);
+      }
     } else {
       const index = pageList.findIndex(item => item === pathname);
       const prev = pageList[index - 1];

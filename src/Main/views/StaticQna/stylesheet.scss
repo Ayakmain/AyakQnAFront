@@ -1,12 +1,13 @@
 @import 'common/stylesheet/index.scss';
 
-.qna {
+.static__qna {
   position: relative;
   height: 70vh;
   margin-top: 70px;
 
-  &__info {
+  &--info {
     width: 100%;
+    height: 100%;
     position: absolute;
     top: 50%;
     left: 0;

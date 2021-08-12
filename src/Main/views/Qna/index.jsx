@@ -3,22 +3,32 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { actions as answerActions } from 'store/reducers/answer';
+import { actions as envActions } from 'store/reducers/env';
 import classNames from 'classnames/bind';
 import { BarGauge, AnswerList, InfoControl } from 'Main/components';
 import { Button, MetaTag } from 'components';
-import { List } from 'static/json/list.json';
 import { staticQa as StaticList } from 'static/json/list.json';
+import { QAList } from 'static/json/QAList.json';
 import { Questions } from 'static/json/Question.json';
 import { QaHeader } from './components';
 import styles from './stylesheet.scss';
 import { localStorage } from 'common/env';
 const cx = classNames.bind(styles);
 
-const Qna = ({ user, location, history, questions, setQuestions, match }) => {
+const Qna = ({
+  user,
+  location,
+  history,
+  setUser,
+  match,
+  staticData,
+  setStatic,
+}) => {
   const [list, setList] = useState([]);
-  const { type, qa, index } = match.params;
+  const [selectQa, setSelect] = useState(null);
+  const { qa } = match.params;
   const pageName = location.pathname.split('/')[1];
+  const pickList = JSON.parse(window.localStorage.getItem('qa'));
   const statics = [
     'healthy',
     'sun',
@@ -30,18 +40,15 @@ const Qna = ({ user, location, history, questions, setQuestions, match }) => {
   ];
 
   useEffect(() => {
-    if (pageName === 'qna' && qa) {
+    if (qa) {
       // TODO: 이부분에서 QA API 호춣 해야함
       // QA API에서 받아오는 데이터
-      setQuestions(JSON.parse(window.localStorage.getItem('qa')));
+      setSelect(Questions.find(item => item.type === qa));
       return;
-    } else if (pageName === 'qna') {
-      const questionList = List.filter(
-        (item, i) => questions.includes(item) && i
-      );
-      return setList(questionList);
+    } else {
+      setSelect(QAList.find(item => item.type === pageName));
     }
-  }, [pageName, qa, index]);
+  }, [pageName, qa]);
 
   const pickQna = index => {
     if (list.includes(index)) {
@@ -54,98 +61,92 @@ const Qna = ({ user, location, history, questions, setQuestions, match }) => {
   };
 
   const confirmQna = (page, value) => {
-    if (list.length > 0) {
-      // /qna일 때 다음 페이지로 넘어가주는 부분
-      if (pageName === 'qna' && !qa) {
-        let typeList = [];
-        // 낮은 순으로 재정렬 해주는 부분
-        list.sort((a, b) => a - b);
-        // TODO: 이부분 수정해야함
-        const lists = List.filter((item, i) => {
-          if (list.includes(i) && item) {
-            typeList = Questions.filter(
-              question => question.type === item.type
-            );
-            return item;
-          }
-        });
+    // QaPick에서 데이터 선택 시 질문 데이터 받는 부분
+    if (qa) {
+      const index = pickList.findIndex(item => item.type === selectQa.type);
+      const pickLength = pickList.length;
 
-        setQuestions(typeList);
-        localStorage('qa', '', [...typeList]);
-        return history.push(`/qna/${lists[0].type}/0`);
-      } else if (qa) {
-        // TODO: 마지막 질문일 경우 다음 질문 페이지로 이동시켜주는 부분
-        return history.push('/info/height');
-      } else if (type === 'know') {
-        // TODO: 이부분에서 KnowAPi 보내기
-        return history.push(`/result`);
-      } else if (type) {
-        localStorage('user', user, { ...user, [type]: value });
-        return history.push(`/${statics[statics.indexOf(type) + 1]}`);
+      // 마지막 질문일 경우 다음 질문 페이지로 이동시켜주는 부분
+      // TODO: 이 부분에서 API어떻게 보내서 저장할지에 대하여 고민
+      if (pickLength - 1 === index) {
+        return history.push('/height');
+      } else {
+        return history.push(`/qna/${pickList[index + 1].type}`);
       }
     }
-    if (type) {
-      localStorage('user', user, { ...user, [type]: value });
-      return history.push(`/${statics[statics.indexOf(type) + 1]}`);
+    if (pageName === 'height' || pageName === 'weight') {
+      setUser({ ...user, [pageName]: value });
+      localStorage('user', user, { ...user, [page]: value });
+    } else if (pageName === 'know') {
+      // TODO: know API 연결
+      return history.push(`/email`);
+    } else {
+      // TODO: Api 업데이트 사용
+      // 여기
+      setStatic({ ...staticData, [pageName]: value });
+      localStorage('staticData', staticData, {
+        ...staticData,
+        [pageName]: list,
+      });
     }
+    return history.push(`/${statics[statics.indexOf(pageName) + 1]}`);
   };
 
   return (
-    <Fragment>
-      <MetaTag
-        keywords="Ayak,ayak,AYAK,아약,맞춤형추천"
-        description="아약 맞춤형 추천"
-        title="아약 맞춤형 추천"
-      />
-      <article className={cx('customized')}>
-        <QaHeader
-          name={user.name}
-          question={questions.length > 0 && questions[0].question}
+    selectQa && (
+      <Fragment>
+        <MetaTag
+          keywords="Ayak,ayak,AYAK,아약,맞춤형추천"
+          description="아약 맞춤형 추천"
+          ㅌ
+          title="아약 맞춤형 추천"
         />
-        {type === 'sun' || type === 'smoke' ? (
-          <InfoControl pageName={type} confirm={() => confirmQna()} />
-        ) : (
-          <AnswerList
-            pageName={type}
-            List={
-              type
-                ? StaticList.find(item => item.type === type).qas
-                : qa
-                ? questions[0].answers
-                : List
-            }
-            picks={list}
-            pickQna={pickQna}
-          />
-        )}
-      </article>
-      {type !== 'sun' && type !== 'smoke' && (
-        <section className={cx('customized__confirm')}>
-          {list.length === 0 ? (
-            <div className={cx('customized__confirm__footer')}>
-              한개 이상을 선택해 주세요
-            </div>
+        <article className={cx('customized')}>
+          <QaHeader name={user.name} question={selectQa.question} />
+          {pageName === 'sun' || pageName === 'smoke' ? (
+            <InfoControl pageName={pageName} confirm={confirmQna} />
           ) : (
-            <Button
-              className={cx(
-                'customized__confirm__footer',
-                'customized__confirm__btn'
-              )}
-              onClick={() => confirmQna()}
-            >
-              선택 완료
-            </Button>
+            <AnswerList
+              pageName={pageName}
+              List={
+                pageName !== 'qna'
+                  ? StaticList.find(item => item.type === pageName).qas
+                  : qa && selectQa.answers
+              }
+              picks={list}
+              pickQna={pickQna}
+            />
           )}
-        </section>
-      )}
-      <BarGauge />
-    </Fragment>
+        </article>
+        {pageName !== 'sun' && pageName !== 'smoke' && (
+          <section className={cx('customized__confirm')}>
+            {list.length === 0 ? (
+              <div className={cx('customized__confirm__footer')}>
+                한개 이상을 선택해 주세요
+              </div>
+            ) : (
+              <Button
+                className={cx(
+                  'customized__confirm__footer',
+                  'customized__confirm__btn'
+                )}
+                onClick={confirmQna}
+              >
+                선택 완료
+              </Button>
+            )}
+          </section>
+        )}
+        <BarGauge />
+      </Fragment>
+    )
   );
 };
 
 const mapStateToProps = state => ({
   user: state.env.user,
+  staticData: state.env.staticData,
   questions: state.answer.questions,
 });
 
-export default connect(mapStateToProps, answerActions)(withRouter(Qna));
+export default connect(mapStateToProps, envActions)(withRouter(Qna));

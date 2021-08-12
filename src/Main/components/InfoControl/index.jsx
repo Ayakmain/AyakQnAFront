@@ -49,9 +49,7 @@ const InfoControl = ({
 
   const selectFunc = value => {
     if (pageName === 'sex') {
-      return value === 'yes'
-        ? confirm(pageName, 'Male')
-        : confirm(pageName, 'Female');
+      return value ? confirm(pageName, 'Male') : confirm(pageName, 'Female');
     } else {
       return confirm(pageName, value);
     }
@@ -80,10 +78,10 @@ const InfoControl = ({
 
   return type === 'select' ? (
     <div className={cx('sex')}>
-      <Button className={cx('sex__btn')} onClick={() => selectFunc('yes')}>
+      <Button className={cx('sex__btn')} onClick={() => selectFunc(true)}>
         {pageName === 'sex' ? '남성' : '예'}
       </Button>
-      <Button className={cx('sex__btn')} onClick={() => selectFunc('no')}>
+      <Button className={cx('sex__btn')} onClick={() => selectFunc(false)}>
         {pageName === 'sex' ? '여성' : '아니오'}
       </Button>
     </div>

@@ -2,8 +2,7 @@
   "Questions" : [
     {
       "type": "eye",
-      "index": 0,
-      "question": "눈에 관련하여 <br/> 어떤 고민이 있나요?",
+      "question": "<strong>눈</strong>에 관련하여 <br/> 어떤 고민이 있나요?",
       "answers": [
         {
           "title":"눈이 건조하고 뻑뻑해요",
@@ -33,504 +32,340 @@
     },
     {
       "type": "remember",
-      "index": 0,
-      "question": "기억력 관련하여 <br/> 어떤 고민이 있나요?",
+      "question": "<strong>기억력</strong> 관련하여 <br/> 어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"기억력이 나빠진 것 같아요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"단어가 잘 안 떠올라요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈 밑이 떨려요",
+          "title":"일에 집중을 잘 못해요",
           "nutrition": "마그네슘"
-        },
-        {
-          "text":"시야가 흐릿하게 느껴져요",
-          "nutrition": "오메가3"
-        },
-        {
-          "text":"어두운 곳에서 잘 안 보여요",
-          "nutrition": "비타민A"
-        },
-        {
-          "text":"눈이 침침해요",
-          "nutrition": "루테인"
         }
       ]
     },
     {
       "type": "immune",
-      "index": 0,
-      "question": "면역/향산화에 관련하여<br/> 어떤 고민이 있나요?",
+      "question": "<strong>면역/향산화</strong>에 관련하여<br/> 어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"스트레스가 많아요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"감기에 자주 걸려요",
           "nutrition": "오메가3"
-        },
-        {
-          "text":"눈 밑이 떨려요",
-          "nutrition": "마그네슘"
-        },
-        {
-          "text":"시야가 흐릿하게 느껴져요",
-          "nutrition": "오메가3"
-        },
-        {
-          "text":"어두운 곳에서 잘 안 보여요",
-          "nutrition": "비타민A"
-        },
-        {
-          "text":"눈이 침침해요",
-          "nutrition": "루테인"
         }
       ]
     },
     {
       "type": "hair",
-      "index": 0,
-      "question": "모발에 관련하여 <br/> 어떤 고민이 있나요?",
+      "question": "<strong>모발</strong>에 관련하여 <br/> 어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"모발이 얇아졌어요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"탈모가 있어요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈 밑이 떨려요",
+          "title":"모발 손상이 심해요",
           "nutrition": "마그네슘"
         },
         {
-          "text":"시야가 흐릿하게 느껴져요",
+          "title":"모발 끝이 갈라져요",
           "nutrition": "오메가3"
-        },
-        {
-          "text":"어두운 곳에서 잘 안 보여요",
-          "nutrition": "비타민A"
-        },
-        {
-          "text":"눈이 침침해요",
-          "nutrition": "루테인"
         }
       ]
     },
     {
       "type": "urinary",
-      "index": 0,
-      "question": "비뇨에 관련하여 <br/>어떤 고민이 있나요?",
+      "question": "<strong>비뇨</strong>에 관련하여 <br/>어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"소변을 본 후 잔뇨감이 있나요?",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"소변을 보러 화장실에 자주 가요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈 밑이 떨려요",
+          "title":"소변을 참기 어려워요",
           "nutrition": "마그네슘"
         },
         {
-          "text":"시야가 흐릿하게 느껴져요",
+          "title":"소변에서 냄새가 나요",
           "nutrition": "오메가3"
         },
         {
-          "text":"어두운 곳에서 잘 안 보여요",
+          "title":"소변을 통증이 있어요",
           "nutrition": "비타민A"
-        },
-        {
-          "text":"눈이 침침해요",
-          "nutrition": "루테인"
         }
       ]
+      
     },
     {
       "type": "bone",
-      "index": 0,
-      "question": "뼈/관절에 관련하여 <br/>어떤 고민이 있나요?",
+      "question": "<strong>뼈/관절</strong>에 관련하여 <br/>어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"일상생활에서 움직일 때 불편해요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"골다공증이 걱정 돼요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈 밑이 떨려요",
+          "title":"평소 뼈가 약한 것 같아요",
           "nutrition": "마그네슘"
-        },
-        {
-          "text":"시야가 흐릿하게 느껴져요",
-          "nutrition": "오메가3"
-        },
-        {
-          "text":"어두운 곳에서 잘 안 보여요",
-          "nutrition": "비타민A"
-        },
-        {
-          "text":"눈이 침침해요",
-          "nutrition": "루테인"
         }
       ]
     },
     {
       "type": "sexual",
-      "index": 0,
-      "question": "성기능에 관련하여 <br/>어떤 고민이 있나요?",
+      "question": "<strong>성기능</strong>에 관련하여 <br/>어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"성기능 강화에 관심이 있어요",
           "nutrition": "오메가3"
-        },
-        {
-          "text":"눈이 자주 피로해요",
-          "nutrition": "오메가3"
-        },
-        {
-          "text":"눈 밑이 떨려요",
-          "nutrition": "마그네슘"
-        },
-        {
-          "text":"시야가 흐릿하게 느껴져요",
-          "nutrition": "오메가3"
-        },
-        {
-          "text":"어두운 곳에서 잘 안 보여요",
-          "nutrition": "비타민A"
-        },
-        {
-          "text":"눈이 침침해요",
-          "nutrition": "루테인"
         }
       ]
     },
     {
       "type": "digestion",
-      "index": 0,
-      "question": "소화에 관련하여 <br/>어떤 고민이 있나요?",
+      "question": "<strong>소화</strong>에 관련하여 <br/>어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"배변활동이 원활하지 않아요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"대변을 보러 화장실에 자주 가요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈 밑이 떨려요",
+          "title":"속이 자주 쓰려요",
           "nutrition": "마그네슘"
         },
         {
-          "text":"시야가 흐릿하게 느껴져요",
+          "title":"변비가 있어요",
           "nutrition": "오메가3"
         },
         {
-          "text":"어두운 곳에서 잘 안 보여요",
+          "title":"설사가 자주 나와요",
           "nutrition": "비타민A"
         },
         {
-          "text":"눈이 침침해요",
+          "title":"배에 가스가 자주 차요",
+          "nutrition": "루테인"
+        },
+        {
+          "title":"복통이 자주 있어요",
           "nutrition": "루테인"
         }
       ]
     },
     {
       "type": "tooth",
-      "index": 0,
-      "question": "치아/잇몸에 관련하여 <br/>어떤 고민이 있나요?",
+      "question": "<strong>치아/잇몸</strong>에 관련하여 <br/>어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"양치할 때 잇몸에서 자주 피가 나요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"잇몸이 자주 부어요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈 밑이 떨려요",
+          "title":"치아/잇몸이 약해요",
           "nutrition": "마그네슘"
         },
         {
-          "text":"시야가 흐릿하게 느껴져요",
+          "title":"입냄새가 심해요",
           "nutrition": "오메가3"
         },
         {
-          "text":"어두운 곳에서 잘 안 보여요",
+          "title":"이가 시려요",
           "nutrition": "비타민A"
         },
         {
-          "text":"눈이 침침해요",
+          "title":"충치가 자주 생겨요",
           "nutrition": "루테인"
         }
       ]
     },
     {
       "type": "stress",
-      "index": 0,
-      "question": "스트레스에 관련하여 <br/>어떤 고민이 있나요?",
+      "question": "<strong>스트레스</strong>에 관련하여 <br/>어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"스트레스를 많이 받아요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"평소에 예민하고 긴장이 자주 돼요",
           "nutrition": "오메가3"
-        },
-        {
-          "text":"눈 밑이 떨려요",
-          "nutrition": "마그네슘"
-        },
-        {
-          "text":"시야가 흐릿하게 느껴져요",
-          "nutrition": "오메가3"
-        },
-        {
-          "text":"어두운 곳에서 잘 안 보여요",
-          "nutrition": "비타민A"
-        },
-        {
-          "text":"눈이 침침해요",
-          "nutrition": "루테인"
         }
       ]
     },
     {
       "type": "tired",
-      "index": 0,
-      "question": "피로에 관련하여<br/> 어떤 고민이 있나요?",
+      "question": "<strong>피로</strong>에 관련하여<br/> 어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"잠드는 데 오래 걸려요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"수면 시간이 적어요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈 밑이 떨려요",
+          "title":"수면의 질이 낮아요",
           "nutrition": "마그네슘"
-        },
-        {
-          "text":"시야가 흐릿하게 느껴져요",
-          "nutrition": "오메가3"
-        },
-        {
-          "text":"어두운 곳에서 잘 안 보여요",
-          "nutrition": "비타민A"
-        },
-        {
-          "text":"눈이 침침해요",
-          "nutrition": "루테인"
         }
       ]
     },
     {
       "type": "blood",
-      "index": 0,
-      "question": "혈액순환에 관련하여<br/> 어떤 고민이 있나요?",
+      "question": "<strong>혈액순환</strong>에 관련하여<br/> 어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"가족 중에 심혈관 질환을 가진 사람이 있어요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"현재 심혈관 질환을 앓고 있어요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈 밑이 떨려요",
+          "title":"팔다리가 자주 저려요",
           "nutrition": "마그네슘"
         },
         {
-          "text":"시야가 흐릿하게 느껴져요",
+          "title":"어지러움을 자주 느껴요",
           "nutrition": "오메가3"
         },
         {
-          "text":"어두운 곳에서 잘 안 보여요",
+          "title":"혈액순환이 잘 안 되는 것 같아요",
           "nutrition": "비타민A"
-        },
-        {
-          "text":"눈이 침침해요",
-          "nutrition": "루테인"
         }
       ]
     },
     {
       "type": "women",
-      "index": 0,
-      "question": "여성건강에 관련하여 <br/>어떤 고민이 있나요?",
+      "question": "<strong>여성건강</strong>에 관련하여 <br/>어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"갱년기 증상이 있어요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"질 건강이 악화되었어요",
           "nutrition": "오메가3"
-        },
-        {
-          "text":"눈 밑이 떨려요",
-          "nutrition": "마그네슘"
-        },
-        {
-          "text":"시야가 흐릿하게 느껴져요",
-          "nutrition": "오메가3"
-        },
-        {
-          "text":"어두운 곳에서 잘 안 보여요",
-          "nutrition": "비타민A"
-        },
-        {
-          "text":"눈이 침침해요",
-          "nutrition": "루테인"
         }
       ]
     },
     {
       "type": "skin",
-      "index": 0,
-      "question": "피부에 관련하여 <br/>어떤 고민이 있나요?",
+      "question": "<strong>피부</strong>에 관련하여 <br/>어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"피부가 건조한 편이에요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"피부가 기름져요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈 밑이 떨려요",
+          "title":"피부 염증이 있어요",
           "nutrition": "마그네슘"
         },
         {
-          "text":"시야가 흐릿하게 느껴져요",
+          "title":"피부 탄력이 부족해요",
           "nutrition": "오메가3"
         },
         {
-          "text":"어두운 곳에서 잘 안 보여요",
+          "title":"주름이 많아요",
           "nutrition": "비타민A"
         },
         {
-          "text":"눈이 침침해요",
+          "title":"피부 상태가 악화되었어요",
+          "nutrition": "루테인"
+        },
+        {
+          "title":"피부가 예민해요",
+          "nutrition": "루테인"
+        },
+        {
+          "title":"피부 트러블이 자주 생겨요",
+          "nutrition": "루테인"
+        },
+        {
+          "title":"피부 착색이 있어요",
+          "nutrition": "루테인"
+        },
+        {
+          "title":" 피부 주근깨가 있어요",
           "nutrition": "루테인"
         }
       ]
     },
     {
       "type": "exercise",
-      "index": 0,
-      "question": "운동능력에 관련하여 <br/>어떤 고민이 있나요?",
+      "question": "<strong>운동능력</strong>에 관련하여 <br/>어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"전반적인 운동능력이 예전보다 감소되었어요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"근육 기능이 예전보다 감소되었어요",
           "nutrition": "오메가3"
-        },
-        {
-          "text":"눈 밑이 떨려요",
-          "nutrition": "마그네슘"
-        },
-        {
-          "text":"시야가 흐릿하게 느껴져요",
-          "nutrition": "오메가3"
-        },
-        {
-          "text":"어두운 곳에서 잘 안 보여요",
-          "nutrition": "비타민A"
-        },
-        {
-          "text":"눈이 침침해요",
-          "nutrition": "루테인"
         }
       ]
     },
     {
       "type": "diet",
-      "index": 0,
-      "question": "다이어트에 관련하여 <br/>어떤 고민이 있나요?",
+      "question": "<strong>다이어트</strong>에 관련하여 <br/>어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"자꾸 군것질을 해요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"체지방 감소가 힘들어요",
           "nutrition": "오메가3"
-        },
-        {
-          "text":"눈 밑이 떨려요",
-          "nutrition": "마그네슘"
-        },
-        {
-          "text":"시야가 흐릿하게 느껴져요",
-          "nutrition": "오메가3"
-        },
-        {
-          "text":"어두운 곳에서 잘 안 보여요",
-          "nutrition": "비타민A"
-        },
-        {
-          "text":"눈이 침침해요",
-          "nutrition": "루테인"
         }
       ]
     },
     {
       "type": "sleep",
-      "index": 0,
-      "question": "수면에 관련하여<br/> 어떤 고민이 있나요?",
+      "question": "<strong>수면</strong>에 관련하여<br/> 어떤 고민이 있나요?",
       "answers": [
         {
-          "text":"눈이 건조하고 뻑뻑해요",
+          "title":"잠드는 데 오래 걸려요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈이 자주 피로해요",
+          "title":"수면 시간이 적어요",
           "nutrition": "오메가3"
         },
         {
-          "text":"눈 밑이 떨려요",
+          "title":"수면의 질이 낮아요",
           "nutrition": "마그네슘"
-        },
-        {
-          "text":"시야가 흐릿하게 느껴져요",
-          "nutrition": "오메가3"
-        },
-        {
-          "text":"어두운 곳에서 잘 안 보여요",
-          "nutrition": "비타민A"
-        },
-        {
-          "text":"눈이 침침해요",
-          "nutrition": "루테인"
         }
       ]
     }
   ]
 }
-
-
-
- 
-

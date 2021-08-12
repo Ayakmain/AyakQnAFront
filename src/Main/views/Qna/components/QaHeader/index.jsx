@@ -11,6 +11,22 @@ import Smoke from 'static/images/smoke.png';
 import Pregnant from 'static/images/pregnant.png';
 import PMS from 'static/images/heart.png';
 import Eye from 'static/images/eye.png';
+import Women from 'static/images/women.png';
+import Remember from 'static/images/remember.png';
+import Immune from 'static/images/immune.png';
+import Hair from 'static/images/hair.png';
+import Urinary from 'static/images/urinary.png';
+import Bone from 'static/images/bone.png';
+import Sexual from 'static/images/sexual.png';
+import Digestion from 'static/images/digestion.png';
+import Tooth from 'static/images/tooth.png';
+import Stress from 'static/images/stress.png';
+import Tired from 'static/images/tired.png';
+import Blood from 'static/images/blood.png';
+import Skin from 'static/images/skin.png';
+import Exercise from 'static/images/exercise.png';
+import Diet from 'static/images/diet.png';
+import Sleep from 'static/images/sleep.png';
 
 const cx = classNames.bind(styles);
 
@@ -23,67 +39,67 @@ const QaHeader = ({ name, location, match, question }) => {
     },
     {
       type: 'remember',
-      img: Eye,
+      img: Remember,
     },
     {
       type: 'immune',
-      img: Eye,
+      img: Immune,
     },
     {
       type: 'hair',
-      img: Eye,
+      img: Hair,
     },
     {
       type: 'urinary',
-      img: Eye,
+      img: Urinary,
     },
     {
       type: 'bone',
-      img: Eye,
+      img: Bone,
     },
     {
       type: 'sexual',
-      img: Eye,
+      img: Sexual,
     },
     {
       type: 'digestion',
-      img: Eye,
+      img: Digestion,
     },
     {
       type: 'tooth',
-      img: Eye,
+      img: Tooth,
     },
     {
       type: 'stress',
-      img: Eye,
+      img: Stress,
     },
     {
       type: 'tired',
-      img: Eye,
+      img: Tired,
     },
     {
       type: 'blood',
-      img: Eye,
+      img: Blood,
     },
     {
       type: 'women',
-      img: Eye,
+      img: Women,
     },
     {
       type: 'skin',
-      img: Eye,
+      img: Skin,
     },
     {
       type: 'exercise',
-      img: Eye,
+      img: Exercise,
     },
     {
       type: 'diet',
-      img: Eye,
+      img: Diet,
     },
     {
       type: 'sleep',
-      img: Eye,
+      img: Sleep,
     },
     {
       type: 'healthy',
@@ -114,40 +130,40 @@ const QaHeader = ({ name, location, match, question }) => {
       img: Know,
     },
   ];
-  const { type, qa } = match.params;
+  const { qa } = match.params;
   const pageName = location.pathname.split('/')[1];
 
   return (
     <div
       className={
-        type || qa
-          ? type === 'sun' || type === 'smoke'
+        pageName !== 'qna' || qa
+          ? pageName === 'sun' || pageName === 'smoke'
             ? cx('qa__wrap')
             : cx('qa__section')
           : cx('qa__question')
       }
     >
-      {(type || qa) && (
+      {(pageName || qa) && (
         <img
           className={
-            type === 'sun' || type === 'smoke'
+            pageName === 'sun' || pageName === 'smoke'
               ? cx('qa__wrap--img')
               : cx('qa__section--img')
           }
-          src={imgList.find(item => item.type === (type ?? qa)).img}
-          alt={`${type} 사진`}
+          src={imgList.find(item => item.type === (qa ?? pageName)).img}
+          alt={`${pageName} 사진`}
         />
       )}
       <Question
         className={
-          (type || qa) &&
-          type !== 'sun' &&
-          type !== 'smoke' &&
+          (pageName !== 'qna' || qa) &&
+          pageName !== 'sun' &&
+          pageName !== 'smoke' &&
           cx('qa__section--question')
         }
         questionSelect={question}
         name={name && name}
-        pageName={type ? (qa ? qa : type) : pageName}
+        pageName={pageName}
       />
     </div>
   );

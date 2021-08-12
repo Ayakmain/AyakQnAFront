@@ -16,7 +16,7 @@ const Question = ({
   className,
   questionSelect,
 }) => {
-  const { type, qa, index } = match.params;
+  const { qa } = match.params;
   const [question, setQa] = useState('');
   const pageNumber = location.pathname.split('/')[2];
 
@@ -31,44 +31,54 @@ const Question = ({
       // list에서 info에 관한 QA 관리
       pageQa = findQa(pageName.split('/')[2]);
     } else if (pageName === 'qna') {
-      if (qa && questionSelect) {
+      if (questionSelect) {
         pageQa = questionSelect;
       } else {
         pageQa = `{name}님의 요즘 고민은 <br /> 무엇인가요?`;
       }
     }
-    if (pageQa.indexOf('{name}') !== -1) {
-      pageQa = pageQa.replace('{name}', name);
-    }
 
-    switch (type) {
+    switch (pageName) {
+      case 'height':
+        pageQa = findQa(pageName);
+        break;
+      case 'weight':
+        pageQa = findQa(pageName);
+        break;
+      case 'email':
+        pageQa = findQa(pageName);
+        break;
       case 'sun':
-        pageQa = findQa(type);
+        pageQa = findQa(pageName);
         break;
       case 'smoke':
-        pageQa = findQa(type);
+        pageQa = findQa(pageName);
         break;
       case 'drink':
-        pageQa = findQa(type);
+        pageQa = findQa(pageName);
         break;
-      case 'pragnent':
-        pageQa = findQa(type);
+      case 'pregnant':
+        pageQa = findQa(pageName);
         break;
       case 'pms':
-        pageQa = findQa(type);
+        pageQa = findQa(pageName);
         break;
       case 'know':
-        pageQa = findQa(type);
+        pageQa = findQa(pageName);
         break;
       case 'healthy':
-        pageQa = findQa(type);
+        pageQa = findQa(pageName);
         break;
       default:
         break;
     }
 
+    if (pageQa.indexOf('{name}') !== -1) {
+      pageQa = pageQa.replace('{name}', name);
+    }
+
     return setQa(pageQa);
-  }, [pageName, name, pageNumber, qa, type, index, history, questionSelect]);
+  }, [pageName, name, pageNumber, qa, history, questionSelect]);
 
   // dangerouslySetInnerHTML사용하여서 문자열을 HTML로 변경
   return (

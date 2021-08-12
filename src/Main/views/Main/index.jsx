@@ -7,12 +7,19 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import classNames from 'classnames/bind';
 import { Header } from 'Main/components';
 import styles from './stylesheet.scss';
-import { Home, InfoIntro, InfoQna, Qna, QnaResult } from '../index';
+import {
+  Home,
+  InfoIntro,
+  InfoQna,
+  Qna,
+  QnaResult,
+  QnaPick,
+  StaticQna,
+} from '../index';
 
 const cx = classNames.bind(styles);
 
 const Main = ({ setUser }) => {
-  // const qas = [];
   // localstorage에 있는 데이터들 user로 업데이트 해주는 부분
   useEffect(() => {
     // localhost에서 user 가져오기
@@ -36,18 +43,23 @@ const Main = ({ setUser }) => {
                 <Route exact path="/info/intro" component={InfoIntro} />
                 <Route exact path="/info/sex" component={InfoQna} />
                 <Route exact path="/info/birth" component={InfoQna} />
-                <Route exact path="/qna" component={Qna} />
-                {/* {qas.length > 0 ? ( */}
-                <Route exact path="/qna/:qa/:index" component={Qna} />
-                {/* ) : ( */}
-                {/* <Redirect to="/qna" /> */}
-                {/* )} */}
+                <Route exact path="/qna" component={QnaPick} />
+                <Route exact path="/qna/:qa" component={Qna} />
                 <Route exact path="/info/height" component={InfoQna} />
                 <Route exact path="/info/weight" component={InfoQna} />
                 <Route exact path="/info/height" component={InfoQna} />
                 <Route exact path="/info/email" component={InfoQna} />
                 <Route exact path="/result" component={QnaResult} />
-                <Route exact path="/:type" component={Qna} />
+                <Route exact path="/height" component={StaticQna} />
+                <Route exact path="/weight" component={StaticQna} />
+                <Route exact path="/healthy" component={Qna} />
+                <Route exact path="/sun" component={Qna} />
+                <Route exact path="/smoke" component={Qna} />
+                <Route exact path="/drink" component={Qna} />
+                <Route exact path="/pregnant" component={Qna} />
+                <Route exact path="/pms" component={Qna} />
+                <Route exact path="/know" component={Qna} />
+                <Route exact path="/email" component={StaticQna} />
                 <Redirect path="*" to="/" />
               </Switch>
             </CSSTransition>

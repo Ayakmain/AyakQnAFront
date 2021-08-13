@@ -66,7 +66,12 @@ const InfoQna = ({ history, location, user, setUser }) => {
       case 'birth':
         if (user.birth !== '') {
           // TODO: 이부분에서 User 생성해주기 <- UserApi 붙이기
-          return localStorageUpdate(type, user.birth, '/qna', 'confirm');
+          return localStorageUpdate(
+            type,
+            user.birth,
+            '/intro/Symptom',
+            'confirm'
+          );
         }
         break;
       case 'height':

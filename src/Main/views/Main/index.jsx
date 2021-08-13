@@ -9,7 +9,7 @@ import { Header } from 'Main/components';
 import styles from './stylesheet.scss';
 import {
   Home,
-  InfoIntro,
+  Intro,
   InfoQna,
   Qna,
   QnaResult,
@@ -40,7 +40,9 @@ const Main = ({ setUser }) => {
               <Switch location={location}>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/info/name" component={InfoQna} />
-                <Route exact path="/info/intro" component={InfoIntro} />
+                <Route exact path="/intro/Basic" component={Intro} />
+                <Route exact path="/intro/Symptom" component={Intro} />
+                <Route exact path="/intro/Lifestyle" component={Intro} />
                 <Route exact path="/info/sex" component={InfoQna} />
                 <Route exact path="/info/birth" component={InfoQna} />
                 <Route exact path="/qna" component={QnaPick} />

@@ -11,12 +11,19 @@ import { List } from 'static/json/list.json';
 import { Question } from 'Main/components';
 import styles from './stylesheet.scss';
 import { localStorage } from 'common/env';
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 
 const QnaPick = ({ user, location, history, setQuestions }) => {
   const [list, setList] = useState([]);
   const { pathname } = location;
+
+  //선택되어있는 데이터 삭제 해주는 부분
+  useEffect(() => {
+    localStorage('nutrition', []);
+    localStorage('qa', []);
+  }, []);
 
   const pickQna = index => {
     if (list.includes(index)) {

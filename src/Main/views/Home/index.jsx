@@ -20,7 +20,7 @@ const Home = () => (
         <strong>영양제</strong>를 <br />
         설계해 드립니다.
       </span>
-      <Button className={cx('home__main--btn')} to="/info/name">
+      <Button className={cx('home__main--btn')} to="/intro/Basic">
         시작하기
       </Button>
     </section>

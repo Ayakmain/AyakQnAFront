@@ -21,8 +21,8 @@ const Qna = ({
   history,
   setUser,
   match,
-  staticData,
-  setStatic,
+  // staticData,
+  // setStatic,
 }) => {
   const [list, setList] = useState([]);
   const [selectQa, setSelect] = useState(null);
@@ -38,10 +38,10 @@ const Qna = ({
     'pms',
     'know',
   ];
+  const selectNutritions = JSON.parse(window.localStorage.getItem('nutrition'));
 
   useEffect(() => {
     if (qa) {
-      // TODO: 이부분에서 QA API 호춣 해야함
       // QA API에서 받아오는 데이터
       setSelect(Questions.find(item => item.type === qa));
       return;
@@ -65,12 +65,29 @@ const Qna = ({
     if (qa) {
       const index = pickList.findIndex(item => item.type === selectQa.type);
       const pickLength = pickList.length;
+      // 선택된 질문에 대한 영양제 정보 가져오는 부분
+      const selectList = list
+        .map(index => selectQa.answers.find((item, i) => index === i))
+        .map(item => item.nutrition);
+      const selectNutrition = selectList.filter(
+        (item, pos) => selectList.indexOf(item) === pos
+      );
 
       // 마지막 질문일 경우 다음 질문 페이지로 이동시켜주는 부분
-      // TODO: 이 부분에서 API어떻게 보내서 저장할지에 대하여 고민
+      if (index === 0) {
+        localStorage('nutrition', '', selectNutrition);
+        return history.push(`/qna/${pickList[index + 1].type}`);
+      }
+      let concatArr = selectNutritions
+        .concat(selectNutrition)
+        .filter((item, pos) => selectNutritions.indexOf(item) === pos);
+
       if (pickLength - 1 === index) {
-        return history.push('/height');
+        localStorage('nutrition', '', concatArr);
+        // TODO: 이 부분에서 Result API 연결
+        return history.push('/intro/Lifestyle');
       } else {
+        localStorage('nutrition', '', concatArr);
         return history.push(`/qna/${pickList[index + 1].type}`);
       }
     }
@@ -83,11 +100,11 @@ const Qna = ({
     } else {
       // TODO: Api 업데이트 사용
       // 여기
-      setStatic({ ...staticData, [pageName]: value });
-      localStorage('staticData', staticData, {
-        ...staticData,
-        [pageName]: list,
-      });
+      // setStatic({ ...staticData, [pageName]: value });
+      // localStorage('staticData', staticData, {
+      //   ...staticData,
+      //   [pageName]: list,
+      // });
     }
     return history.push(`/${statics[statics.indexOf(pageName) + 1]}`);
   };

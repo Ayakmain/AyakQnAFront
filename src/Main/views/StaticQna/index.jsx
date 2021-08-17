@@ -13,6 +13,15 @@ const cx = classNames.bind(styles);
 
 const StaticQna = ({ history, location, user, setUser }) => {
   const { pathname } = location;
+  // const statics = [
+  //   'healthy',
+  //   'sun',
+  //   'smoke',
+  //   'drink',
+  //   'pregnant',
+  //   'pms',
+  //   'know',
+  // ];
 
   const localStorageUpdate = (type, value, url, controll) => {
     setUser({ ...user, [type]: value });
@@ -41,6 +50,14 @@ const StaticQna = ({ history, location, user, setUser }) => {
       default:
         break;
     }
+    // if (pathname === '/height' || pathname === '/weight') {
+    //   setUser({ ...user, [pageName]: value });
+    //   localStorage('user', user, { ...user, [page]: value });
+    // } else if (pageName === 'know') {
+    //   // TODO: know API 연결
+    //   return history.push(`/email`);
+    // }
+    // return history.push(`/${statics[statics.indexOf(pageName) + 1]}`);
   };
 
   return (

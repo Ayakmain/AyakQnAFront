@@ -55,6 +55,7 @@ const Header = ({ location, history }) => {
 
   return (
     <div className={cx('header')}>
+      {/* TODO: 이부분에 Intro 페이지 일때 Header Logo 부분 수정하는 부분 추가해야함 */}
       {category ? (
         <Button className={cx('header__btn')} onClick={goToPreviousPath}>
           <img

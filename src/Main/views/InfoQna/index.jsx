@@ -86,7 +86,7 @@ const InfoQna = ({ history, location, user, setUser }) => {
         break;
 
       default:
-        return localStorageUpdate(type, value, '/info/intro', 'confirm');
+        return localStorageUpdate(type, value, '/info/sex', 'confirm');
     }
   };
 

@@ -27,6 +27,111 @@
   height: 100vh;
   margin-top: 70px;
 
+  @include media('>medium') {
+    &__logo {
+      width: 150px;
+      height: 150px;
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 10px;
+      overflow: hidden;
+
+      &--img {
+        width: 100%;
+        height: 100%;
+      }
+
+      &--cover {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($color: $color-box, $alpha: 0.7);
+        transform: scaleY(1);
+        transform-origin: top;
+        transition: transform 3s ease 0.5s;
+      }
+
+      &--change {
+        transform: scaleY(0);
+      }
+    }
+
+    &__section {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      font-size: 4rem;
+      line-height: 5.5rem;
+      text-align: center;
+      font-weight: lighter;
+    }
+
+    &__footer {
+      position: absolute;
+      top: 75%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 2rem;
+      font-weight: lighter;
+    }
+  }
+
+  @include media('<=small') {
+    &__logo {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 10px;
+      overflow: hidden;
+
+      &--img {
+        width: 100%;
+        height: 100%;
+      }
+
+      &--cover {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($color: $color-box, $alpha: 0.7);
+        margin-top: -100%;
+        transition: margin-top 300ms linear 150ms;
+      }
+    }
+
+    &__section {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      font-size: 2.5rem;
+      line-height: 4rem;
+      text-align: center;
+      font-weight: 100;
+    }
+
+    &__footer {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: lighter;
+    }
+  }
+
   &__header {
     width: 100%;
     height: 100%;

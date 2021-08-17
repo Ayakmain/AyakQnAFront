@@ -1,23 +1,58 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect, Fragment, useState } from 'react';
+import { connect } from 'react-redux';
+import { actions as envActions } from 'store/reducers/env';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { MetaTag } from 'components/index';
+import Logo from 'static/images/logo.png';
 import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
 
-const InfoIntro = ({ history, location }) => {
+const InfoIntro = ({ history, location, user }) => {
   const { pathname } = location;
   const pageName = pathname.split('/')[2];
+  const [toggle, setToggle] = useState(false);
+
   useEffect(() => {
-    pageName === 'Basic'
-      ? setTimeout(() => history.push('/info/name'), 3000)
-      : pageName === 'Symptom'
-      ? setTimeout(() => history.push('/qna'), 3000)
-      : setTimeout(() => history.push('/height'), 3000);
+    switch (pageName) {
+      case 'Basic':
+        setTimeout(() => history.push('/info/name'), 3000);
+        break;
+      case 'Symptom':
+        setTimeout(() => history.push('/qna'), 3000);
+        break;
+      case 'Lifestyle':
+        setTimeout(() => history.push('/height'), 3000);
+        break;
+      default:
+        setToggle(true);
+        // setTimeout(() => , 3000);
+        break;
+    }
   }, [history, pageName]);
 
-  return (
+  return pageName === 'result' ? (
+    <article className={cx('intro')}>
+      <section className={cx('intro__logo')}>
+        <img
+          className={cx('intro__logo--img')}
+          src={Logo}
+          alt="로딩페이지 Logo 이미지"
+        />
+        <div
+          className={(cx('intro__logo--cover'), cx('intro__logo--change'))}
+        />
+      </section>
+      <section className={cx('intro__section')}>
+        <strong>{user.name}</strong>님의 <br />
+        건강설문 결과를
+        <br />
+        분석 중 입니다.
+      </section>
+      <section className={cx('intro__footer')}>잠시만 기다려 주세요</section>
+    </article>
+  ) : (
     <article
       className={
         (cx('intro'),
@@ -55,4 +90,6 @@ const InfoIntro = ({ history, location }) => {
   );
 };
 
-export default withRouter(InfoIntro);
+const mapStateToProps = state => ({ user: state.env.user });
+
+export default connect(mapStateToProps, envActions)(withRouter(InfoIntro));

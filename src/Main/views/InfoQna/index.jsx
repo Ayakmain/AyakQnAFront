@@ -6,7 +6,6 @@ import classNames from 'classnames/bind';
 import { Question, InfoControl } from 'Main/components';
 import moment from 'moment';
 import { localStorage } from 'common/env';
-import { isEmail } from 'common/util';
 import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
@@ -74,17 +73,6 @@ const InfoQna = ({ history, location, user, setUser }) => {
           );
         }
         break;
-      case 'height':
-        return localStorageUpdate(type, value, '/info/weight', 'confirm');
-      case 'weight':
-        return localStorageUpdate(type, value, '/healthy', 'confirm');
-      case 'email':
-        if (isEmail(value)) {
-          return localStorageUpdate(type, value, '/result', 'confirm');
-          // TODO: 이부분에서 이메일 체크하고 이메일 보내는 API 적용해야함
-        }
-        break;
-
       default:
         return localStorageUpdate(type, value, '/info/sex', 'confirm');
     }

@@ -7,10 +7,9 @@ import { actions as envActions } from 'store/reducers/env';
 import classNames from 'classnames/bind';
 import { BarGauge, AnswerList, InfoControl } from 'Main/components';
 import { Button, MetaTag } from 'components';
-import { staticQa as StaticList } from 'static/json/list.json';
-import { QAList } from 'static/json/QAList.json';
+import { QAList, staticQa as StaticList } from 'static/json/QAList.json';
 import { Questions } from 'static/json/Question.json';
-import { QaHeader } from './components';
+import { QaHeader } from 'Main/components';
 import styles from './stylesheet.scss';
 import { localStorage } from 'common/env';
 const cx = classNames.bind(styles);
@@ -74,7 +73,7 @@ const Qna = ({
       );
 
       // 마지막 질문일 경우 다음 질문 페이지로 이동시켜주는 부분
-      if (index === 0) {
+      if (index === 0 && pickLength !== 1) {
         localStorage('nutrition', '', selectNutrition);
         return history.push(`/qna/${pickList[index + 1].type}`);
       }
@@ -91,6 +90,7 @@ const Qna = ({
         return history.push(`/qna/${pickList[index + 1].type}`);
       }
     }
+
     if (pageName === 'height' || pageName === 'weight') {
       setUser({ ...user, [pageName]: value });
       localStorage('user', user, { ...user, [page]: value });

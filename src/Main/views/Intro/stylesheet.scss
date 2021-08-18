@@ -51,11 +51,18 @@
         background: rgba($color: $color-box, $alpha: 0.7);
         transform: scaleY(1);
         transform-origin: top;
-        transition: transform 3s ease 0.5s;
+        transition: transform 3s ease;
       }
 
-      &--change {
+      &--ani {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($color: $color-box, $alpha: 0.7);
         transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 3s ease;
       }
     }
 
@@ -119,6 +126,33 @@
       line-height: 4rem;
       text-align: center;
       font-weight: 100;
+
+      &--img {
+        width: 100%;
+        height: 100%;
+      }
+
+      &--cover {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($color: $color-box, $alpha: 0.7);
+        transform: scaleY(1);
+        transform-origin: top;
+        transition: transform 3s ease;
+      }
+
+      &--ani {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($color: $color-box, $alpha: 0.7);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 3s ease;
+      }
     }
 
     &__footer {

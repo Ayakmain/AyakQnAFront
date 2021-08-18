@@ -26,8 +26,8 @@ const InfoIntro = ({ history, location, user }) => {
         setTimeout(() => history.push('/height'), 3000);
         break;
       default:
-        setToggle(true);
-        // setTimeout(() => , 3000);
+        setTimeout(() => setToggle(true), 1);
+        setTimeout(() => history.push('/result'), 3000);
         break;
     }
   }, [history, pageName]);
@@ -41,7 +41,7 @@ const InfoIntro = ({ history, location, user }) => {
           alt="로딩페이지 Logo 이미지"
         />
         <div
-          className={(cx('intro__logo--cover'), cx('intro__logo--change'))}
+          className={toggle ? cx('intro__logo--ani') : cx('intro__logo--cover')}
         />
       </section>
       <section className={cx('intro__section')}>

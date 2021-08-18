@@ -35,10 +35,10 @@ const Home = () => {
         className={cx('home__introImg')}
         onClick={() => setToggle(!toggle)}
       >
-        <img src={Image} alt="AI약사 이미지" />
-        {/* <span>
-        <strong>제시카</strong> | 약사
-      </span> */}
+        <img src={Image} alt="약사 이미지" />
+        <span>
+          <strong>아약쌤</strong>
+        </span>
       </Button>
       {toggle && (
         <div className={cx('home__popup')}>

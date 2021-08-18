@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import Logo from 'static/images/logo.png';
+import InfoLogo from 'static/images/infoLogo.png';
 import Close from 'static/images/x.png';
 import Back from 'static/images/arrow2.png';
 import { Button } from 'components/index';
@@ -55,8 +56,7 @@ const Header = ({ location, history }) => {
 
   return (
     <div className={cx('header')}>
-      {/* TODO: 이부분에 Intro 페이지 일때 Header Logo 부분 수정하는 부분 추가해야함 */}
-      {category ? (
+      {category !== 'intro' && category ? (
         <Button className={cx('header__btn')} onClick={goToPreviousPath}>
           <img
             className={cx('header__btn--close')}
@@ -64,6 +64,8 @@ const Header = ({ location, history }) => {
             alt="뒤로가기 버튼"
           />
         </Button>
+      ) : category ? (
+        <img className={cx('header__logo')} src={InfoLogo} alt="메인 로고" />
       ) : (
         <img className={cx('header__logo')} src={Logo} alt="메인 로고" />
       )}

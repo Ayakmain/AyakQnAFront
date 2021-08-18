@@ -59,19 +59,19 @@
         height: 115px;
         border: 2px solid $color-box;
         border-radius: 50%;
-        margin: 0 auto 30px;
+        margin: 0 auto 10px;
       }
 
-      // span {
-      //   padding-top: 20px;
-      //   font-size: 1.5rem;
-      //   color: $color-box;
-      // }
+      span {
+        padding-top: 20px;
+        font-size: 1.5rem;
+        color: $color-box;
+      }
     }
 
     &__popup {
       position: absolute;
-      bottom: 11rem;
+      bottom: 12.5rem;
       right: 2%;
       width: 70%;
       height: 150px;
@@ -174,14 +174,14 @@
         height: 65px;
         border: 2px solid $color-box;
         border-radius: 50%;
-        margin: 0 auto 30px;
+        margin: 0 auto 10px;
       }
 
-      // span {
-      //   padding-top: 20px;
-      //   font-size: 1rem;
-      //   color: $color-box;
-      // }
+      span {
+        padding-top: 20px;
+        font-size: 1rem;
+        color: $color-box;
+      }
     }
 
     &__popup {
@@ -202,21 +202,21 @@
         font-size: 1.2rem;
         line-height: 2rem;
       }
-    }
 
-    &__popup:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 90%;
-      width: 0;
-      height: 0;
-      border: 20px solid transparent;
-      border-top-color: $color-box;
-      border-bottom: 0;
-      border-left: 0;
-      margin-left: -10px;
-      margin-bottom: -20px;
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 93%;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: $color-box;
+        border-bottom: 0;
+        border-left: 0;
+        margin-left: -10px;
+        margin-bottom: -20px;
+      }
     }
 
     &__footer {

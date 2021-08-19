@@ -74,84 +74,30 @@
       "type": "lutein",
       "name": "루테인",
       "img": "/static/images/logo.png",
-      "shortDescriptions": [
+      "hashtags": [
         "눈 건강에 도움",
         "유산균증식 및 유해균 억제",
         "배변 활동 원활에 도움"
-      ],
-      "descriptions": [
-        {
-          "title": "뼈관절 건강 관리가 필요해요.",
-          "detail": [
-            "눈 건강에 도움",
-            "유산균증식 및 유해균 억제",
-            "배변 활동 원활에 도움"
-          ]
-        },
-        {
-          "title": "뼈관절 건강 관리가 필요해요.",
-          "detail": [
-            "눈 건강에 도움",
-            "유산균증식 및 유해균 억제",
-            "배변 활동 원활에 도움"
-          ]
-        }
       ]
     },
     {
       "type": "omega3",
       "name": "오메가3",
       "img": "/static/images/logo.png",
-      "shortDescriptions": [
+      "hashtags": [
         "눈 건강에 도움",
         "유산균증식 및 유해균 억제",
         "배변 활동 원활에 도움"
-      ],
-      "descriptions": [
-        {
-          "title": "뼈관절 건강 관리가 필요해요.",
-          "detail": [
-            "눈 건강에 도움",
-            "유산균증식 및 유해균 억제",
-            "배변 활동 원활에 도움"
-          ]
-        },
-        {
-          "title": "뼈관절 건강 관리가 필요해요.",
-          "detail": [
-            "눈 건강에 도움",
-            "유산균증식 및 유해균 억제",
-            "배변 활동 원활에 도움"
-          ]
-        }
       ]
     },
     {
       "type": "milkThistle",
       "name": "밀크씨슬",
       "img": "/static/images/logo.png",
-      "shortDescriptions": [
+      "hashtags": [
         "눈 건강에 도움",
         "유산균증식 및 유해균 억제",
         "배변 활동 원활에 도움"
-      ],
-      "descriptions": [
-        {
-          "title": "뼈관절 건강 관리가 필요해요.",
-          "detail": [
-            "눈 건강에 도움",
-            "유산균증식 및 유해균 억제",
-            "배변 활동 원활에 도움"
-          ]
-        },
-        {
-          "title": "뼈관절 건강 관리가 필요해요.",
-          "detail": [
-            "눈 건강에 도움",
-            "유산균증식 및 유해균 억제",
-            "배변 활동 원활에 도움"
-          ]
-        }
       ]
     }
   ]

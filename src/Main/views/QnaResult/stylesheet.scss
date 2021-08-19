@@ -2,41 +2,160 @@
 
 .result {
   width: 100%;
+  height: 100%;
   position: absolute;
-  top: 70px;
+  top: 100px;
+  overflow: auto;
 
   @include media('>medium') {
     &__header {
-      display: flex;
-      padding: 0 20px;
-      margin-top: 10px;
-
-      &--logo {
-        width: 90px;
-        height: 90px;
-        margin: auto 10px;
-        border-radius: 5px;
-      }
+      width: 100%;
+      height: auto;
+      background-color: rgb(247, 247, 247);
+      padding: 50px 0 100px;
 
       &--title {
-        margin: auto 0 auto auto;
-        text-align: end;
+        width: 90%;
+        margin: 0 auto 50px;
+        font-size: 2.8rem;
+        font-weight: lighter;
+        line-height: 3.4rem;
+        border-bottom: 1px solid;
+      }
 
-        h3 {
-          font-weight: normal;
-          font-size: 2.5rem;
-          margin-top: 10px;
+      &--info {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        font-size: 1.6rem;
+        font-weight: lighter;
+        margin: 70px auto;
 
-          span {
-            font-size: 3rem;
-            font-weight: bolder;
+        &--item {
+          margin: auto;
+
+          strong {
+            margin-right: 10px;
+          }
+        }
+      }
+
+      &--bmi {
+        width: 90%;
+        margin: 0 auto 20px;
+        display: flex;
+        height: 30px;
+
+        &--list {
+          width: 20%;
+          height: 1.5rem;
+          text-align: center;
+          font-size: 1.5rem;
+          margin: auto;
+
+          &--gauge {
+            width: 100%;
+            height: 25px;
+            padding: 0;
+            border-right: 1px solid rgb(230, 230, 230);
+          }
+        }
+      }
+
+      &--wrap {
+        border: 1px solid rgb(244, 149, 152);
+        border-radius: 50px;
+        overflow: hidden;
+        margin-bottom: 40px;
+      }
+
+      &--intro {
+        display: block;
+        width: 90%;
+        margin: auto;
+        font-size: 1.5rem;
+      }
+    }
+
+    &__list {
+      width: 100%;
+      height: auto;
+      margin: auto;
+
+      &--title {
+        width: 90%;
+        font-size: 2rem;
+        font-weight: lighter;
+        line-height: 5rem;
+        display: block;
+        margin: auto;
+      }
+
+      &--map {
+        width: 100%;
+        display: flex;
+        height: 250px;
+
+        &--cover {
+          width: 35%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: skyblue;
+
+          &--img {
+            width: 100px;
+            height: 100px;
           }
         }
 
-        p {
-          margin-top: 15px;
-          font-size: 1.3rem;
+        &--info {
+          width: 65%;
+          height: 100%;
+          background-color: $color-box;
+
+          &--header {
+            width: 95%;
+            display: block;
+            font-size: 1.2rem;
+            margin: 15px auto;
+          }
+
+          &--name {
+            display: flex;
+            justify-content: space-between;
+            width: 95%;
+            margin: 0 auto 10px;
+            border-bottom: 1px solid;
+            line-height: 2.2rem;
+
+            strong {
+              font-size: 2rem;
+            }
+
+            span {
+              font-size: 1.5rem;
+              vertical-align: bottom;
+            }
+          }
+
+          &--description {
+            width: 95%;
+            margin: 15px auto;
+            font-size: 1.2rem;
+          }
         }
+      }
+    }
+
+    &__ad {
+      width: 100%;
+      height: 650px;
+
+      img {
+        width: 100%;
+        height: auto;
       }
     }
 
@@ -75,34 +194,6 @@
     &__header {
       display: flex;
       padding: 0 20px;
-
-      &--logo {
-        width: 60px;
-        height: 60px;
-        margin: auto 10px;
-        border-radius: 5px;
-      }
-
-      &--title {
-        margin: auto 0 auto auto;
-        text-align: end;
-
-        h3 {
-          font-weight: normal;
-          font-size: 1.5rem;
-          margin-top: 10px;
-
-          span {
-            font-size: 2rem;
-            font-weight: bolder;
-          }
-        }
-
-        p {
-          margin-top: 15px;
-          font-size: 1rem;
-        }
-      }
     }
 
     &__control {
@@ -134,11 +225,5 @@
         color: $color-box;
       }
     }
-  }
-
-  &__list {
-    width: 100%;
-    max-height: 70vh;
-    overflow: auto;
   }
 }

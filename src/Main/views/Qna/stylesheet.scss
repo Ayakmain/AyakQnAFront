@@ -1,16 +1,16 @@
 @import 'common/stylesheet/index.scss';
 
-@include media('>medium') {
-  .customized {
-    position: absolute;
-    top: 70px;
+.customized {
+  position: absolute;
+  top: 70px;
+  width: 100%;
+
+  &__confirm {
     width: 100%;
+    position: absolute;
+    bottom: 3vh;
 
-    &__confirm {
-      width: 100%;
-      position: absolute;
-      bottom: 3vh;
-
+    @include media('>medium') {
       &__footer {
         margin: auto;
         width: 90%;
@@ -32,20 +32,8 @@
         color: $color-secondary;
       }
     }
-  }
-}
 
-@include media('<=small') {
-  .customized {
-    position: absolute;
-    top: 70px;
-    width: 100%;
-
-    &__confirm {
-      width: 100%;
-      position: absolute;
-      bottom: 3vh;
-
+    @include media('<=small') {
       &__footer {
         margin: auto;
         width: 90%;

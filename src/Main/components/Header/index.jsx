@@ -56,7 +56,17 @@ const Header = ({ location, history }) => {
 
   return (
     <div className={cx('header')}>
-      {category !== 'intro' && category ? (
+      {!category || category === 'result' ? (
+        <Button to={'/'}>
+          <img
+            className={cx(
+              category === 'result' ? 'header__result' : 'header__logo'
+            )}
+            src={Logo}
+            alt="메인 로고"
+          />
+        </Button>
+      ) : category !== 'intro' ? (
         <Button className={cx('header__btn')} onClick={goToPreviousPath}>
           <img
             className={cx('header__btn--close')}
@@ -64,15 +74,24 @@ const Header = ({ location, history }) => {
             alt="뒤로가기 버튼"
           />
         </Button>
-      ) : category ? (
-        <img className={cx('header__logo')} src={InfoLogo} alt="메인 로고" />
       ) : (
-        <img className={cx('header__logo')} src={Logo} alt="메인 로고" />
+        <img className={cx('header__logo')} src={InfoLogo} alt="메인 로고" />
       )}
       {/* TODO: Cafe24 홈으로 이동시켜주어야함 */}
-      <Button className={cx('header__btn')} to="/">
-        <img className={cx('header__btn--close')} src={Close} alt="닫기 버튼" />
-      </Button>
+      {pathname !== '/intro/result' &&
+        (category === 'result' ? (
+          <Button className={cx('header__btn')}>
+            <div>햄버거</div>
+          </Button>
+        ) : (
+          <Button className={cx('header__btn')} to="/">
+            <img
+              className={cx('header__btn--close')}
+              src={Close}
+              alt="닫기 버튼"
+            />
+          </Button>
+        ))}
     </div>
   );
 };

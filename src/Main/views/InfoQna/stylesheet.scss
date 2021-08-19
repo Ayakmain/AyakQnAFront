@@ -1,17 +1,15 @@
 @import 'common/stylesheet/index.scss';
 
 .qna {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
   height: 70vh;
-  margin-top: 70px;
 
   &__info {
     width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-25%);
     text-align: center;
     margin: 0 auto;
   }

@@ -44,6 +44,11 @@
       }
     }
 
+    &--error {
+      background-color: $color-button;
+      color: $color-secondary;
+    }
+
     &--select {
       position: absolute;
       top: 40%;
@@ -92,11 +97,30 @@
       color: $color-box;
     }
 
+    &--err {
+      position: absolute;
+      top: 0;
+      right: 130px;
+      height: 156px;
+      line-height: 156px;
+      font-size: 4rem;
+      color: $color-secondary;
+    }
+
     &--intro {
       width: 95%;
       font-size: 1.5rem;
       margin: 20px auto;
       text-align: end;
+    }
+
+    &--msg {
+      width: 95%;
+      font-size: 1.5rem;
+      margin: 20px auto;
+      text-align: end;
+      color: $color-secondary;
+      font-weight: bolder;
     }
 
     &--check {
@@ -157,6 +181,11 @@
       }
     }
 
+    &--error {
+      background-color: $color-button;
+      color: $color-secondary;
+    }
+
     &--select {
       position: absolute;
       top: 40%;
@@ -205,11 +234,30 @@
       color: $color-box;
     }
 
+    &--err {
+      position: absolute;
+      top: 0;
+      right: 90px;
+      height: 100px;
+      line-height: 100px;
+      font-size: 3rem;
+      color: $color-secondary;
+    }
+
     &--intro {
       width: 95%;
       font-size: 1.2rem;
       margin: 20px auto;
       text-align: end;
+    }
+
+    &--msg {
+      width: 95%;
+      font-size: 1.2rem;
+      margin: 20px auto;
+      text-align: end;
+      color: $color-secondary;
+      font-weight: bolder;
     }
 
     &--check {

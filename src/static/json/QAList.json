@@ -17,7 +17,7 @@
       "qa": "{name}님의 \n 체질량지수(BMI) 확인을 위해 \n <strong>몸무게</strong>를 적어주세요"
     },{
       "type": "email",
-      "qa": "<strong>이메일</strong>을 입력해주세요. <div className={'info__question--sub'}>이메일을 입력해주시면 바로 \n 다음 단계에서 결과를 볼 수 있어요</div>"
+      "qa": "<strong>이메일</strong>을 입력해주세요. <div className='info__question--sub'>이메일을 입력해주시면 바로 \n 다음 단계에서 결과를 볼 수 있어요</div>"
     },{
       "type": "healthy",
       "qa": "일주일에 운동을 \n 얼마나 하시나요?"

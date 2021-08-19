@@ -5,14 +5,14 @@
     width: 100%;
     font-size: 3.2rem;
     font-weight: lighter;
-    line-height: 4.5rem;
 
     strong {
       color: $color-secondary;
     }
 
-    &--sub {
+    div {
       font-size: 2.2rem;
+      line-height: 3rem;
       margin: 40px auto;
     }
   }
@@ -23,14 +23,14 @@
     width: 100%;
     font-size: 2.2rem;
     font-weight: lighter;
-    line-height: 3.2rem;
 
     strong {
       color: $color-secondary;
     }
 
-    &--sub {
+    div {
       font-size: 1.5rem;
+      line-height: 2.2rem;
       margin: 40px auto;
     }
   }

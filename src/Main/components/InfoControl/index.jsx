@@ -19,7 +19,9 @@ const InfoControl = ({
   confirm,
   user,
   setUser,
+  error,
 }) => {
+  console.log('error: ', error);
   const [placeholder, setPlaceholder] = useState('');
   const [type, setType] = useState('input');
   const [inputValue, setValue] = useState('');
@@ -91,16 +93,31 @@ const InfoControl = ({
         <Fragment>
           <input
             type={type === 'number' ? 'number' : 'text'}
-            className={cx('info__control--input')}
+            className={cx(
+              'info__control--input',
+              error && 'info__control--error'
+            )}
             value={inputValue}
             placeholder={placeholder}
             onChange={e => inputConfirm('', e.target.value)}
           />
           {pageName === 'height' ? (
-            <div className={cx('info__control--place')}>cm</div>
+            <div
+              className={cx(
+                error ? 'info__control--err' : 'info__control--place'
+              )}
+            >
+              cm
+            </div>
           ) : (
             pageName === 'weight' && (
-              <div className={cx('info__control--place')}>kg</div>
+              <div
+                className={cx(
+                  error ? 'info__control--err' : 'info__control--place'
+                )}
+              >
+                kg
+              </div>
             )
           )}
           {/*  TODO: 이부분 수정 해야함 */}
@@ -114,10 +131,13 @@ const InfoControl = ({
               className={cx('info__control--confirm--img')}
             />
           </Button>
+          {error && <div className={cx('info__control--msg')}>{error}</div>}
           {(pageName === 'height' || pageName === 'weight') && (
-            <div className={cx('info__control--intro')}>
-              영양성분 추천에 체질량지수(BMI)를 활용합니다.
-            </div>
+            <Fragment>
+              <div className={cx('info__control--intro')}>
+                영양성분 추천에 체질량지수(BMI)를 활용합니다.
+              </div>
+            </Fragment>
           )}
         </Fragment>
       ) : (

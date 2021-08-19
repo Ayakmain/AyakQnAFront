@@ -51,13 +51,13 @@ const Main = ({ setUser }) => {
                 <Route exact path="/result" component={QnaResult} />
                 <Route exact path="/height" component={StaticQna} />
                 <Route exact path="/weight" component={StaticQna} />
-                <Route exact path="/healthy" component={Qna} />
-                <Route exact path="/sun" component={Qna} />
-                <Route exact path="/smoke" component={Qna} />
-                <Route exact path="/drink" component={Qna} />
-                <Route exact path="/pregnant" component={Qna} />
-                <Route exact path="/pms" component={Qna} />
-                <Route exact path="/know" component={Qna} />
+                <Route exact path="/healthy" component={StaticQna} />
+                <Route exact path="/sun" component={StaticQna} />
+                <Route exact path="/smoke" component={StaticQna} />
+                <Route exact path="/drink" component={StaticQna} />
+                <Route exact path="/pregnant" component={StaticQna} />
+                <Route exact path="/pms" component={StaticQna} />
+                <Route exact path="/know" component={StaticQna} />
                 <Route exact path="/email" component={StaticQna} />
                 <Redirect path="*" to="/" />
               </Switch>

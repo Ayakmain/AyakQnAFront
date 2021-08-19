@@ -11,6 +11,11 @@
   justify-content: space-between;
   z-index: 100;
 
+  &__result {
+    width: 50px;
+    height: 50px;
+  }
+
   @include media('>medium') {
     &__logo {
       width: 101px;

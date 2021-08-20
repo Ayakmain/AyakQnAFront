@@ -73,6 +73,26 @@
     {
       "type": "lutein",
       "name": "루테인",
+      "hashtags": [
+        "눈 건강에 도움",
+        "유산균증식 및 유해균 억제",
+        "배변 활동 원활에 도움"
+      ]
+    },
+    {
+      "type": "vitaminC",
+      "name": "비타민C",
+      "hashtags": [
+        "결합조직 형성과 기능유지에 필요",
+        "철의 흡수에 필요",
+        "유해산소로부터 세포를 보호하는데 필요",
+        "정상적인 면역기능에 필요",
+        "정상적인 세포분열에 필요"
+      ]
+    },
+    {
+      "type": "omega3",
+      "name": "오메가3",
       "img": "/static/images/logo.png",
       "hashtags": [
         "눈 건강에 도움",
@@ -81,9 +101,17 @@
       ]
     },
     {
-      "type": "omega3",
-      "name": "오메가3",
-      "img": "/static/images/logo.png",
+      "type": "probiotics",
+      "name": "프로바이오틱스",
+      "hashtags": [
+        "눈 건강에 도움",
+        "유산균증식 및 유해균 억제",
+        "배변 활동 원활에 도움"
+      ]
+    },
+    {
+      "type": "vitaminB",
+      "name": "비타민B",
       "hashtags": [
         "눈 건강에 도움",
         "유산균증식 및 유해균 억제",

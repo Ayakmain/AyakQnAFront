@@ -55,8 +55,8 @@ const StaticQna = ({
       const states = list.filter(item => item !== index);
       return setList(states);
     }
-    if (list.length < 3) {
-      return setList([...list, index]);
+    if (list.length < 1 || list.length === 1) {
+      return setList([index]);
     }
   };
 

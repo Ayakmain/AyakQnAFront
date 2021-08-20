@@ -22,9 +22,10 @@ const QnaResult = ({ user }) => {
   useEffect(() => {
     let list = Nutrient.filter(
       item =>
-        item.type === 'lutein' ||
+        item.type === 'vitaminC' ||
         item.type === 'omega3' ||
-        item.type === 'milkThistle'
+        item.type === 'probiotics' ||
+        item.type === 'vitaminB'
     );
     setResult(list);
   }, []);
@@ -62,7 +63,6 @@ const QnaResult = ({ user }) => {
               22.3
             </li>
           </ul>
-
           <ul className={cx('result__header--bmi')}>
             <li className={cx('result__header--bmi--list')}>저체중</li>
             <li className={cx('result__header--bmi--list')}>정상</li>
@@ -70,28 +70,32 @@ const QnaResult = ({ user }) => {
             <li className={cx('result__header--bmi--list')}>비만</li>
             <li className={cx('result__header--bmi--list')}>중도비만</li>
           </ul>
-          <ul className={cx('result__header--bmi', 'result__header--wrap')}>
-            <li className={cx('result__header--bmi--list')}>
-              <div className={cx('result__header--bmi--list--gauge')} />
-            </li>
-            <li className={cx('result__header--bmi--list')}>
-              <div className={cx('result__header--bmi--list--gauge')} />
-            </li>
-            <li className={cx('result__header--bmi--list')}>
-              <div className={cx('result__header--bmi--list--gauge')} />
-            </li>
-            <li className={cx('result__header--bmi--list')}>
-              <div className={cx('result__header--bmi--list--gauge')} />
-            </li>
-            <li className={cx('result__header--bmi--list')}>
-              <div className={cx('result__header--bmi--list--gauge')} />
-            </li>
-          </ul>
+          <div className={cx('result__header--section')}>
+            <ul className={cx('result__header--bmi', 'result__header--wrap')}>
+              <li className={cx('result__header--bmi--list')}>
+                <div className={cx('result__header--bmi--list--gauge')} />
+              </li>
+              <li className={cx('result__header--bmi--list')}>
+                <div className={cx('result__header--bmi--list--gauge')} />
+              </li>
+              <li className={cx('result__header--bmi--list')}>
+                <div className={cx('result__header--bmi--list--gauge')} />
+              </li>
+              <li className={cx('result__header--bmi--list')}>
+                <div className={cx('result__header--bmi--list--gauge')} />
+              </li>
+              <li className={cx('result__header--bmi--list')}>
+                <div className={cx('result__header--bmi--list--gauge')} />
+              </li>
+            </ul>
+            <div className={cx('result__header--section--gauge')} />
+          </div>
           <span className={cx('result__header--intro')}>
             건강한 신체를 위하여 체중관리를 하시는걸 추천 드립니다.
           </span>
         </section>
         {/* 영양제 보여주는 부분 */}
+        {/* ADD: 이부분에 나중에 영양제 자세히보기 추가 할 예정 */}
         <section className={cx('result__list')}>
           <span className={cx('result__list--title')}>
             <strong>{user.name}</strong>님을 위한 추천영양성분
@@ -100,14 +104,19 @@ const QnaResult = ({ user }) => {
             result.map(
               (item, i) => (
                 <div className={cx('result__list--map')} key={i}>
-                  <div className={cx('result__list--map--cover')}>
+                  <div className={cx('result__list--map--cover', item.type)}>
                     <img
                       className={cx('result__list--map--cover--img')}
                       src={Logo}
                       alt="대표 알약 이미지"
                     />
                   </div>
-                  <div className={cx('result__list--map--info')}>
+                  <div
+                    className={cx(
+                      'result__list--map--info',
+                      `info__${item.type}`
+                    )}
+                  >
                     <span className={cx('result__list--map--info--header')}>
                       추천영양성분
                     </span>

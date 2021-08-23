@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 
 const AnswerList = ({ List, picks, pickQna, location, className, match }) => {
   return location.pathname === '/qna' ? (
-    <section className={className ? className : cx('qna__list')}>
+    <section className={className ? className : cx('qna__list', 'qna__three')}>
       {List.map((item, i) => (
         <Button
           className={

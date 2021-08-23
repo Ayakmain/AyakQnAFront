@@ -21,7 +21,6 @@ const InfoControl = ({
   setUser,
   error,
 }) => {
-  console.log('error: ', error);
   const [placeholder, setPlaceholder] = useState('');
   const [type, setType] = useState('input');
   const [inputValue, setValue] = useState('');
@@ -101,26 +100,15 @@ const InfoControl = ({
             placeholder={placeholder}
             onChange={e => inputConfirm('', e.target.value)}
           />
-          {pageName === 'height' ? (
+          {(pageName === 'height' || pageName === 'weight') && (
             <div
               className={cx(
                 error ? 'info__control--err' : 'info__control--place'
               )}
             >
-              cm
+              {pageName === 'height' ? 'cm' : 'kg'}
             </div>
-          ) : (
-            pageName === 'weight' && (
-              <div
-                className={cx(
-                  error ? 'info__control--err' : 'info__control--place'
-                )}
-              >
-                kg
-              </div>
-            )
           )}
-          {/*  TODO: 이부분 수정 해야함 */}
           <Button
             onClick={() => inputConfirm('confirm')}
             className={cx('info__control--confirm')}

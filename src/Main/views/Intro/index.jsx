@@ -5,6 +5,9 @@ import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { MetaTag } from 'components/index';
 import Logo from 'static/images/logo.png';
+import Basic from 'static/images/basicInfo.jpeg';
+import Symptom from 'static/images/symptomInfo.jpeg';
+import Life from 'static/images/lifeInfo.jpeg';
 import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
@@ -54,18 +57,19 @@ const InfoIntro = ({ history, location, user }) => {
     </article>
   ) : (
     <article
-      className={
-        (cx('intro'),
-        pageName === 'Basic'
-          ? cx('basic')
-          : pageName === 'Symptom'
-          ? cx('symptom')
-          : cx('life'))
-      }
+      className={cx('intro')}
+      style={{
+        background: `url(${
+          pageName === 'Basic' ? Basic : pageName === 'Symptom' ? Symptom : Life
+        }) no-repeat`,
+        backgroundSize: '101% 140%',
+        width: '100%',
+        height: '80%',
+      }}
     >
       <MetaTag
         keywords="Ayak,ayak,AYAK,아약,맞춤형추천"
-        description="아약 맞춤형 추천"
+        description="아약 맞춤형 추천 설문조사 인트로"
         title="아약 맞춤형 추천"
       />
       <section className={cx('intro__header')}>

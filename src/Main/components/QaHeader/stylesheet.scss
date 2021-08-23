@@ -70,7 +70,7 @@
     &__section {
       display: flex;
       position: relative;
-      top: 80px;
+      top: 20px;
       left: 0;
       right: 0;
       width: 90%;
@@ -95,7 +95,7 @@
         transform: translateY(-50%);
         text-align: left;
         width: 70%;
-        font-size: 2rem;
+        font-size: 1.6rem;
         font-weight: lighter;
         line-height: 3rem;
       }
@@ -103,12 +103,10 @@
 
     &__wrap {
       position: relative;
-      top: 80px;
-      left: 0;
-      right: 0;
+      top: 50px;
       width: 90%;
       margin: auto;
-      height: 350px;
+      height: 300px;
       text-align: center;
 
       &--img {

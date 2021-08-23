@@ -1,44 +1,60 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-// import React, { useState, useEffect } from 'react';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { actions as envActions } from 'store/reducers/env';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
 
-const BarGauge = ({ location, match }) => {
-  // const { pathname } = location;
-  // const { qa } = match.params;
-  // const [pageList, setList] = useState([
-  //   'qna',
-  //   'healthy',
-  //   'sun',
-  //   'smoke',
-  //   'drink',
-  //   'pregnant',
-  //   'pms',
-  //   'know',
-  //   'email',
-  // ]);
-  // const qaList = JSON.parse(window.localStorage.getItem('qa'));
+const BarGauge = ({ location, match, user }) => {
+  const { pathname } = location;
+  const qa = JSON.parse(window.localStorage.getItem('qa'));
+  const [percent, setPercent] = useState(0);
+  const [pageList, setPageList] = useState([
+    '/qna',
+    '/height',
+    '/weight',
+    '/healthy',
+    '/sun',
+    '/smoke',
+    '/drink',
+    '/know',
+    '/email',
+  ]);
 
-  // useEffect(() => {
-  //   if (pathname.includes('/qna') && qa) {
-  //     pageList.splice(1, 0, ...qaList.map(item => item.type));
-  //     setList(pageList);
-  //   }
-  // }, [pathname]);
-  // console.log(
-  //   'pageList: ',
-  //   (pageList.indexOf(qa ?? pathname.split('/')[1]) + 1 / pageList.length) * 100
-  // );
+  useEffect(() => {
+    let totalLength = 11;
+
+    if (user.sex === 'Female') {
+      totalLength += 2;
+      pageList.splice(7, 0, ...['/pregnant', '/pms']);
+    }
+    if (qa.length) {
+      totalLength += qa.length;
+      setPageList(
+        pageList.splice(1, 0, ...qa.map(item => `/qna/${item.type}`))
+      );
+    }
+
+    setPercent(
+      (Number(pageList.indexOf(pathname) + 1) / Number(totalLength)) * 100
+    );
+  }, [pathname]);
 
   return (
     <div className={cx('bar')}>
-      <div className={cx('bar__gauge')} />
+      <div
+        className={cx('bar__gauge')}
+        style={{
+          width: `${percent}%`,
+        }}
+      />
     </div>
   );
 };
 
-export default withRouter(BarGauge);
+const mapStateToProps = state => ({ user: state.env.user });
+
+export default connect(mapStateToProps, envActions)(withRouter(BarGauge));

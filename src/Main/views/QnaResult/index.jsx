@@ -8,16 +8,16 @@ import styles from './stylesheet.scss';
 import Publish from 'static/images/publish.png';
 import AD from 'static/images/ad.jpeg';
 import { Button, MetaTag } from 'components';
-// import { ResultList, PublicPopup } from './components';
-import { PublicPopup } from './components';
+import { ResultList, PublicPopup } from './components';
 import { Nutrient } from 'static/json/list';
-import Logo from 'static/images/logo.png';
 
 const cx = classNames.bind(styles);
 
 const QnaResult = ({ user }) => {
   const [result, setResult] = useState([]);
   const [toggle, setToggle] = useState(false);
+  const [percent, setPercent] = useState(0);
+  const [bmi, setBmi] = useState(0);
 
   useEffect(() => {
     let list = Nutrient.filter(
@@ -28,9 +28,22 @@ const QnaResult = ({ user }) => {
         item.type === 'vitaminB'
     );
     setResult(list);
-  }, []);
 
-  // TODO: 반응형 끝내고 List마다 색 다른것 적용해야함
+    // BMI 계산하는 부분
+    let bmiNum = (
+      user.weight /
+      ((user.height / 100) * (user.height / 100))
+    ).toFixed(2);
+    setBmi(bmiNum);
+    // BMI 지수가 25보다 작을때
+    let bmiPercent = (bmiNum / 25) * 100;
+    if (bmiNum <= 25) {
+      setPercent(bmiPercent - 20);
+    } else {
+      // 80% 더해주기 20% 내에서 나머지 BMI계산해주어야함
+      setPercent(((bmiNum / 100) * 100) / 5 + 80);
+    }
+  }, [user]);
 
   const toggleFunc = () => setToggle(!toggle);
 
@@ -50,7 +63,7 @@ const QnaResult = ({ user }) => {
           <ul className={cx('result__header--info')}>
             <li className={cx('result__header--info--item')}>
               <strong>성별</strong>
-              {user.sex === 'male' ? '남성' : '여성'}
+              {user.sex === 'Male' ? '남성' : '여성'}
             </li>
             <li className={cx('result__header--info--item')}>
               <strong>나이</strong>
@@ -60,15 +73,50 @@ const QnaResult = ({ user }) => {
             <li className={cx('result__header--info--item')}>
               <strong>BMI</strong>
               {/* 이부분 BMI 계산 결과값 추출해야함 */}
-              22.3
+              {bmi}
             </li>
           </ul>
           <ul className={cx('result__header--bmi')}>
-            <li className={cx('result__header--bmi--list')}>저체중</li>
-            <li className={cx('result__header--bmi--list')}>정상</li>
-            <li className={cx('result__header--bmi--list')}>과체중</li>
-            <li className={cx('result__header--bmi--list')}>비만</li>
-            <li className={cx('result__header--bmi--list')}>중도비만</li>
+            <li
+              className={cx(
+                'result__header--bmi--list',
+                percent < 20 && 'select'
+              )}
+            >
+              저체중
+            </li>
+            <li
+              className={cx(
+                'result__header--bmi--list',
+                percent >= 20 && percent < 40 && 'select'
+              )}
+            >
+              정상
+            </li>
+            <li
+              className={cx(
+                'result__header--bmi--list',
+                percent >= 40 && percent < 60 && 'select'
+              )}
+            >
+              과체중
+            </li>
+            <li
+              className={cx(
+                'result__header--bmi--list',
+                percent >= 60 && percent < 80 && 'select'
+              )}
+            >
+              비만
+            </li>
+            <li
+              className={cx(
+                'result__header--bmi--list',
+                percent >= 80 && 'select'
+              )}
+            >
+              중도비만
+            </li>
           </ul>
           <div className={cx('result__header--section')}>
             <ul className={cx('result__header--bmi', 'result__header--wrap')}>
@@ -88,8 +136,15 @@ const QnaResult = ({ user }) => {
                 <div className={cx('result__header--bmi--list--gauge')} />
               </li>
             </ul>
-            <div className={cx('result__header--section--gauge')} />
+            <div
+              className={cx('result__header--section--gauge')}
+              style={{
+                width: `${percent}%`,
+                maxWidth: '101%',
+              }}
+            />
           </div>
+          {/* TODO: 이부분 데이터 필요함 */}
           <span className={cx('result__header--intro')}>
             건강한 신체를 위하여 체중관리를 하시는걸 추천 드립니다.
           </span>
@@ -101,43 +156,7 @@ const QnaResult = ({ user }) => {
             <strong>{user.name}</strong>님을 위한 추천영양성분
           </span>
           {result.length > 0 &&
-            result.map(
-              (item, i) => (
-                <div className={cx('result__list--map')} key={i}>
-                  <div className={cx('result__list--map--cover', item.type)}>
-                    <img
-                      className={cx('result__list--map--cover--img')}
-                      src={Logo}
-                      alt="대표 알약 이미지"
-                    />
-                  </div>
-                  <div
-                    className={cx(
-                      'result__list--map--info',
-                      `info__${item.type}`
-                    )}
-                  >
-                    <span className={cx('result__list--map--info--header')}>
-                      추천영양성분
-                    </span>
-                    <div className={cx('result__list--map--info--name')}>
-                      <strong>{item.name}</strong>
-                      <span>{item.type}</span>
-                    </div>
-                    <ul>
-                      {item.hashtags.map(hashtag => (
-                        <li
-                          className={cx('result__list--map--info--description')}
-                        >
-                          {hashtag}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )
-              // <ResultList key={i} item={item} />
-            )}
+            result.map((item, i) => <ResultList item={item} key={i} />)}
         </section>
         <section className={cx('result__ad')}>
           <img src={AD} alt="광고 사진" />

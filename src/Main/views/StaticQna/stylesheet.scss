@@ -1,22 +1,45 @@
 @import 'common/stylesheet/index.scss';
 
-.static__qna {
-  height: 70vh;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
+@include media('>medium') {
+  .static__qna {
+    height: 70vh;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
 
-  &--info {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    margin: 0 auto;
+    &--info {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+
+  .static__list {
+    top: 70px !important;
+    transform: translateY(0) !important;
   }
 }
 
-.static__list {
-  top: 70px !important;
-  transform: translateY(0) !important;
+@include media('<=small') {
+  .static__qna {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+
+    &--info {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+
+  .static__list {
+    top: 70px !important;
+    transform: translateY(0) !important;
+  }
 }

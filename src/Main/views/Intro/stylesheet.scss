@@ -1,31 +1,9 @@
 @import 'common/stylesheet/index.scss';
 
-.basic {
-  width: 100%;
-  height: 80%;
-  background: url('../../../static/images/basicInfo.jpeg') no-repeat;
-  background-size: 101% 140%;
-}
-
-.symptom {
-  width: 100%;
-  height: 80%;
-  background: url('../../../static/images/symptomInfo.jpeg') no-repeat;
-  background-size: 101% 140%;
-}
-
-.life {
-  width: 100%;
-  height: 80%;
-  background: url('../../../static/images/lifeInfo.jpeg') no-repeat;
-  background-size: 101% 140%;
-}
-
 .intro {
   position: relative;
   width: 100%;
   height: 100vh;
-  margin-top: 70px;
 
   @include media('>medium') {
     &__logo {
@@ -111,8 +89,20 @@
         width: 100%;
         height: 100%;
         background: rgba($color: $color-box, $alpha: 0.7);
-        margin-top: -100%;
-        transition: margin-top 300ms linear 150ms;
+        transform: scaleY(1);
+        transform-origin: top;
+        transition: transform 3s ease;
+      }
+
+      &--ani {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($color: $color-box, $alpha: 0.7);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 3s ease;
       }
     }
 
@@ -130,28 +120,6 @@
       &--img {
         width: 100%;
         height: 100%;
-      }
-
-      &--cover {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba($color: $color-box, $alpha: 0.7);
-        transform: scaleY(1);
-        transform-origin: top;
-        transition: transform 3s ease;
-      }
-
-      &--ani {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba($color: $color-box, $alpha: 0.7);
-        transform: scaleY(0);
-        transform-origin: top;
-        transition: transform 3s ease;
       }
     }
 
@@ -217,13 +185,13 @@
 
     @include media('<=small') {
       &--header {
-        font-size: 2.1rem;
+        font-size: 2rem;
       }
 
       &--intro {
         margin-top: 15px;
-        font-size: 2.1rem;
-        line-height: 2.5rem;
+        font-size: 1.2rem;
+        line-height: 2.2rem;
         font-weight: lighter;
       }
     }

@@ -1,87 +1,56 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
-import { Button } from 'components';
+// import { Button } from 'components';
 import Logo from 'static/images/logo.png';
-import Close from 'static/images/x.png';
 
 const cx = classNames.bind(styles);
 
-const ResultList = ({ key, item }) => {
-  const [toggle, setToggle] = useState(false);
-  const [selectItem, setSelect] = useState(null);
+const ResultList = ({ item }) => {
+  // ADD: 이부분에 setToggle 추가해줘야함
+  const [toggle] = useState(false);
+  // const [selectItem, setSelect] = useState(null);
 
-  const select = item => {
-    if (!toggle) {
-      setSelect(item);
-    } else {
-      setSelect(null);
-    }
-    setToggle(!toggle);
-  };
+  // const select = item => {
+  //   if (!toggle) {
+  //     setSelect(item);
+  //   } else {
+  //     setSelect(null);
+  //   }
+  //   setToggle(!toggle);
+  // };
 
   return (
-    <div
-      className={cx('prescription', selectItem === item && 'prescription__on')}
-      key={key}
-    >
-      <div className={cx('prescription__section')}>
+    <div className={cx('prescription', toggle && 'prescription__on')}>
+      <div className={cx('prescription__cover', item.type)}>
         <img
+          className={cx('prescription__cover--img')}
           src={Logo}
-          alt="리스트 대표 사진"
-          className={cx('prescription__section--img')}
+          alt="대표 알약 이미지"
         />
-        <div className={cx('prescription__section--description')}>
-          <h4 className={cx('prescription__section--description--header')}>
-            {item.name}
-          </h4>
-          <ul>
-            {item.shortDescriptions.length > 0 &&
-              item.shortDescriptions.map((description, i) => (
-                <li key={i}>{description}</li>
-              ))}
-          </ul>
-        </div>
-        {selectItem && item.name === selectItem.name ? (
-          <div className={cx('prescription__section--bottom')}>
-            <Button onClick={select}>
-              <img
-                src={Close}
-                alt="닫기버튼"
-                className={cx('prescription__section--bottom--close')}
-              />
-            </Button>
-          </div>
-        ) : (
-          <div className={cx('prescription__bottom')}>
-            <Button
-              className={cx('prescription__bottom--add')}
-              onClick={() => select(item)}
-            >
-              &#43;
-            </Button>
-          </div>
-        )}
       </div>
-      {selectItem === item && (
-        <div className={cx('prescription__wrap')}>
-          {item.descriptions.length > 0 &&
-            item.descriptions.map((description, i) => (
-              <Fragment key={i}>
-                <span className={cx('prescription__wrap--title')}>
-                  {description.title}
-                </span>
-                <ul>
-                  {description.detail.length > 0 &&
-                    description.detail.map((el, index) => (
-                      <li key={index}>{el}</li>
-                    ))}
-                </ul>
-              </Fragment>
-            ))}
+      <div className={cx('prescription__info', `info__${item.type}`)}>
+        <span className={cx('prescription__info--header')}>추천영양성분</span>
+        <div className={cx('prescription__info--name')}>
+          <strong>{item.name}</strong>
+          <span>{item.type}</span>
         </div>
-      )}
+        <ul>
+          {item.hashtags.map((hashtag, i) => (
+            <li className={cx('prescription__info--description')} key={i}>
+              {hashtag}
+            </li>
+          ))}
+        </ul>
+        {/* ADD: 나중에 눌렀을 때 자세한 정보 사진 보는 부분 추가할 예정 */}
+        {/* <Button
+          className={cx('prescription__info--btn')}
+          onClick={() => select(item)}
+        >
+          <div className={cx('prescription__info--btn--open')} />
+        </Button> */}
+      </div>
     </div>
   );
 };

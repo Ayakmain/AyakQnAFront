@@ -314,36 +314,44 @@
   }
 }
 
-.omega3 {
-  background-color: rgb(234, 238, 224);
-}
-
-.probiotics {
-  background-color: rgb(236, 226, 224);
-}
-
-.vitaminB {
-  background-color: rgb(238, 223, 227);
-}
-
-.vitaminC {
-  background-color: rgb(238, 248, 249);
+.cover {
+  &__0 {
+    background-color: rgb(247, 245, 245);
+  }
+  &__1 {
+    background-color: rgb(241, 235, 235);
+  }
+  &__2 {
+    background-color: rgb(231, 220, 220);
+  }
+  &__3 {
+    background-color: rgb(222, 203, 202);
+  }
+  &__4 {
+    background-color: rgb(216, 193, 192);
+  }
+  &__5 {
+    background-color: rgb(204, 172, 168);
+  }
 }
 
 .info {
-  &__omega3 {
-    background-color: rgb(243, 243, 235);
+  &__0 {
+    background-color: rgb(250, 249, 249);
   }
-
-  &__probiotics {
-    background-color: rgb(244, 238, 235);
+  &__1 {
+    background-color: rgb(246, 243, 243);
   }
-
-  &__vitaminB {
-    background-color: rgb(237, 235, 238);
+  &__2 {
+    background-color: rgb(240, 233, 233);
   }
-
-  &__vitaminC {
-    background-color: rgb(246, 251, 251);
+  &__3 {
+    background-color: rgb(234, 222, 222);
+  }
+  &__4 {
+    background-color: rgb(230, 217, 215);
+  }
+  &__5 {
+    background-color: rgb(224, 203, 201);
   }
 }

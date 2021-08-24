@@ -8,7 +8,7 @@ import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
 
-const BarGauge = ({ location, match, user }) => {
+const BarGauge = ({ location, user }) => {
   const { pathname } = location;
   const qa = JSON.parse(window.localStorage.getItem('qa'));
   const [percent, setPercent] = useState(0);
@@ -27,7 +27,7 @@ const BarGauge = ({ location, match, user }) => {
   useEffect(() => {
     let totalLength = 11;
 
-    if (user.sex === 'Female') {
+    if (user.gender === 'female') {
       totalLength += 2;
       pageList.splice(7, 0, ...['/pregnant', '/pms']);
     }

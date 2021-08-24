@@ -44,7 +44,7 @@ const Main = ({ setUser }) => {
                 <Route exact path="/intro/Lifestyle" component={Intro} />
                 <Route exact path="/intro/result" component={Intro} />
                 <Route exact path="/info/name" component={InfoQna} />
-                <Route exact path="/info/sex" component={InfoQna} />
+                <Route exact path="/info/gender" component={InfoQna} />
                 <Route exact path="/info/birth" component={InfoQna} />
                 <Route exact path="/qna" component={QnaPick} />
                 <Route exact path="/qna/:qa" component={Qna} />

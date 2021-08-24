@@ -4,7 +4,7 @@
       "type": "name",
       "qa": "<strong>아약</strong>이 고객님을 \n 어떻게 부르면 좋을까요?"
     },{
-      "type": "sex",
+      "type": "gender",
       "qa": "{name}님의 \n <strong>성별</strong>은 무엇인가요?"
     },{
       "type": "birth",

@@ -14,7 +14,7 @@ export const actions = {
 const immutables = {
   user: {
     name: '',
-    sex: null,
+    gender: null,
     birth: null,
     email: '',
     height: null,

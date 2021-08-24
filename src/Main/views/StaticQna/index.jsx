@@ -159,7 +159,7 @@ const StaticQna = ({
           staticData,
           pageName,
           qaList.find((item, i) => list.map(index => index === i)),
-          user.sex === 'Female' ? '/pregnant' : '/know',
+          user.gender === 'female' ? '/pregnant' : '/know',
           'confirm'
         );
       case 'pregnant':

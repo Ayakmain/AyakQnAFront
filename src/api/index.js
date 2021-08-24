@@ -52,7 +52,8 @@ const PUT = (URL, headers) =>
 const UserApi = {
   post: POST('/user'),
   get: GET('/user/:user_id'),
-  getArtist: GET('/user/:user_id'),
+  getList: GET('/user'),
+  update: PUT('/user/:_id'),
 };
 
 const NutritionApi = {

@@ -25,7 +25,9 @@ const QnaResult = ({ user }) => {
         item.type === 'vitaminC' ||
         item.type === 'omega3' ||
         item.type === 'probiotics' ||
-        item.type === 'vitaminB'
+        item.type === 'vitaminB' ||
+        item.type === 'lutein' ||
+        item.type === 'milkThistle'
     );
     setResult(list);
 
@@ -63,7 +65,7 @@ const QnaResult = ({ user }) => {
           <ul className={cx('result__header--info')}>
             <li className={cx('result__header--info--item')}>
               <strong>성별</strong>
-              {user.sex === 'Male' ? '남성' : '여성'}
+              {user.gender === 'male' ? '남성' : '여성'}
             </li>
             <li className={cx('result__header--info--item')}>
               <strong>나이</strong>
@@ -120,21 +122,36 @@ const QnaResult = ({ user }) => {
           </ul>
           <div className={cx('result__header--section')}>
             <ul className={cx('result__header--bmi', 'result__header--wrap')}>
-              <li className={cx('result__header--bmi--list')}>
-                <div className={cx('result__header--bmi--list--gauge')} />
-              </li>
-              <li className={cx('result__header--bmi--list')}>
-                <div className={cx('result__header--bmi--list--gauge')} />
-              </li>
-              <li className={cx('result__header--bmi--list')}>
-                <div className={cx('result__header--bmi--list--gauge')} />
-              </li>
-              <li className={cx('result__header--bmi--list')}>
-                <div className={cx('result__header--bmi--list--gauge')} />
-              </li>
-              <li className={cx('result__header--bmi--list')}>
-                <div className={cx('result__header--bmi--list--gauge')} />
-              </li>
+              <li
+                className={cx(
+                  'result__header--bmi--list',
+                  'result__header--bmi--gauge'
+                )}
+              />
+              <li
+                className={cx(
+                  'result__header--bmi--list',
+                  'result__header--bmi--gauge'
+                )}
+              />
+              <li
+                className={cx(
+                  'result__header--bmi--list',
+                  'result__header--bmi--gauge'
+                )}
+              />
+              <li
+                className={cx(
+                  'result__header--bmi--list',
+                  'result__header--bmi--gauge'
+                )}
+              />
+              <li
+                className={cx(
+                  'result__header--bmi--list',
+                  'result__header--bmi--gauge'
+                )}
+              />
             </ul>
             <div
               className={cx('result__header--section--gauge')}
@@ -155,8 +172,7 @@ const QnaResult = ({ user }) => {
           <span className={cx('result__list--title')}>
             <strong>{user.name}</strong>님을 위한 추천영양성분
           </span>
-          {result.length > 0 &&
-            result.map((item, i) => <ResultList item={item} key={i} />)}
+          <ResultList result={result} />
         </section>
         <section className={cx('result__ad')}>
           <img src={AD} alt="광고 사진" />

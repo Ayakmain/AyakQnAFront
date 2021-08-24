@@ -15,11 +15,10 @@ const cx = classNames.bind(styles);
 
 const Header = ({ location, history, user }) => {
   const [menuOpen, setToggle] = useState(false);
-  const [view] = useState(window.innerWidth >= 800 ? 'web' : 'mobile');
   const [pageList] = useState([
     '/',
     '/info/name',
-    '/info/sex',
+    '/info/gender',
     '/info/birth',
     '/qna',
     '/height',
@@ -53,7 +52,7 @@ const Header = ({ location, history, user }) => {
         return history.push(`/qna/${questionList[index - 1].type}`);
       }
     } else {
-      if (pathname === '/know' && user.sex === 'Male') {
+      if (pathname === '/know' && user.gender === 'male') {
         return history.push('/drink');
       }
       const index = pageList.findIndex(item => item === pathname);
@@ -112,7 +111,7 @@ const Header = ({ location, history, user }) => {
               <Button
                 className={cx('menu__ul--list--btn')}
                 href={
-                  view === 'mobile'
+                  window.innerWidth < 800
                     ? 'http://m.ayak.kr/company/about.html'
                     : 'http://ayak.kr/company/about.html'
                 }
@@ -126,7 +125,7 @@ const Header = ({ location, history, user }) => {
               <Button
                 className={cx('menu__ul--list--btn')}
                 href={
-                  view === 'mobile'
+                  window.innerWidth < 800
                     ? 'http://m.ayak.kr/product/list.html?cate_no=43'
                     : 'http://ayak.kr/product/list.html?cate_no=43'
                 }
@@ -140,7 +139,7 @@ const Header = ({ location, history, user }) => {
               <Button
                 className={cx('menu__ul--list--btn')}
                 href={
-                  view === 'mobile'
+                  window.innerWidth < 800
                     ? 'http://m.ayak.kr/company/pharm.html'
                     : 'http://ayak.kr/company/pharm.html'
                 }
@@ -154,7 +153,7 @@ const Header = ({ location, history, user }) => {
               <Button
                 className={cx('menu__ul--list--btn')}
                 href={
-                  view === 'mobile'
+                  window.innerWidth < 800
                     ? 'http://m.ayak.kr/company/story.html'
                     : 'http://ayak.kr/company/story.html'
                 }

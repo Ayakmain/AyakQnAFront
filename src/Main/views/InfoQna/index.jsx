@@ -6,6 +6,7 @@ import classNames from 'classnames/bind';
 import { Question, InfoControl } from 'Main/components';
 import moment from 'moment';
 import { localStorage } from 'common/env';
+// import { UserApi } from 'api';
 import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
@@ -27,9 +28,8 @@ const InfoQna = ({ history, location, user, setUser }) => {
     return setYears(yearList);
   };
 
-  const localStorageUpdate = (type, value, url, controll) => {
-    setUser({ ...user, [type]: value });
-    localStorage('user', user, { ...user, [type]: value });
+  const localStorageUpdate = (data, url, controll) => {
+    localStorage('user', data);
     if (controll === 'confirm') {
       return url && history.push(url);
     }
@@ -58,23 +58,29 @@ const InfoQna = ({ history, location, user, setUser }) => {
     return setUser({ ...user, [type]: value });
   };
 
-  const confirm = (type, value) => {
+  const confirm = type => {
+    let userData = {
+      name: user.name,
+      birth: Number(user.birth),
+      gender: user.gender,
+    };
     switch (type) {
-      case 'sex':
-        return localStorageUpdate(type, value, '/info/birth', 'confirm');
+      case 'gender':
+        return localStorageUpdate(userData, '/info/birth', 'confirm');
       case 'birth':
         if (user.birth !== '') {
           // TODO: 이부분에서 User 생성해주기 <- UserApi 붙이기
-          return localStorageUpdate(
-            type,
-            user.birth,
-            '/intro/Symptom',
-            'confirm'
-          );
+          // return UserApi.post(userData).then(({ dataUser }) => {
+          //   localStorageUpdate(dataUser, '/intro/Symptom', 'confirm');
+          //   console.log('dataUser: ', dataUser);
+          //   console.log('userData: ', userData);
+          //   setUser({ ...dataUser });
+          return localStorageUpdate(userData, '/intro/Symptom', 'confirm');
+          // });
         }
         break;
       default:
-        return localStorageUpdate(type, value, '/info/sex', 'confirm');
+        return localStorageUpdate(userData, '/info/gender', 'confirm');
     }
   };
 

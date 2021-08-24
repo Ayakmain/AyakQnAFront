@@ -10,6 +10,7 @@
     "bluebird": "^3.7.2",
     "classnames": "^2.3.1",
     "dotenv": "^10.0.0",
+    "http-proxy-middleware": "^2.0.1",
     "include-media": "^1.4.10",
     "moment": "^2.29.1",
     "node-sass": "^6.0.1",

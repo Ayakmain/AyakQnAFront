@@ -21,8 +21,8 @@ const QnaPick = ({ user, location, history, setQuestions }) => {
 
   //선택되어있는 데이터 삭제 해주는 부분
   useEffect(() => {
-    localStorage('nutrition', []);
-    localStorage('qa', []);
+    localStorage('nutrition', '', []);
+    localStorage('qa', '', []);
   }, []);
 
   const pickQna = index => {
@@ -52,41 +52,47 @@ const QnaPick = ({ user, location, history, setQuestions }) => {
     }
   };
 
+  // 질문리스트가 없어서 오류나는 부분 수정
   return (
-    <Fragment>
-      <MetaTag
-        keywords="Ayak,ayak,AYAK,아약,맞춤형추천"
-        description="아약 맞춤형 추천"
-        title="아약 맞춤형 추천"
-      />
-      <article className={cx('qna__pick')}>
-        <Question pageName={pathname.split('/')[1]} name={user && user.name} />
-        <AnswerList
-          pageName={pathname.split('/')[1]}
-          List={List}
-          picks={list}
-          pickQna={pickQna}
+    List.length !== 0 && (
+      <Fragment>
+        <MetaTag
+          keywords="Ayak,ayak,AYAK,아약,맞춤형추천"
+          description="아약 맞춤형 추천"
+          title="아약 맞춤형 추천"
         />
-      </article>
-      <section className={cx('qna__pick--confirm')}>
-        {list.length === 0 ? (
-          <div className={cx('qna__pick--confirm--footer')}>
-            한개 이상을 선택해 주세요
-          </div>
-        ) : (
-          <Button
-            className={cx(
-              'qna__pick--confirm--footer',
-              'qna__pick--confirm--btn'
-            )}
-            onClick={() => confirmQna()}
-          >
-            선택 완료
-          </Button>
-        )}
-      </section>
-      <BarGauge />
-    </Fragment>
+        <article className={cx('qna__pick')}>
+          <Question
+            pageName={pathname.split('/')[1]}
+            name={user && user.name}
+          />
+          <AnswerList
+            pageName={pathname.split('/')[1]}
+            List={List}
+            picks={list}
+            pickQna={pickQna}
+          />
+        </article>
+        <section className={cx('qna__pick--confirm')}>
+          {list.length === 0 ? (
+            <div className={cx('qna__pick--confirm--footer')}>
+              한개 이상을 선택해 주세요
+            </div>
+          ) : (
+            <Button
+              className={cx(
+                'qna__pick--confirm--footer',
+                'qna__pick--confirm--btn'
+              )}
+              onClick={() => confirmQna()}
+            >
+              선택 완료
+            </Button>
+          )}
+        </section>
+        <BarGauge />
+      </Fragment>
+    )
   );
 };
 

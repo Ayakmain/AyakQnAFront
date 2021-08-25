@@ -74,8 +74,8 @@
       bottom: 12.5rem;
       right: 2%;
       width: 70%;
-      height: 150px;
-      max-height: auto;
+      height: auto;
+      max-height: 150px;
       background: $color-box;
       border-radius: 1rem;
       box-shadow: 5px 5px 5px $color-secondary;
@@ -84,7 +84,7 @@
         display: block;
         width: 90%;
         margin: 20px auto;
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         line-height: 2.5rem;
       }
     }
@@ -189,8 +189,8 @@
       bottom: 9rem;
       right: 2%;
       width: 70%;
-      min-height: 120px;
       height: auto;
+      max-height: 120px;
       background: $color-box;
       border-radius: 1rem;
       box-shadow: 5px 5px 5px $color-secondary;
@@ -199,8 +199,8 @@
         display: block;
         width: 90%;
         margin: 20px auto;
-        font-size: 1.2rem;
-        line-height: 2rem;
+        font-size: 1rem;
+        line-height: 1.7rem;
       }
 
       &:after {

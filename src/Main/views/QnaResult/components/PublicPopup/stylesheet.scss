@@ -40,9 +40,10 @@
         }
 
         &--title {
-          margin: 10% auto 15%;
+          margin: 10% auto 10%;
           font-size: $font_size-rem;
           font-weight: lighter;
+          line-height: 3.2rem;
 
           span {
             font-weight: bolder;
@@ -79,6 +80,7 @@
           }
 
           &--span {
+            color: black;
             font-size: 1.2rem;
           }
         }
@@ -103,6 +105,7 @@
           margin: 10% auto 15%;
           font-size: 1.5rem;
           font-weight: lighter;
+          line-height: 2.5rem;
 
           strong {
             font-weight: 900;

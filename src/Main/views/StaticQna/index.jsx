@@ -13,7 +13,7 @@ import {
   Question,
 } from 'Main/components';
 import { Button } from 'components';
-import { staticQa } from 'static/json/QAList.json';
+import { staticQa } from 'static/json/Question.json';
 import styles from './stylesheet.scss';
 import { useEffect } from 'react';
 
@@ -60,14 +60,7 @@ const StaticQna = ({
     }
   };
 
-  const localStorageUserUpdate = (
-    storage,
-    data,
-    type,
-    value,
-    url,
-    controll
-  ) => {
+  const localStorageUpdate = (storage, data, type, value, url, controll) => {
     if (storage === 'user') setUser({ ...data, [type]: value });
     else if (storage === 'staticData') setStatic({ ...data, [type]: value });
     localStorage(storage, data, { ...data, [type]: value });
@@ -80,7 +73,7 @@ const StaticQna = ({
     switch (type) {
       case 'height':
         if (Number(value) >= 100 && Number(value) <= 250) {
-          return localStorageUserUpdate(
+          return localStorageUpdate(
             'user',
             user,
             type,
@@ -93,7 +86,7 @@ const StaticQna = ({
         }
       case 'weight':
         if (Number(value) >= 30 && Number(value) <= 190) {
-          return localStorageUserUpdate(
+          return localStorageUpdate(
             'user',
             user,
             type,
@@ -106,7 +99,7 @@ const StaticQna = ({
         }
       case 'email':
         if (isEmail(value)) {
-          return localStorageUserUpdate(
+          return localStorageUpdate(
             'user',
             user,
             type,
@@ -119,7 +112,14 @@ const StaticQna = ({
           return setError('Email 방식이 올바르지 않습니다.');
         }
       case 'sun':
-        return localStorageUserUpdate(
+        if (!value) {
+          const selectNutritions = JSON.parse(
+            window.localStorage.getItem('nutrition')
+          );
+          selectNutritions.push('비타민D');
+          localStorage('nutrition', '', selectNutritions);
+        }
+        return localStorageUpdate(
           'staticData',
           staticData,
           type,
@@ -128,7 +128,7 @@ const StaticQna = ({
           'confirm'
         );
       case 'smoke':
-        return localStorageUserUpdate(
+        return localStorageUpdate(
           'staticData',
           staticData,
           type,
@@ -144,7 +144,7 @@ const StaticQna = ({
   const confirmStatic = () => {
     switch (pageName) {
       case 'healthy':
-        return localStorageUserUpdate(
+        return localStorageUpdate(
           'staticData',
           staticData,
           pageName,
@@ -153,8 +153,7 @@ const StaticQna = ({
           'confirm'
         );
       case 'drink':
-        //TODO: 남자일때 여기서 Update해서 DB에 저장
-        return localStorageUserUpdate(
+        return localStorageUpdate(
           'staticData',
           staticData,
           pageName,
@@ -163,7 +162,7 @@ const StaticQna = ({
           'confirm'
         );
       case 'pregnant':
-        return localStorageUserUpdate(
+        return localStorageUpdate(
           'staticData',
           staticData,
           pageName,
@@ -172,8 +171,7 @@ const StaticQna = ({
           'confirm'
         );
       case 'pms':
-        //TODO: 여자일때 여기서 Update해서 DB에 저장
-        return localStorageUserUpdate(
+        return localStorageUpdate(
           'staticData',
           staticData,
           pageName,
@@ -218,7 +216,7 @@ const StaticQna = ({
               <InfoControl
                 pageName={pageName}
                 confirm={confirm}
-                localStorageUserUpdate={localStorageUserUpdate}
+                localStorageUserUpdate={localStorageUpdate}
                 error={error}
               />
             )}

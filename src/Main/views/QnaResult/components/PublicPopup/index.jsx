@@ -3,12 +3,14 @@ import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 import { Button } from 'components';
+import { shareFacebook, shareKakao } from 'common/share';
+import { Helmet } from 'react-helmet';
 import Logo from 'static/images/logo.png';
 import Facebook from 'static/images/facebook.png';
-import Insta from 'static/images/insta.png';
 import Kakao from 'static/images/kakao.png';
 import Link from 'static/images/link.png';
 import Close from 'static/images/x.png';
+import { Fragment } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -37,72 +39,76 @@ const PublicPopup = ({ name, toggleFunc }) => {
   };
 
   return (
-    <div className={cx('popup__wrap')}>
-      <div className={cx('public')}>
-        <div className={cx('public__header')}>
-          <img
-            className={cx('public__header--logo')}
-            src={Logo}
-            alt="아약 로고"
-          />
-          <h3 className={cx('public__header--title')}>
-            <strong>{name}</strong> 님의 <br />
-            맞춤형 결과 공유하기
-          </h3>
-          <Button onClick={toggleFunc} className={cx('public__header--btn')}>
+    <Fragment>
+      <Helmet>
+        {/* <!-- Facebook share script--> */}
+        <script
+          async
+          defer
+          crossorigin="anonymous"
+          src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v11.0&appId=136064175363446&autoLogAppEvents=1"
+          nonce="MC0X897b"
+        />
+      </Helmet>
+      <div className={cx('popup__wrap')}>
+        <div className={cx('public')}>
+          <div className={cx('public__header')}>
             <img
-              className={cx('public__header--btn--img')}
-              src={Close}
-              alt="pop up창 닫기 버튼"
+              className={cx('public__header--logo')}
+              src={Logo}
+              alt="아약 로고"
             />
-          </Button>
+            <h3 className={cx('public__header--title')}>
+              <strong>{name}</strong> 님의 <br />
+              맞춤형 결과 공유하기
+            </h3>
+            <Button onClick={toggleFunc} className={cx('public__header--btn')}>
+              <img
+                className={cx('public__header--btn--img')}
+                src={Close}
+                alt="pop up창 닫기 버튼"
+              />
+            </Button>
+          </div>
+          <ul className={cx('public__btn')}>
+            <li className={cx('public__btn--list')}>
+              <Button data-href="https://ayak.kr" onClick={shareFacebook}>
+                <img
+                  className={cx('public__btn--list--img')}
+                  src={Facebook}
+                  alt="Facebook 공유하기"
+                />
+                <span className={cx('public__btn--list--span')}>
+                  페이스북 공유
+                </span>
+              </Button>
+            </li>
+            <li className={cx('public__btn--list')}>
+              <Button onClick={shareKakao}>
+                <img
+                  className={cx('public__btn--list--img')}
+                  src={Kakao}
+                  alt="Kakao 공유하기"
+                />
+                <span className={cx('public__btn--list--span')}>
+                  카카오 공유
+                </span>
+              </Button>
+            </li>
+            <li className={cx('public__btn--list')}>
+              <Button onClick={() => copyUrl(window.location.href)}>
+                <img
+                  className={cx('public__btn--list--img')}
+                  src={Link}
+                  alt="Link 공유하기"
+                />
+                <span className={cx('public__btn--list--span')}>링크복사</span>
+              </Button>
+            </li>
+          </ul>
         </div>
-        <ul className={cx('public__btn')}>
-          <li className={cx('public__btn--list')}>
-            <Button onClick={() => console.log('Facebook 공유하기')}>
-              <img
-                className={cx('public__btn--list--img')}
-                src={Facebook}
-                alt="Facebook 공유하기"
-              />
-              <span className={cx('public__btn--list--span')}>
-                페이스북 공유
-              </span>
-            </Button>
-          </li>
-          <li className={cx('public__btn--list')}>
-            <Button onClick={() => console.log('Insta 공유하기')}>
-              <img
-                className={cx('public__btn--list--img')}
-                src={Insta}
-                alt="Insta 공유하기"
-              />
-              <span className={cx('public__btn--list--span')}>인스타 공유</span>
-            </Button>
-          </li>
-          <li className={cx('public__btn--list')}>
-            <Button onClick={() => console.log('Kakao 공유하기')}>
-              <img
-                className={cx('public__btn--list--img')}
-                src={Kakao}
-                alt="Kakao 공유하기"
-              />
-              <span className={cx('public__btn--list--span')}>카카오 공유</span>
-            </Button>
-          </li>
-          <li className={cx('public__btn--list')}>
-            <Button onClick={() => copyUrl(window.location.href)}>
-              <img
-                className={cx('public__btn--list--img')}
-                src={Link}
-                alt="Link 공유하기"
-              />
-              <span className={cx('public__btn--list--span')}>링크복사</span>
-            </Button>
-          </li>
-        </ul>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

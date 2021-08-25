@@ -41,7 +41,7 @@ const AnswerList = ({ List, picks, pickQna, location, className, match }) => {
             }
           />
           <div className={cx('qna__list--answer--one')}>
-            {item.title ? item.title : item}
+            {item.title ?? item}
           </div>
         </Button>
       ))}

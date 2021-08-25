@@ -60,16 +60,22 @@
 
       &--list {
         width: 25%;
-        font-size: 1.9rem;
+        font-size: 1.4rem;
         text-align: center;
         height: 5rem;
 
         &--btn {
+          display: block;
           width: 100%;
-          height: 5rem;
+          height: 100%;
           font-weight: lighter;
           line-height: 1.6rem;
           color: black;
+          margin: 1rem auto;
+        }
+
+        &:hover {
+          background: $color-button;
         }
       }
     }
@@ -82,7 +88,8 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 70px;
+    max-height: 70px;
+    height: auto;
     display: flex;
     justify-content: space-between;
     z-index: 100;
@@ -90,7 +97,7 @@
     &__result {
       width: 40px;
       height: 40px;
-      margin: 30px 20px;
+      margin: 10px 20px;
     }
 
     &__logo {
@@ -114,7 +121,7 @@
     &__menu {
       width: 60px;
       height: 60px;
-      margin: 20px 10px;
+      margin: auto 10px;
     }
   }
 
@@ -123,7 +130,7 @@
     height: auto;
     z-index: 100;
     position: absolute;
-    top: 100px;
+    top: 60px;
     background-color: $color-theme;
 
     &__ul {

@@ -6,27 +6,27 @@
       "answers": [
         {
           "title":"눈이 건조하고 뻑뻑해요",
-          "nutrition": "오메가3"
+          "nutrition": ["오메가3"]
         },
         {
           "title":"눈이 자주 피로해요",
-          "nutrition": "오메가3"
+          "nutrition": [null]
         },
         {
           "title":"눈 밑이 떨려요",
-          "nutrition": "마그네슘"
+          "nutrition": ["마그네슘"]
         },
         {
           "title":"시야가 흐릿하게 느껴져요",
-          "nutrition": "오메가3"
+          "nutrition": [null]
         },
         {
           "title":"어두운 곳에서 잘 안 보여요",
-          "nutrition": "비타민A"
+          "nutrition": ["비타민A"]
         },
         {
           "title":"눈이 침침해요",
-          "nutrition": "루테인"
+          "nutrition": ["루테인"]
         }
       ]
     },
@@ -36,15 +36,15 @@
       "answers": [
         {
           "title":"기억력이 나빠진 것 같아요",
-          "nutrition": "오메가3"
+          "nutrition": ["은행엽추출물"]
         },
         {
           "title":"단어가 잘 안 떠올라요",
-          "nutrition": "오메가3"
+          "nutrition": ["오메가3"]
         },
         {
           "title":"일에 집중을 잘 못해요",
-          "nutrition": "마그네슘"
+          "nutrition": ["오메가3"]
         }
       ]
     },
@@ -54,11 +54,11 @@
       "answers": [
         {
           "title":"스트레스가 많아요",
-          "nutrition": "오메가3"
+          "nutrition": ["테아닌"]
         },
         {
           "title":"감기에 자주 걸려요",
-          "nutrition": "오메가3"
+          "nutrition": ["비타민C"]
         }
       ]
     },
@@ -68,19 +68,19 @@
       "answers": [
         {
           "title":"모발이 얇아졌어요",
-          "nutrition": "오메가3"
+          "nutrition": ["비오틴"]
         },
         {
           "title":"탈모가 있어요",
-          "nutrition": "오메가3"
+          "nutrition": ["비오틴"]
         },
         {
           "title":"모발 손상이 심해요",
-          "nutrition": "마그네슘"
+          "nutrition": ["비오틴"]
         },
         {
           "title":"모발 끝이 갈라져요",
-          "nutrition": "오메가3"
+          "nutrition": ["히알루론산"]
         }
       ]
     },
@@ -90,23 +90,23 @@
       "answers": [
         {
           "title":"소변을 본 후 잔뇨감이 있나요?",
-          "nutrition": "오메가3"
+          "nutrition": [null]
         },
         {
           "title":"소변을 보러 화장실에 자주 가요",
-          "nutrition": "오메가3"
+          "nutrition": [null]
         },
         {
           "title":"소변을 참기 어려워요",
-          "nutrition": "마그네슘"
+          "nutrition": [null]
         },
         {
           "title":"소변에서 냄새가 나요",
-          "nutrition": "오메가3"
+          "nutrition": [null]
         },
         {
           "title":"소변을 통증이 있어요",
-          "nutrition": "비타민A"
+          "nutrition": [null]
         }
       ]
       
@@ -117,15 +117,15 @@
       "answers": [
         {
           "title":"일상생활에서 움직일 때 불편해요",
-          "nutrition": "오메가3"
+          "nutrition": ["MSM"]
         },
         {
           "title":"골다공증이 걱정 돼요",
-          "nutrition": "오메가3"
+          "nutrition": ["칼슘", "비타민D"]
         },
         {
           "title":"평소 뼈가 약한 것 같아요",
-          "nutrition": "마그네슘"
+          "nutrition": ["칼슘", "비타민D"]
         }
       ]
     },
@@ -135,7 +135,7 @@
       "answers": [
         {
           "title":"성기능 강화에 관심이 있어요",
-          "nutrition": "오메가3"
+          "nutrition": ["아연"]
         }
       ]
     },
@@ -145,31 +145,31 @@
       "answers": [
         {
           "title":"배변활동이 원활하지 않아요",
-          "nutrition": "오메가3"
+          "nutrition": ["프로바이오틱스"]
         },
         {
           "title":"대변을 보러 화장실에 자주 가요",
-          "nutrition": "오메가3"
+          "nutrition": ["프로바이오틱스"]
         },
         {
           "title":"속이 자주 쓰려요",
-          "nutrition": "마그네슘"
+          "nutrition": ["프로바이오틱스"]
         },
         {
           "title":"변비가 있어요",
-          "nutrition": "오메가3"
+          "nutrition": ["프로바이오틱스"]
         },
         {
           "title":"설사가 자주 나와요",
-          "nutrition": "비타민A"
+          "nutrition": ["프로바이오틱스"]
         },
         {
           "title":"배에 가스가 자주 차요",
-          "nutrition": "루테인"
+          "nutrition": ["프로바이오틱스"]
         },
         {
           "title":"복통이 자주 있어요",
-          "nutrition": "루테인"
+          "nutrition": [null]
         }
       ]
     },
@@ -179,27 +179,27 @@
       "answers": [
         {
           "title":"양치할 때 잇몸에서 자주 피가 나요",
-          "nutrition": "오메가3"
+          "nutrition": ["프로폴리스" ,"비타민C"]
         },
         {
           "title":"잇몸이 자주 부어요",
-          "nutrition": "오메가3"
+          "nutrition": null
         },
         {
           "title":"치아/잇몸이 약해요",
-          "nutrition": "마그네슘"
+          "nutrition": ["칼슘"]
         },
         {
           "title":"입냄새가 심해요",
-          "nutrition": "오메가3"
+          "nutrition": ["프로폴리스"]
         },
         {
           "title":"이가 시려요",
-          "nutrition": "비타민A"
+          "nutrition": ["칼슘"]
         },
         {
           "title":"충치가 자주 생겨요",
-          "nutrition": "루테인"
+          "nutrition": [null]
         }
       ]
     },
@@ -209,11 +209,11 @@
       "answers": [
         {
           "title":"스트레스를 많이 받아요",
-          "nutrition": "오메가3"
+          "nutrition": ["테아닌"]
         },
         {
           "title":"평소에 예민하고 긴장이 자주 돼요",
-          "nutrition": "오메가3"
+          "nutrition": ["테아닌"]
         }
       ]
     },
@@ -223,15 +223,15 @@
       "answers": [
         {
           "title":"잠드는 데 오래 걸려요",
-          "nutrition": "오메가3"
+          "nutrition": [null]
         },
         {
           "title":"수면 시간이 적어요",
-          "nutrition": "오메가3"
+          "nutrition": [null]
         },
         {
           "title":"수면의 질이 낮아요",
-          "nutrition": "마그네슘"
+          "nutrition": [null]
         }
       ]
     },
@@ -241,23 +241,23 @@
       "answers": [
         {
           "title":"가족 중에 심혈관 질환을 가진 사람이 있어요",
-          "nutrition": "오메가3"
+          "nutrition": ["코엔자임큐텐"]
         },
         {
           "title":"현재 심혈관 질환을 앓고 있어요",
-          "nutrition": "오메가3"
+          "nutrition": ["코엔자임큐텐", "오메가3"]
         },
         {
           "title":"팔다리가 자주 저려요",
-          "nutrition": "마그네슘"
+          "nutrition": ["마그네슘"]
         },
         {
           "title":"어지러움을 자주 느껴요",
-          "nutrition": "오메가3"
+          "nutrition": ["오메가3", "은행엽추출물"]
         },
         {
           "title":"혈액순환이 잘 안 되는 것 같아요",
-          "nutrition": "비타민A"
+          "nutrition": ["오메가3", "은행엽추출물"]
         }
       ]
     },
@@ -267,11 +267,11 @@
       "answers": [
         {
           "title":"갱년기 증상이 있어요",
-          "nutrition": "오메가3"
+          "nutrition": [null]
         },
         {
           "title":"질 건강이 악화되었어요",
-          "nutrition": "오메가3"
+          "nutrition": ["유산균", "크렌베리추출물"]
         }
       ]
     },
@@ -281,43 +281,43 @@
       "answers": [
         {
           "title":"피부가 건조한 편이에요",
-          "nutrition": "오메가3"
+          "nutrition": ["히알루론산"]
         },
         {
           "title":"피부가 기름져요",
-          "nutrition": "오메가3"
+          "nutrition": ["오메가3"]
         },
         {
           "title":"피부 염증이 있어요",
-          "nutrition": "마그네슘"
+          "nutrition": ["감마리놀렌산"]
         },
         {
           "title":"피부 탄력이 부족해요",
-          "nutrition": "오메가3"
+          "nutrition": ["콜라겐"]
         },
         {
           "title":"주름이 많아요",
-          "nutrition": "비타민A"
+          "nutrition": ["콜라겐"]
         },
         {
           "title":"피부 상태가 악화되었어요",
-          "nutrition": "루테인"
+          "nutrition": [null]
         },
         {
           "title":"피부가 예민해요",
-          "nutrition": "루테인"
+          "nutrition": ["비타민D", "오메가3"]
         },
         {
           "title":"피부 트러블이 자주 생겨요",
-          "nutrition": "루테인"
+          "nutrition": [null]
         },
         {
           "title":"피부 착색이 있어요",
-          "nutrition": "루테인"
+          "nutrition": ["비타민C"]
         },
         {
           "title":" 피부 주근깨가 있어요",
-          "nutrition": "루테인"
+          "nutrition": ["비타민C"]
         }
       ]
     },
@@ -327,11 +327,11 @@
       "answers": [
         {
           "title":"전반적인 운동능력이 예전보다 감소되었어요",
-          "nutrition": "오메가3"
+          "nutrition": ["마그네슘"]
         },
         {
           "title":"근육 기능이 예전보다 감소되었어요",
-          "nutrition": "오메가3"
+          "nutrition": ["마그네슘"]
         }
       ]
     },
@@ -341,11 +341,11 @@
       "answers": [
         {
           "title":"자꾸 군것질을 해요",
-          "nutrition": "오메가3"
+          "nutrition": ["가르시니아"]
         },
         {
           "title":"체지방 감소가 힘들어요",
-          "nutrition": "오메가3"
+          "nutrition": ["가르시니아"]
         }
       ]
     },
@@ -355,16 +355,91 @@
       "answers": [
         {
           "title":"잠드는 데 오래 걸려요",
-          "nutrition": "오메가3"
+          "nutrition": [null]
         },
         {
           "title":"수면 시간이 적어요",
-          "nutrition": "오메가3"
+          "nutrition": [null]
         },
         {
           "title":"수면의 질이 낮아요",
-          "nutrition": "마그네슘"
+          "nutrition": [null]
         }
+      ]
+    }
+  ],
+  "staticQa" : [
+    {
+      "type": "healthy",
+      "qas": [
+        "운동을 자주 해요 [주 4회 이상]",  
+        "운동을 적당히 해요 [주 2~3회 정도]",
+        "운동을 거의 하지 않아요 [주 1회 이하]"
+      ]
+    },
+    {
+      "type": "drink",
+      "qas": [
+        {
+          "title":"거의 안 마심",
+          "nutrition": [null]
+        },
+        {
+          "title":"주 당 1~2회",
+          "nutrition": [null]
+        },
+        {
+          "title":"주 당 3회 이상",
+          "nutrition": ["밀크씨슬"]
+        }
+      ]
+    },
+    {
+      "type": "pregnant",
+      "qas": [
+        {
+          "title":"임신 중",
+          "nutrition": ["칼슘","마그네슘","철분","비타민D","프로바이오틱스"]
+        },
+        {
+          "title":"임신 준비 중",
+          "nutrition": ["엽산", "비타민D"]
+        },
+        {
+          "title":"해당 없음",
+          "nutrition": [null]
+        }
+      ]
+    },
+    {
+      "type": "pms",
+      "qas": [
+        {
+          "title":"심하지 않다",
+          "nutrition": [null]
+        },
+        {
+          "title":"보통 수준이다",
+          "nutrition": [null]
+        },
+        {
+          "title":"매우 심하다",
+          "nutrition": ["감마리놀렌산"]
+        },
+        {
+          "title":"해당 없음",
+          "nutrition": [null]
+        }
+      ]
+    }
+    ,{
+      "type": "know",
+      "qas": [
+          "지인의 추천으로",
+          "쇼핑몰(스마트 스토어 / 쿠팡 등)을 보고",
+          "SNS(인스타그램 / 페북 / 유투브 등)을 보고",
+          "네이버 / 다음 (블로그 / 기사 등)을 보고",
+          "직접 검색을 통해서"
       ]
     }
   ]

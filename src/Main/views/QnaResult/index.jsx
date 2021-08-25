@@ -48,6 +48,10 @@ const QnaResult = ({ user }) => {
   }, [user]);
 
   const toggleFunc = () => setToggle(!toggle);
+  const resultFunc = () => {
+    if (window.innerWidth >= 800) {
+    }
+  };
 
   return (
     <Fragment>
@@ -175,14 +179,28 @@ const QnaResult = ({ user }) => {
           <ResultList result={result} />
         </section>
         <section className={cx('result__ad')}>
-          <img src={AD} alt="광고 사진" />
+          <Button
+            href={
+              window.innerWidth < 800
+                ? 'http://m.ayak.kr/company/about.html'
+                : 'http://ayak.kr/company/about.html'
+            }
+          >
+            <img src={AD} alt="광고 사진" />
+          </Button>
         </section>
       </article>
       <section className={cx('result__control')}>
-        <Button className={cx('result__control--pulish')} onClick={toggleFunc}>
-          <img src={Publish} alt="공유하기 버튼" />
+        <Button
+          className={cx('result__control--pulish')}
+          onClick={toggleFunc}
+          style={{
+            background: `url(${Publish}) no-repeat`,
+          }}
+        />
+        <Button className={cx('result__control--confirm')} onClick={resultFunc}>
+          상담하기
         </Button>
-        <Button className={cx('result__control--confirm')}>상담하기</Button>
       </section>
       {toggle && <PublicPopup name={user.name} toggleFunc={toggleFunc} />}
     </Fragment>

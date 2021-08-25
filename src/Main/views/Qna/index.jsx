@@ -35,12 +35,10 @@ const Qna = ({ user, location, history, match }) => {
       const states = list.filter(item => item !== index);
       return setList(states);
     }
-    if (list.length < 3) {
-      return setList([...list, index]);
-    }
+    return setList([...list, index]);
   };
 
-  const confirmQna = (page, value) => {
+  const confirmQna = () => {
     // QaPick에서 데이터 선택 시 질문 데이터 받는 부분
     if (qa) {
       const index = pickList.findIndex(item => item.type === selectQa.type);
@@ -53,11 +51,11 @@ const Qna = ({ user, location, history, match }) => {
         (item, pos) => selectList.indexOf(item) === pos
       );
 
+      // 필터 돌려줘야함 (null이나 중복제거 필요)
       let concatArr = selectNutritions
-        ? selectNutrition
-        : selectNutritions
-            .concat(selectNutrition)
-            .filter((item, pos) => selectNutritions.indexOf(item) === pos);
+        .concat(...selectNutrition)
+        .filter(Boolean) // null 제거
+        .filter((item, index) => selectNutritions.indexOf(item) === index);
 
       if (pickLength - 1 === index) {
         localStorage('nutrition', '', concatArr);

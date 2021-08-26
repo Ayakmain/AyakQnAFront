@@ -34,7 +34,7 @@ const InfoControl = ({
   useEffect(() => {
     switch (pageName) {
       case 'name':
-        return initialFunc('이름을 입력해주세요', 'input', user.name);
+        return initialFunc('이름을 입력해 주세요', 'input', user.name);
       case 'email':
         return initialFunc('Ayak@ayak.com', 'input', user.email);
       case 'height':
@@ -143,7 +143,7 @@ const InfoControl = ({
             {user.birth ? (
               user.birth + ' 년생'
             ) : (
-              <span>나이를 입력해주세요</span>
+              <span>나이를 입력해 주세요</span>
             )}
           </Button>
           {toggle && (

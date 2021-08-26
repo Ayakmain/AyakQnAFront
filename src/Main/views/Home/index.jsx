@@ -5,11 +5,16 @@ import Image from 'static/images/image-small.png';
 import { Button, MetaTag } from 'components/index';
 import styles from './stylesheet.scss';
 import { useState } from 'react';
-
+import { useEffect } from 'react';
+import { localStorage } from 'common/env';
 const cx = classNames.bind(styles);
 
 const Home = () => {
   const [toggle, setToggle] = useState(false);
+  useEffect(() => {
+    localStorage('nutrition', '', []);
+    localStorage('qa', '', []);
+  }, []);
 
   return (
     <article className={cx('home')}>
@@ -24,7 +29,7 @@ const Home = () => {
           <strong>영양제</strong>를 <br />
           설계해 드립니다.
         </span>
-        <Button className={cx('home__main--btn')} to="/intro/Basic">
+        <Button className={cx('home__main--btn')} to="/intro/Basics">
           시작하기
         </Button>
       </section>

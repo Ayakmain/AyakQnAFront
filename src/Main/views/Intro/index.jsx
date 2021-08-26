@@ -19,10 +19,10 @@ const InfoIntro = ({ history, location, user }) => {
 
   useEffect(() => {
     switch (pageName) {
-      case 'Basic':
+      case 'Basics':
         setTimeout(() => history.push('/info/name'), 3000);
         break;
-      case 'Symptom':
+      case 'Symptoms':
         setTimeout(() => history.push('/qna'), 3000);
         break;
       case 'Lifestyle':
@@ -51,7 +51,7 @@ const InfoIntro = ({ history, location, user }) => {
         <strong>{user.name}</strong>님의 <br />
         건강설문 결과를
         <br />
-        분석 중 입니다.
+        분석 중입니다.
       </section>
       <section className={cx('intro__footer')}>잠시만 기다려 주세요</section>
     </article>
@@ -60,7 +60,11 @@ const InfoIntro = ({ history, location, user }) => {
       className={cx('intro')}
       style={{
         background: `url(${
-          pageName === 'Basic' ? Basic : pageName === 'Symptom' ? Symptom : Life
+          pageName === 'Basic'
+            ? Basic
+            : pageName === 'Symptoms'
+            ? Symptom
+            : Life
         }) no-repeat`,
         backgroundSize: '101% 140%',
         width: '100%',
@@ -84,8 +88,8 @@ const InfoIntro = ({ history, location, user }) => {
             <Fragment>고객님의 요즘 고민은 무엇인가요?</Fragment>
           ) : (
             <Fragment>
-              고객님의 필요한 영양소 설계를 위해
-              <br />몇 가지 질물을 드리겠습니다.
+              고객님께 필요한 영양소를 설계하기 위해
+              <br />몇 가지 질문을 드리겠습니다.
             </Fragment>
           )}
         </div>

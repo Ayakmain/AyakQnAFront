@@ -50,7 +50,7 @@
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
-      font-size: 4rem;
+      font-size: 3.8rem;
       line-height: 5.5rem;
       text-align: center;
       font-weight: lighter;
@@ -62,7 +62,7 @@
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: lighter;
     }
   }
@@ -129,7 +129,7 @@
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: lighter;
     }
   }
@@ -172,26 +172,28 @@
 
     @include media('>medium') {
       &--header {
-        font-size: 3rem;
+        font-size: 2.8rem;
+        line-height: 4rem;
       }
 
       &--intro {
         margin-top: 20px;
-        font-size: 2.5rem;
-        line-height: 4rem;
+        font-size: 1.5rem;
+        line-height: 2rem;
         font-weight: lighter;
       }
     }
 
     @include media('<=small') {
       &--header {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        line-height: 3rem;
       }
 
       &--intro {
         margin-top: 15px;
-        font-size: 1.2rem;
-        line-height: 2.2rem;
+        font-size: 1rem;
+        line-height: 1.5rem;
         font-weight: lighter;
       }
     }

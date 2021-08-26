@@ -39,8 +39,8 @@ const Main = ({ setUser }) => {
             <CSSTransition timeout={450} key={location.key} classNames="fade">
               <Switch location={location}>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/intro/Basic" component={Intro} />
-                <Route exact path="/intro/Symptom" component={Intro} />
+                <Route exact path="/intro/Basics" component={Intro} />
+                <Route exact path="/intro/Symptoms" component={Intro} />
                 <Route exact path="/intro/Lifestyle" component={Intro} />
                 <Route exact path="/intro/result" component={Intro} />
                 <Route exact path="/info/name" component={InfoQna} />

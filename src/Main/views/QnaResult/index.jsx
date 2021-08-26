@@ -37,9 +37,9 @@ const QnaResult = ({ user }) => {
       ((user.height / 100) * (user.height / 100))
     ).toFixed(2);
     setBmi(bmiNum);
-    // BMI 지수가 25보다 작을때
-    let bmiPercent = (bmiNum / 25) * 100;
-    if (bmiNum <= 25) {
+    // BMI 지수가 30보다 작을때
+    let bmiPercent = (bmiNum / 30) * 100;
+    if (bmiNum <= 30) {
       setPercent(bmiPercent - 20);
     } else {
       // 80% 더해주기 20% 내에서 나머지 BMI계산해주어야함
@@ -48,6 +48,7 @@ const QnaResult = ({ user }) => {
   }, [user]);
 
   const toggleFunc = () => setToggle(!toggle);
+  // 상담하기 버튼 눌렀을 때 작동되는 것
   const resultFunc = () => {
     if (window.innerWidth >= 800) {
     }
@@ -191,13 +192,9 @@ const QnaResult = ({ user }) => {
         </section>
       </article>
       <section className={cx('result__control')}>
-        <Button
-          className={cx('result__control--pulish')}
-          onClick={toggleFunc}
-          style={{
-            background: `url(${Publish}) no-repeat`,
-          }}
-        />
+        <Button className={cx('result__control--pulish')} onClick={toggleFunc}>
+          <img src={Publish} alt="공유하기 버튼" />
+        </Button>
         <Button className={cx('result__control--confirm')} onClick={resultFunc}>
           상담하기
         </Button>

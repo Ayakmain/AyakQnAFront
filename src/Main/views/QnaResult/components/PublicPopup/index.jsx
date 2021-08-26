@@ -41,7 +41,7 @@ const PublicPopup = ({ name, toggleFunc }) => {
   return (
     <Fragment>
       <Helmet>
-        {/* <!-- Facebook share script--> */}
+        {/* Facebook share script*/}
         <script
           async
           defer
@@ -49,6 +49,8 @@ const PublicPopup = ({ name, toggleFunc }) => {
           src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v11.0&appId=136064175363446&autoLogAppEvents=1"
           nonce="MC0X897b"
         />
+        {/* Kakao share script */}
+        <script src="https://developers.kakao.com/sdk/js/kakao.js" />
       </Helmet>
       <div className={cx('popup__wrap')}>
         <div className={cx('public')}>

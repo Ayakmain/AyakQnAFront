@@ -16,13 +16,14 @@ export const shareFacebook = href => {
 
 export const shareKakao = href => {
   const Kakao = window.Kakao;
-  console.log(Kakao);
+
   // 중복 initialization 방지
   if (!Kakao.isInitialized()) {
     // 두번째 step 에서 가져온 javascript key 를 이용하여 initialize
-    Kakao.init(process.env.REACT_APP_KAKAO_KEY);
+    Kakao.init('15a4d53e0a645f328f92f010c998e863');
   }
 
+  // TODO: 이부분 체크해야함(문구 & 디자인 체크)
   function sendLink() {
     Kakao.Link.sendDefault({
       objectType: 'feed', // 메시지 형식 : 피드 타입

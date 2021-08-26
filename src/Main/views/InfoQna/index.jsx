@@ -71,11 +71,11 @@ const InfoQna = ({ history, location, user, setUser }) => {
         if (user.birth !== '') {
           // TODO: 이부분에서 User 생성해주기 <- UserApi 붙이기
           // return UserApi.post(userData).then(({ dataUser }) => {
-          //   localStorageUpdate(dataUser, '/intro/Symptom', 'confirm');
+          //   localStorageUpdate(dataUser, '/intro/Symptoms', 'confirm');
           //   console.log('dataUser: ', dataUser);
           //   console.log('userData: ', userData);
           //   setUser({ ...dataUser });
-          return localStorageUpdate(userData, '/intro/Symptom', 'confirm');
+          return localStorageUpdate(userData, '/intro/Symptoms', 'confirm');
           // });
         }
         break;

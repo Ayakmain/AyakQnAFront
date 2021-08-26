@@ -3,6 +3,12 @@ import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 // import { Button } from 'components';
+import vitaminC from 'static/images/vitaminC.png';
+import lutein from 'static/images/lutein.png';
+import omega3 from 'static/images/omega3.png';
+import probiotics from 'static/images/probiotics.png';
+import milkThistle from 'static/images/milkThistle.png';
+import vitaminB from 'static/images/vitaminB.png';
 import Logo from 'static/images/logo.png';
 
 const cx = classNames.bind(styles);
@@ -20,6 +26,14 @@ const ResultList = ({ result }) => {
   //   }
   //   setToggle(!toggle);
   // };
+  const imageList = [
+    { type: 'vitaminC', img: vitaminC },
+    { type: 'lutein', img: lutein },
+    { type: 'omega3', img: omega3 },
+    { type: 'probiotics', img: probiotics },
+    { type: 'milkThistle', img: milkThistle },
+    { type: 'vitaminB', img: vitaminB },
+  ];
 
   return (
     result.length > 0 &&
@@ -31,7 +45,11 @@ const ResultList = ({ result }) => {
         <div className={cx('prescription__cover', `cover__${index}`)}>
           <img
             className={cx('prescription__cover--img')}
-            src={Logo}
+            src={
+              imageList.find(img => img.type === item.type && img)
+                ? imageList.find(img => img.type === item.type && img).img
+                : Logo
+            }
             alt="대표 알약 이미지"
           />
         </div>
@@ -39,7 +57,10 @@ const ResultList = ({ result }) => {
           <span className={cx('prescription__info--header')}>추천영양성분</span>
           <div className={cx('prescription__info--name')}>
             <strong>{item.name}</strong>
-            <span>{item.type}</span>
+            <span>
+              {/* 맨앞글자 대문자 만드는 법 */}
+              {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
+            </span>
           </div>
           <ul>
             {item.hashtags.map((hashtag, i) => (

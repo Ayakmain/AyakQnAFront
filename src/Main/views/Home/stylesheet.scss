@@ -1,5 +1,41 @@
 @import 'common/stylesheet/index.scss';
 
+@mixin rings($duration, $delay) {
+  opacity: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: 0;
+  bottom: 0;
+  content: '';
+  width: 100%;
+  height: 100%;
+  border: 8px solid rgba(0, 0, 0, 0.2);
+  border-radius: 100%;
+  animation-name: ripple;
+  animation-duration: $duration;
+  animation-delay: $delay;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.65, 0, 0.34, 1);
+  z-index: -1;
+}
+
+@keyframes ripple {
+  from {
+    opacity: 1;
+    transform: scale3d(0.75, 0.75, 1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale3d(1.5, 1.5, 1);
+  }
+}
+
 @include media('>medium') {
   .home {
     width: 100%;
@@ -54,12 +90,27 @@
       margin-right: 20px;
       cursor: pointer;
 
-      img {
+      &--ani {
+        position: relative;
         width: 115px;
         height: 115px;
+        margin-bottom: 10px;
         border: 2px solid $color-box;
         border-radius: 50%;
-        margin: 0 auto 10px;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+
+        &::after {
+          @include rings(3s, 0s);
+        }
+
+        &::before {
+          @include rings(3s, 0.5s);
+        }
       }
 
       span {
@@ -75,7 +126,6 @@
       right: 2%;
       width: 70%;
       height: auto;
-      max-height: 150px;
       background: $color-box;
       border-radius: 1rem;
       box-shadow: 5px 5px 5px $color-secondary;
@@ -87,21 +137,21 @@
         font-size: 1.5rem;
         line-height: 2.5rem;
       }
-    }
 
-    &__popup:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 90%;
-      width: 0;
-      height: 0;
-      border: 20px solid transparent;
-      border-top-color: $color-box;
-      border-bottom: 0;
-      border-left: 0;
-      margin-left: -10px;
-      margin-bottom: -20px;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 90%;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: $color-box;
+        border-bottom: 0;
+        border-left: 0;
+        margin-left: -10px;
+        margin-bottom: -20px;
+      }
     }
 
     &__footer {
@@ -169,12 +219,27 @@
       margin-right: 20px;
       cursor: pointer;
 
-      img {
+      &--ani {
+        position: relative;
         width: 65px;
         height: 65px;
+        margin-bottom: 10px;
         border: 2px solid $color-box;
         border-radius: 50%;
-        margin: 0 auto 10px;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+
+        &::after {
+          @include rings(3s, 0s);
+        }
+
+        &::before {
+          @include rings(3s, 0.5s);
+        }
       }
 
       span {
@@ -190,7 +255,6 @@
       right: 2%;
       width: 70%;
       height: auto;
-      max-height: 120px;
       background: $color-box;
       border-radius: 1rem;
       box-shadow: 5px 5px 5px $color-secondary;

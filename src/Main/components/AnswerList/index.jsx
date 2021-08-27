@@ -6,7 +6,7 @@ import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
 
-const AnswerList = ({ List, picks, pickQna, location, className, match }) => {
+const AnswerList = ({ List, picks, pickQna, location, className }) => {
   return location.pathname === '/qna' ? (
     <section className={className ? className : cx('qna__list', 'qna__three')}>
       {List.map((item, i) => (
@@ -22,25 +22,24 @@ const AnswerList = ({ List, picks, pickQna, location, className, match }) => {
       ))}
     </section>
   ) : (
-    <section className={className ? className : cx('qna__list')}>
+    <section className={className ? className : cx('qna__one')}>
       {List.map((item, i) => (
         <Button
           key={i}
-          className={
-            picks.includes(i)
-              ? cx('qna__list--select')
-              : cx('qna__list--answer')
-          }
+          className={cx(
+            'qna__one--answer',
+            picks.includes(i) && 'qna__one--select'
+          )}
           onClick={() => pickQna(i)}
         >
           <div
             className={
               picks.includes(i)
-                ? cx('qna__list--answer--pick')
-                : cx('qna__list--answer--check')
+                ? cx('qna__one--answer--pick')
+                : cx('qna__one--answer--check')
             }
           />
-          <div className={cx('qna__list--answer--one')}>
+          <div className={cx('qna__one--answer--one')}>
             {item.title ?? item}
           </div>
         </Button>

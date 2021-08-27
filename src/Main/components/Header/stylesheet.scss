@@ -1,6 +1,10 @@
 @import 'common/stylesheet/index.scss';
 
 @include media('>medium') {
+  .background {
+    background-color: $color-theme;
+  }
+
   .header {
     position: absolute;
     top: 0;
@@ -84,6 +88,9 @@
 }
 
 @include media('<=small') {
+  .background {
+    background-color: $color-theme;
+  }
   .header {
     position: absolute;
     top: 0;

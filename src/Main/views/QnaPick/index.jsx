@@ -29,8 +29,7 @@ const QnaPick = ({ user, location, history, setQuestions }) => {
     if (list.includes(index)) {
       const states = list.filter(item => item !== index);
       return setList(states);
-    }
-    if (list.length < 3) {
+    } else if (list.length < 3) {
       return setList([...list, index]);
     }
   };
@@ -76,7 +75,7 @@ const QnaPick = ({ user, location, history, setQuestions }) => {
         <section className={cx('qna__pick--confirm')}>
           {list.length === 0 ? (
             <div className={cx('qna__pick--confirm--footer')}>
-              한개 이상을 선택해 주세요
+              한 개 이상 선택해 주세요
             </div>
           ) : (
             <Button

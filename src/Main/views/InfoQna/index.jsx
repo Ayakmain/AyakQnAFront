@@ -64,11 +64,12 @@ const InfoQna = ({ history, location, user, setUser }) => {
       birth: Number(user.birth),
       gender: user.gender,
     };
+
     switch (type) {
       case 'gender':
         return localStorageUpdate(userData, '/info/birth', 'confirm');
       case 'birth':
-        if (user.birth !== '') {
+        if (user.birth) {
           // TODO: 이부분에서 User 생성해주기 <- UserApi 붙이기
           // return UserApi.post(userData).then(({ dataUser }) => {
           //   localStorageUpdate(dataUser, '/intro/Symptoms', 'confirm');
@@ -77,8 +78,11 @@ const InfoQna = ({ history, location, user, setUser }) => {
           //   setUser({ ...dataUser });
           return localStorageUpdate(userData, '/intro/Symptoms', 'confirm');
           // });
+        } else {
+          // TODO 오류메세지 넘겨줘야함
+          return alert('날짜 입력');
+          //  setError();
         }
-        break;
       default:
         return localStorageUpdate(userData, '/info/gender', 'confirm');
     }

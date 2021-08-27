@@ -40,7 +40,9 @@ const Home = () => {
         className={cx('home__introImg')}
         onClick={() => setToggle(!toggle)}
       >
-        <img src={Image} alt="약사 이미지" />
+        <div className={cx('home__introImg--ani')}>
+          <img src={Image} alt="약사 이미지" />
+        </div>
         <span>
           <strong>아약쌤</strong>
         </span>
@@ -48,8 +50,11 @@ const Home = () => {
       {toggle && (
         <div className={cx('home__popup')}>
           <span className={cx('home__popup--span')}>
-            이 설문 조사는 약사님들이 설계한 질문지로 당신의 건강을 체크할 수
-            있습니다.
+            약사들이 설계한 질문을 기반으로 고객님께 꼭 필요한 영양소를
+            추천해드릴게요!
+            {/* <br />
+            <br />
+            지금까지 31,286명이 추천받았습니다. */}
           </span>
         </div>
       )}

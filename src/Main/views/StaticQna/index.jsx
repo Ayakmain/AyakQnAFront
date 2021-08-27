@@ -191,7 +191,7 @@ const StaticQna = ({
     page !== '' && (
       <Fragment>
         <article
-          className={cx('static__qna', page === 'list' && 'static__list')}
+          className={cx(page === 'info' && 'static__qna', 'static__list')}
         >
           <section className={cx('static__qna--info')}>
             {page === 'info' ? (
@@ -226,7 +226,7 @@ const StaticQna = ({
           <section className={cx('customized__confirm')}>
             {list.length === 0 ? (
               <div className={cx('customized__confirm__footer')}>
-                한개 이상을 선택해 주세요
+                한 개 이상 선택해 주세요
               </div>
             ) : (
               <Button

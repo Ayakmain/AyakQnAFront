@@ -10,7 +10,7 @@
     },
     {
       "type": "immune",
-      "title":"면역 / 향산화"
+      "title":"면역/항산화"
     },
     {
       "type": "hair",
@@ -22,7 +22,7 @@
     },
     {
       "type": "bone",
-      "title":"뼈 / 관절"
+      "title":"뼈/관절"
     },
     {
       "type": "sexual",
@@ -34,7 +34,7 @@
     },
     {
       "type": "tooth",
-      "title":"치아 / 잇몸"
+      "title":"치아/잇몸"
     },
     {
       "type": "stress",

@@ -3,7 +3,7 @@
 @include media('>medium') {
   .main {
     width: 800px;
-    height: 100vh;
+    height: 100%;
     margin: 0 auto;
     position: relative;
     background-color: $color-theme;
@@ -17,6 +17,7 @@
     margin: 0 auto;
     position: relative;
     background-color: $color-theme;
+    overflow: auto;
   }
 }
 
@@ -24,7 +25,7 @@
   height: 100%;
   max-height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .fade-enter,

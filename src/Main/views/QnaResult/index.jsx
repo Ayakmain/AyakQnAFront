@@ -38,9 +38,14 @@ const QnaResult = ({ user }) => {
     ).toFixed(2);
     setBmi(bmiNum);
     // BMI 지수가 30보다 작을때
-    let bmiPercent = (bmiNum / 30) * 100;
-    if (bmiNum <= 30) {
-      setPercent(bmiPercent - 20);
+    if (bmiNum <= 18.5) {
+      setPercent(((bmiNum / 100) * 100) / 5);
+    } else if (bmiNum > 18.5 && bmiNum <= 23) {
+      setPercent(((bmiNum / 100) * 100) / 5 + 20);
+    } else if (bmiNum > 23 && bmiNum <= 25) {
+      setPercent(((bmiNum / 100) * 100) / 5 + 40);
+    } else if (bmiNum > 25 && bmiNum <= 30) {
+      setPercent(((bmiNum / 100) * 100) / 5 + 60);
     } else {
       // 80% 더해주기 20% 내에서 나머지 BMI계산해주어야함
       setPercent(((bmiNum / 100) * 100) / 5 + 80);
@@ -48,6 +53,7 @@ const QnaResult = ({ user }) => {
   }, [user]);
 
   const toggleFunc = () => setToggle(!toggle);
+
   // 상담하기 버튼 눌렀을 때 작동되는 것
   const resultFunc = () => {
     if (window.innerWidth >= 800) {
@@ -75,7 +81,7 @@ const QnaResult = ({ user }) => {
             <li className={cx('result__header--info--item')}>
               <strong>나이</strong>
               {/* TODO: 이부분 Back에서 데이터 받아올것 */}
-              {moment().format('YYYY') - user.birth + 1}
+              {moment().format('YYYY') - user.birth + 1}세
             </li>
             <li className={cx('result__header--info--item')}>
               <strong>BMI</strong>
@@ -168,7 +174,7 @@ const QnaResult = ({ user }) => {
           </div>
           {/* TODO: 이부분 데이터 필요함 */}
           <span className={cx('result__header--intro')}>
-            건강한 신체를 위하여 체중관리를 하시는걸 추천 드립니다.
+            건강한 신체를 위해 체중관리를 하시는 것을 추천 드립니다.
           </span>
         </section>
         {/* 영양제 보여주는 부분 */}
@@ -195,7 +201,14 @@ const QnaResult = ({ user }) => {
         <Button className={cx('result__control--pulish')} onClick={toggleFunc}>
           <img src={Publish} alt="공유하기 버튼" />
         </Button>
-        <Button className={cx('result__control--confirm')} onClick={resultFunc}>
+        <Button
+          className={cx('result__control--confirm')}
+          href={
+            window.innerWidth < 800
+              ? 'http://m.ayak.kr/company/about.html'
+              : 'http://ayak.kr/company/about.html'
+          }
+        >
           상담하기
         </Button>
       </section>

@@ -1,9 +1,10 @@
 @import 'common/stylesheet/index.scss';
 
 .bar {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
+  max-width: 800px;
   height: 1.5vh;
   background-color: $color-button;
 

@@ -136,20 +136,12 @@ const QaHeader = ({ name, location, match, question }) => {
   return (
     <div
       className={
-        pageName !== 'qna' || qa
-          ? pageName === 'sun' || pageName === 'smoke'
-            ? cx('qa__wrap')
-            : cx('qa__section')
-          : cx('qa__question')
+        pageName !== 'qna' || qa ? cx('qa__section') : cx('qa__question')
       }
     >
       {(pageName || qa) && (
         <img
-          className={
-            pageName === 'sun' || pageName === 'smoke'
-              ? cx('qa__wrap--img')
-              : cx('qa__section--img')
-          }
+          className={cx('qa__section--img')}
           src={imgList.find(item => item.type === (qa ?? pageName)).img}
           alt={`${pageName} 사진`}
         />
@@ -157,9 +149,7 @@ const QaHeader = ({ name, location, match, question }) => {
       <Question
         className={
           (pageName !== 'qna' || qa) &&
-          pageName !== 'sun' &&
-          pageName !== 'smoke' &&
-          cx('qa__section--question')
+          cx('qa__section--question', pageName === 'sun' && 'qa__section--sun')
         }
         questionSelect={question}
         name={name && name}

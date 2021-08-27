@@ -9,13 +9,9 @@
     &__section {
       display: flex;
       position: relative;
-      top: 80px;
-      left: 0;
-      right: 0;
       width: 90%;
-      margin: auto;
       height: 200px;
-      margin-bottom: 100px;
+      margin: 70px auto 20px;
       border-bottom: 3px solid $color-box;
 
       &--img {
@@ -25,6 +21,7 @@
         width: 150px;
         height: auto;
         margin: auto;
+        border-radius: 15px;
       }
 
       &--question {
@@ -36,6 +33,11 @@
         width: 70%;
         font-size: 3.2rem;
         font-weight: lighter;
+        line-height: 4.5rem;
+      }
+
+      &--sun {
+        font-size: 2.4rem !important;
         line-height: 4.5rem;
       }
     }
@@ -76,7 +78,7 @@
       width: 90%;
       margin: auto;
       height: 100px;
-      margin-bottom: 100px;
+      margin-bottom: 20px;
       border-bottom: 3px solid $color-box;
 
       &--img {
@@ -98,6 +100,18 @@
         font-size: 1.6rem;
         font-weight: lighter;
         line-height: 3rem;
+      }
+
+      &--sun {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 70%;
+        transform: translateY(-50%);
+        font-size: 1.3rem !important;
+        text-align: left;
+        line-height: 3rem;
+        font-weight: lighter;
       }
     }
 

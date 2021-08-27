@@ -85,10 +85,22 @@ const InfoControl = ({
 
   return type === 'select' ? (
     <div className={cx('sex')}>
-      <Button className={cx('sex__btn')} onClick={() => selectFunc(true)}>
+      <Button
+        className={cx(
+          'sex__btn',
+          (pageName === 'sun' || pageName === 'smoke') && 'sex__toggle'
+        )}
+        onClick={() => selectFunc(true)}
+      >
         {pageName === 'gender' ? '남성' : '예'}
       </Button>
-      <Button className={cx('sex__btn')} onClick={() => selectFunc(false)}>
+      <Button
+        className={cx(
+          'sex__btn',
+          (pageName === 'sun' || pageName === 'smoke') && 'sex__toggle'
+        )}
+        onClick={() => selectFunc(false)}
+      >
         {pageName === 'gender' ? '여성' : '아니오'}
       </Button>
     </div>

@@ -3,10 +3,12 @@
 @include media('>medium') {
   .sex {
     width: 85%;
+    height: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 50px auto;
+    overflow-y: auto;
 
     &__btn {
       width: 300px;
@@ -15,12 +17,18 @@
       font-size: 3rem;
       font-weight: normal;
       background-color: $color-button;
+
+      &:hover {
+        border: 5px solid $color-secondary;
+        color: $color-secondary;
+        background-color: $color-theme;
+      }
     }
 
-    &__btn:hover {
-      border: 5px solid $color-secondary;
-      color: $color-secondary;
-      background-color: $color-theme;
+    &__toggle {
+      width: 250px !important;
+      height: 250px !important;
+      font-size: 2.5rem;
     }
   }
 
@@ -81,6 +89,7 @@
       position: absolute;
       right: 0;
       top: 0;
+      z-index: 1;
 
       &--img {
         width: 43.4px;
@@ -172,7 +181,7 @@
       border-radius: 15px;
       width: 95%;
       height: 80px;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       text-align: center;
       background-color: $color-theme;
       margin: auto;

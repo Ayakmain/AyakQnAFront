@@ -39,14 +39,13 @@ const Header = ({ location, history, user }) => {
   const questionList = JSON.parse(window.localStorage.getItem('qa'));
 
   const goToPreviousPath = () => {
-    // TODO: 이부분 수정해야함
-    if (pathname === '/height') {
+    if (pathname === '/height' && questionList.length !== 0) {
       return history.push(`/qna/${questionList[questionList.length - 1].type}`);
     }
     if (pathname.includes('qna') && pathname.split('/')[2]) {
       const index = questionList.findIndex(item => item.type === qa);
 
-      if (index === 0) {
+      if (index === 0 || questionList.length === 0) {
         return history.push('/qna');
       } else {
         return history.push(`/qna/${questionList[index - 1].type}`);
@@ -63,7 +62,7 @@ const Header = ({ location, history, user }) => {
 
   return (
     <Fragment>
-      <div className={cx('header')}>
+      <div className={cx('header', category !== 'intro' && 'background')}>
         {!category || category === 'result' ? (
           <Button to={'/'}>
             <img

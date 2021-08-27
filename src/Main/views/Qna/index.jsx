@@ -89,7 +89,7 @@ const Qna = ({ user, location, history, match }) => {
         <section className={cx('customized__confirm')}>
           {list.length === 0 ? (
             <div className={cx('customized__confirm__footer')}>
-              한개 이상을 선택해 주세요
+              한 개 이상 선택해 주세요
             </div>
           ) : (
             <Button

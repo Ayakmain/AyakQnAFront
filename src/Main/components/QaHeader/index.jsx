@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import { Question } from 'Main/components';
 import styles from './stylesheet.scss';
 import Know from 'static/images/logo.png';
-import Sun from 'static/images/sun.png';
+import Sunning from 'static/images/sunning.png';
 import Drink from 'static/images/drink.png';
 import Healthy from 'static/images/healthy.png';
 import Smoke from 'static/images/smoke.png';
@@ -106,8 +106,8 @@ const QaHeader = ({ name, location, match, question }) => {
       img: Healthy,
     },
     {
-      type: 'sun',
-      img: Sun,
+      type: 'sunning',
+      img: Sunning,
     },
     {
       type: 'smoke',
@@ -147,10 +147,7 @@ const QaHeader = ({ name, location, match, question }) => {
         />
       )}
       <Question
-        className={
-          (pageName !== 'qna' || qa) &&
-          cx('qa__section--question', pageName === 'sun' && 'qa__section--sun')
-        }
+        className={(pageName !== 'qna' || qa) && cx('qa__section--question')}
         questionSelect={question}
         name={name && name}
         pageName={pageName}

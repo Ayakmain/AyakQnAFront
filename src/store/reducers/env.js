@@ -22,7 +22,7 @@ const immutables = {
   },
   staticData: {
     healthy: null,
-    sun: Boolean,
+    sunning: Boolean,
     smoke: Boolean,
     drink: null,
     pragnant: null,

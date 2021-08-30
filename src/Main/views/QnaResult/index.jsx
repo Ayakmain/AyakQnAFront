@@ -25,7 +25,7 @@ const QnaResult = ({ user }) => {
         item.type === 'vitaminC' ||
         item.type === 'omega3' ||
         item.type === 'probiotics' ||
-        item.type === 'vitaminB' ||
+        item.type === 'vitaminB2' ||
         item.type === 'lutein' ||
         item.type === 'milkThistle'
     );
@@ -55,10 +55,10 @@ const QnaResult = ({ user }) => {
   const toggleFunc = () => setToggle(!toggle);
 
   // 상담하기 버튼 눌렀을 때 작동되는 것
-  const resultFunc = () => {
-    if (window.innerWidth >= 800) {
-    }
-  };
+  // const resultFunc = () => {
+  //   if (window.innerWidth >= 800) {
+  //   }
+  // };
 
   return (
     <Fragment>

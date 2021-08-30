@@ -48,7 +48,7 @@ const Question = ({
       case 'email':
         pageQa = findQa(pageName);
         break;
-      case 'sun':
+      case 'sunning':
         pageQa = findQa(pageName);
         break;
       case 'smoke':

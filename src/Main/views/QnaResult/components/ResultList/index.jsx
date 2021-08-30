@@ -32,7 +32,7 @@ const ResultList = ({ result }) => {
     { type: 'omega3', img: omega3 },
     { type: 'probiotics', img: probiotics },
     { type: 'milkThistle', img: milkThistle },
-    { type: 'vitaminB', img: vitaminB },
+    { type: 'vitaminB2', img: vitaminB },
   ];
 
   return (
@@ -69,6 +69,10 @@ const ResultList = ({ result }) => {
               </li>
             ))}
           </ul>
+          <div className={cx('prescription__daily')}>
+            <strong>일일 권장 섭취량 : </strong>
+            {item.daily}
+          </div>
           {/* ADD: 나중에 눌렀을 때 자세한 정보 사진 보는 부분 추가할 예정 */}
           {/* <Button
           className={cx('prescription__info--btn')}
@@ -83,3 +87,9 @@ const ResultList = ({ result }) => {
 };
 
 export default withRouter(ResultList);
+
+//  "_id": "612c654947dd38d94ef3ab9e",
+// "originalName": "biotin.png",
+// "_id": "612c662647dd38d94ef3aba1",
+//         "originalName": "vitaminA.png",
+// 612c672b47dd38d94ef3aba9

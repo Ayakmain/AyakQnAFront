@@ -16,6 +16,7 @@ import { Button } from 'components';
 import { staticQa } from 'static/json/Question.json';
 import styles from './stylesheet.scss';
 import { useEffect } from 'react';
+import { KnowApi, StaticApi, UserApi } from 'api';
 
 const cx = classNames.bind(styles);
 
@@ -41,7 +42,7 @@ const StaticQna = ({
       pageName === 'email'
     ) {
       setPage('info');
-    } else if (pageName === 'sun' || pageName === 'smoke') {
+    } else if (pageName === 'sunning' || pageName === 'smoke') {
       setPage('select');
     } else {
       setPage('list');
@@ -86,14 +87,18 @@ const StaticQna = ({
         }
       case 'weight':
         if (Number(value) >= 30 && Number(value) <= 190) {
-          return localStorageUpdate(
-            'user',
-            user,
-            type,
-            value,
-            '/healthy',
-            'confirm'
-          );
+          const body = { ...user, [type]: value };
+          // TODO: User 업데이트 부분 에러처리해줘야함
+          return UserApi.update(user._id, body).then(({ user }) => {
+            return localStorageUpdate(
+              'user',
+              user,
+              type,
+              value,
+              '/healthy',
+              'confirm'
+            );
+          });
         } else {
           return setError('몸무게는 30kg부터 190kg까지 입력가능합니다.');
         }
@@ -111,7 +116,7 @@ const StaticQna = ({
         } else {
           return setError('Email 방식이 올바르지 않습니다.');
         }
-      case 'sun':
+      case 'sunning':
         if (!value) {
           const selectNutritions = JSON.parse(
             window.localStorage.getItem('nutrition')
@@ -149,18 +154,39 @@ const StaticQna = ({
           staticData,
           pageName,
           qaList.find((item, i) => list.map(index => index === i)),
-          '/sun',
+          '/sunning',
           'confirm'
         );
       case 'drink':
-        return localStorageUpdate(
-          'staticData',
-          staticData,
-          pageName,
-          qaList.find((item, i) => list.map(index => index === i)),
-          user.gender === 'female' ? '/pregnant' : '/know',
-          'confirm'
-        );
+        if (user.gender === 'female') {
+          return localStorageUpdate(
+            'staticData',
+            staticData,
+            pageName,
+            qaList.find((item, i) => list.map(index => index === i)),
+            '/pregnant',
+            'confirm'
+          );
+        } else {
+          //TODO: 이부분 데이터 체크
+          // const body = {
+          //   ...staticData,
+          //   [pageName]: qaList.find((item, i) =>
+          //     list.map(index => index === i)
+          //   ),
+          // };
+          // return StaticApi.add({ author: user, body }).then(data => {
+          //   console.log(data);
+          return localStorageUpdate(
+            'staticData',
+            staticData,
+            pageName,
+            qaList.find((item, i) => list.map(index => index === i)),
+            '/know',
+            'confirm'
+          );
+          // });
+        }
       case 'pregnant':
         return localStorageUpdate(
           'staticData',
@@ -180,8 +206,10 @@ const StaticQna = ({
           'confirm'
         );
       case 'know':
-        // TODO: Know API연결
-        return history.push('/email');
+        return KnowApi.add({
+          answerAyak: qaList.find((item, i) => list.map(index => index === i)),
+          author: user,
+        }).then(() => history.push('/email'));
       default:
         break;
     }

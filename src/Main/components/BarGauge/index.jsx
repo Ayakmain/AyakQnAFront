@@ -17,7 +17,7 @@ const BarGauge = ({ location, user }) => {
     '/height',
     '/weight',
     '/healthy',
-    '/sun',
+    '/sunning',
     '/smoke',
     '/drink',
     '/know',

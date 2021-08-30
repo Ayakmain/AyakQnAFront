@@ -24,7 +24,7 @@ const Header = ({ location, history, user }) => {
     '/height',
     '/weight',
     '/healthy',
-    '/sun',
+    '/sunning',
     '/smoke',
     '/drink',
     '/pregnant',

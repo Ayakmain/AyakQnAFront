@@ -88,7 +88,7 @@ const InfoControl = ({
       <Button
         className={cx(
           'sex__btn',
-          (pageName === 'sun' || pageName === 'smoke') && 'sex__toggle'
+          (pageName === 'sunning' || pageName === 'smoke') && 'sex__toggle'
         )}
         onClick={() => selectFunc(true)}
       >
@@ -97,7 +97,7 @@ const InfoControl = ({
       <Button
         className={cx(
           'sex__btn',
-          (pageName === 'sun' || pageName === 'smoke') && 'sex__toggle'
+          (pageName === 'sunning' || pageName === 'smoke') && 'sex__toggle'
         )}
         onClick={() => selectFunc(false)}
       >
@@ -149,7 +149,10 @@ const InfoControl = ({
       ) : (
         <Fragment>
           <Button
-            className={cx('info__control--input')}
+            className={cx(
+              'info__control--input',
+              error && 'info__control--error'
+            )}
             onClick={() => setToggle(true)}
           >
             {user.birth ? (
@@ -158,6 +161,7 @@ const InfoControl = ({
               <span>나이를 입력해 주세요</span>
             )}
           </Button>
+          {error && <div className={cx('info__control--msg')}>{error}</div>}
           {toggle && (
             <div className={cx('info__control--select')}>
               {years.length > 0 &&

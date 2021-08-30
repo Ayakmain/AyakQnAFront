@@ -35,11 +35,6 @@
         font-weight: lighter;
         line-height: 4.5rem;
       }
-
-      &--sun {
-        font-size: 2.4rem !important;
-        line-height: 4.5rem;
-      }
     }
 
     &__wrap {
@@ -100,18 +95,6 @@
         font-size: 1.6rem;
         font-weight: lighter;
         line-height: 3rem;
-      }
-
-      &--sun {
-        position: absolute;
-        left: 0;
-        top: 50%;
-        width: 70%;
-        transform: translateY(-50%);
-        font-size: 1.3rem !important;
-        text-align: left;
-        line-height: 3rem;
-        font-weight: lighter;
       }
     }
 

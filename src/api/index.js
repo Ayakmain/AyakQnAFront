@@ -64,12 +64,28 @@ const NutritionApi = {
   update: PUT('/nutrition/:nutrition_id'),
 };
 
-const QAApi = {
-  add: POST('/qa/'),
-  delete: DELETE('/qa/:qa_id'),
-  get: GET('/qa/:qa_id'),
-  list: GET('/qa'),
-  update: PUT('/qa/:qa_id'),
+const StaticApi = {
+  add: POST('/static/'),
+  delete: DELETE('/static/:static_id'),
+  get: GET('/static/:static_id'),
+  list: GET('/static'),
+  update: PUT('/static/:static_id'),
 };
 
-export { UserApi, NutritionApi, QAApi };
+const KnowApi = {
+  add: POST('/knowayak/'),
+  delete: DELETE('/knowayak/:knowayak_id'),
+  get: GET('/knowayak/:knowayak_id'),
+  list: GET('/knowayak'),
+  update: PUT('/knowayak/:knowayak_id'),
+};
+
+const ResultApi = {
+  add: POST('/result/'),
+  delete: DELETE('/result/:result_id'),
+  get: GET('/result/:result_id'),
+  list: GET('/result'),
+  update: PUT('/result/:result_id'),
+};
+
+export { UserApi, NutritionApi, StaticApi, KnowApi, ResultApi };

@@ -101,6 +101,11 @@
         }
       }
     }
+
+    &__daily {
+      width: 95%;
+      margin: 15px auto;
+    }
   }
 }
 
@@ -263,6 +268,12 @@
           font-size: 0.8rem;
         }
       }
+    }
+
+    &__daily {
+      width: 95%;
+      margin: 10px auto;
+      text-align: right;
     }
   }
 }

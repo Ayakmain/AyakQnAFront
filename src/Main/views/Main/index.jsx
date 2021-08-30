@@ -16,6 +16,7 @@ import {
   QnaPick,
   StaticQna,
 } from '../index';
+import { UserApi } from 'api';
 
 const cx = classNames.bind(styles);
 
@@ -26,7 +27,10 @@ const Main = ({ setUser }) => {
     const localUser = JSON.parse(window.localStorage.getItem('user'));
 
     if (localUser) {
-      setUser({ ...localUser });
+      return UserApi.get(localUser._id).then(({ user }) => {
+        if (user) setUser({ ...user });
+        else setUser({ ...localUser });
+      });
     }
   }, []);
 
@@ -52,7 +56,7 @@ const Main = ({ setUser }) => {
                 <Route exact path="/height" component={StaticQna} />
                 <Route exact path="/weight" component={StaticQna} />
                 <Route exact path="/healthy" component={StaticQna} />
-                <Route exact path="/sun" component={StaticQna} />
+                <Route exact path="/sunning" component={StaticQna} />
                 <Route exact path="/smoke" component={StaticQna} />
                 <Route exact path="/drink" component={StaticQna} />
                 <Route exact path="/pregnant" component={StaticQna} />

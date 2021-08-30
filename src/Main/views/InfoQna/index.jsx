@@ -6,7 +6,7 @@ import classNames from 'classnames/bind';
 import { Question, InfoControl } from 'Main/components';
 import moment from 'moment';
 import { localStorage } from 'common/env';
-// import { UserApi } from 'api';
+import { UserApi } from 'api';
 import styles from './stylesheet.scss';
 
 const cx = classNames.bind(styles);
@@ -15,6 +15,7 @@ const InfoQna = ({ history, location, user, setUser }) => {
   const [pageName] = useState(location.pathname);
   const [years, setYears] = useState([]);
   const [toggle, setToggle] = useState(false);
+  const [error, setError] = useState(null);
 
   const Years = () => {
     const yearList = [];
@@ -64,27 +65,32 @@ const InfoQna = ({ history, location, user, setUser }) => {
       birth: Number(user.birth),
       gender: user.gender,
     };
+    console.log(user.gender);
 
     switch (type) {
       case 'gender':
         return localStorageUpdate(userData, '/info/birth', 'confirm');
       case 'birth':
         if (user.birth) {
-          // TODO: 이부분에서 User 생성해주기 <- UserApi 붙이기
-          // return UserApi.post(userData).then(({ dataUser }) => {
-          //   localStorageUpdate(dataUser, '/intro/Symptoms', 'confirm');
-          //   console.log('dataUser: ', dataUser);
-          //   console.log('userData: ', userData);
-          //   setUser({ ...dataUser });
-          return localStorageUpdate(userData, '/intro/Symptoms', 'confirm');
-          // });
+          // TODO: error 처리해주기
+          return UserApi.post(userData)
+            .then(({ user }) => {
+              if (user) {
+                setUser({ ...user });
+                return localStorageUpdate(user, '/intro/Symptoms', 'confirm');
+              } else return;
+            })
+            .catch(error => setError(error));
         } else {
           // TODO 오류메세지 넘겨줘야함
-          return alert('날짜 입력');
-          //  setError();
+          return setError('태어난 연도를 체크해주세요');
         }
       default:
-        return localStorageUpdate(userData, '/info/gender', 'confirm');
+        if (user.name) {
+          return localStorageUpdate(userData, '/info/gender', 'confirm');
+        } else {
+          return setError('이름을 입력해주세요');
+        }
     }
   };
 
@@ -99,6 +105,7 @@ const InfoQna = ({ history, location, user, setUser }) => {
           years={years}
           controlFunc={controlFunc}
           confirm={confirm}
+          error={error}
           localStorageUpdate={localStorageUpdate}
         />
       </section>

@@ -3,13 +3,7 @@ import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './stylesheet.scss';
 // import { Button } from 'components';
-import vitaminC from 'static/images/vitaminC.png';
-import lutein from 'static/images/lutein.png';
-import omega3 from 'static/images/omega3.png';
-import probiotics from 'static/images/probiotics.png';
-import milkThistle from 'static/images/milkThistle.png';
-import vitaminB from 'static/images/vitaminB.png';
-import Logo from 'static/images/logo.png';
+import { ImageApi } from 'api';
 
 const cx = classNames.bind(styles);
 
@@ -26,14 +20,7 @@ const ResultList = ({ result }) => {
   //   }
   //   setToggle(!toggle);
   // };
-  const imageList = [
-    { type: 'vitaminC', img: vitaminC },
-    { type: 'lutein', img: lutein },
-    { type: 'omega3', img: omega3 },
-    { type: 'probiotics', img: probiotics },
-    { type: 'milkThistle', img: milkThistle },
-    { type: 'vitaminB2', img: vitaminB },
-  ];
+  // result[0] && ImageApi.get(result[0].thumbnailImage);
 
   return (
     result.length > 0 &&
@@ -45,11 +32,7 @@ const ResultList = ({ result }) => {
         <div className={cx('prescription__cover', `cover__${index}`)}>
           <img
             className={cx('prescription__cover--img')}
-            src={
-              imageList.find(img => img.type === item.type && img)
-                ? imageList.find(img => img.type === item.type && img).img
-                : Logo
-            }
+            src={ImageApi.get(item.thumbnailImage)}
             alt="대표 알약 이미지"
           />
         </div>

@@ -16,7 +16,7 @@ import { Button } from 'components';
 import { staticQa } from 'static/json/Question.json';
 import styles from './stylesheet.scss';
 import { useEffect } from 'react';
-import { KnowApi, StaticApi, UserApi } from 'api';
+import { KnowApi, ResultApi, StaticApi, UserApi } from 'api';
 
 const cx = classNames.bind(styles);
 
@@ -61,11 +61,11 @@ const StaticQna = ({
     }
   };
 
-  const localStorageUpdate = (storage, data, type, value, url, controll) => {
-    if (storage === 'user') setUser({ ...data, [type]: value });
-    else if (storage === 'staticData') setStatic({ ...data, [type]: value });
-    localStorage(storage, data, { ...data, [type]: value });
-    if (controll === 'confirm') {
+  const localStorageUpdate = (storage, data, url, control) => {
+    if (storage === 'user') setUser({ ...data });
+    else if (storage === 'staticData') setStatic({ ...data });
+    localStorage(storage, data, { ...data });
+    if (control === 'confirm') {
       return url && history.push(url);
     }
   };
@@ -76,9 +76,7 @@ const StaticQna = ({
         if (Number(value) >= 100 && Number(value) <= 250) {
           return localStorageUpdate(
             'user',
-            user,
-            type,
-            value,
+            { ...user, [type]: value },
             '/weight',
             'confirm'
           );
@@ -90,28 +88,35 @@ const StaticQna = ({
           const body = { ...user, [type]: value };
           // TODO: User 업데이트 부분 에러처리해줘야함
           return UserApi.update(user._id, body).then(({ user }) => {
-            return localStorageUpdate(
-              'user',
-              user,
-              type,
-              value,
-              '/healthy',
-              'confirm'
-            );
+            return localStorageUpdate('user', user, '/healthy', 'confirm');
           });
         } else {
           return setError('몸무게는 30kg부터 190kg까지 입력가능합니다.');
         }
       case 'email':
         if (isEmail(value)) {
-          return localStorageUpdate(
-            'user',
-            user,
-            type,
-            value,
-            '/intro/result',
-            'confirm'
-          );
+          return UserApi.update(user._id, { ...user, value })
+            .then(({ user }) => {
+              if (user) {
+                return localStorageUpdate(
+                  'user',
+                  { ...user, [type]: value },
+                  '/intro/result',
+                  'confirm'
+                );
+              }
+            })
+            .then(() => {
+              const body = {
+                author: user,
+                nutritions: JSON.parse(
+                  window.localStorage.getItem('nutrition')
+                ),
+              };
+              return ResultApi.add(body);
+            })
+            .then(({ result }) => localStorage('result', result))
+            .catch(error => setError(error));
           // TODO: 이부분에서 이메일 체크하고 이메일 보내는 API 적용해야함
         } else {
           return setError('Email 방식이 올바르지 않습니다.');
@@ -126,18 +131,14 @@ const StaticQna = ({
         }
         return localStorageUpdate(
           'staticData',
-          staticData,
-          type,
-          value,
+          { ...staticData, [type]: value },
           '/smoke',
           'confirm'
         );
       case 'smoke':
         return localStorageUpdate(
           'staticData',
-          staticData,
-          type,
-          value,
+          { ...staticData, [type]: value },
           '/drink',
           'confirm'
         );
@@ -151,9 +152,12 @@ const StaticQna = ({
       case 'healthy':
         return localStorageUpdate(
           'staticData',
-          staticData,
-          pageName,
-          qaList.find((item, i) => list.map(index => index === i)),
+          {
+            ...staticData,
+            [pageName]: qaList.find((item, i) =>
+              list.map(index => index === i)
+            ),
+          },
           '/sunning',
           'confirm'
         );
@@ -163,48 +167,71 @@ const StaticQna = ({
             'staticData',
             staticData,
             pageName,
-            qaList.find((item, i) => list.map(index => index === i)),
+            qaList.find((item, i) => list.map(index => index === i)).title,
             '/pregnant',
             'confirm'
           );
         } else {
           //TODO: 이부분 데이터 체크
-          // const body = {
-          //   ...staticData,
-          //   [pageName]: qaList.find((item, i) =>
-          //     list.map(index => index === i)
-          //   ),
-          // };
-          // return StaticApi.add({ author: user, body }).then(data => {
-          //   console.log(data);
-          return localStorageUpdate(
-            'staticData',
-            staticData,
-            pageName,
-            qaList.find((item, i) => list.map(index => index === i)),
-            '/know',
-            'confirm'
-          );
-          // });
+          const body = {
+            ...staticData,
+            [pageName]: qaList.find((item, i) => list.map(index => index === i))
+              .title,
+          };
+          // TODO: 이부분 백엔드 수정 필요
+          if (staticData._id) {
+            return StaticApi.update(staticData._id, { author: user, ...body })
+              .then(({ basic }) => {
+                return localStorageUpdate(
+                  'staticData',
+                  basic,
+                  '/know',
+                  'confirm'
+                );
+              })
+              .catch(error => alert(error));
+          } else {
+            return StaticApi.add({ author: user, ...body })
+              .then(({ basic }) => {
+                return localStorageUpdate(
+                  'staticData',
+                  basic,
+                  '/know',
+                  'confirm'
+                );
+              })
+              .catch(error => alert(error));
+          }
         }
       case 'pregnant':
+        const selectNutritions = JSON.parse(
+          window.localStorage.getItem('nutrition')
+        );
+        selectNutritions.push(
+          ...qaList.find((item, i) => list.map(index => index === i)).nutrition
+        );
+        localStorage('nutrition', '', selectNutritions);
         return localStorageUpdate(
           'staticData',
-          staticData,
-          pageName,
-          qaList.find((item, i) => list.map(index => index === i)),
+          {
+            ...staticData,
+            [pageName]: qaList.find((item, i) => list.map(index => index === i))
+              .title,
+          },
           '/pms',
           'confirm'
         );
       case 'pms':
-        return localStorageUpdate(
-          'staticData',
-          staticData,
-          pageName,
-          qaList.find((item, i) => list.map(index => index === i)),
-          '/know',
-          'confirm'
-        );
+        const body = {
+          ...staticData,
+          [pageName]: qaList.find((item, i) => list.map(index => index === i))
+            .title,
+        };
+        return StaticApi.add({ author: user, ...body })
+          .then(({ basic }) => {
+            return localStorageUpdate('staticData', basic, '/know', 'confirm');
+          })
+          .catch(error => alert(error));
       case 'know':
         return KnowApi.add({
           answerAyak: qaList.find((item, i) => list.map(index => index === i)),

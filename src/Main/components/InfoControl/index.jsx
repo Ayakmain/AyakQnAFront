@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { Fragment, useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -46,7 +47,7 @@ const InfoControl = ({
       default:
         return initialFunc('', 'select');
     }
-  }, [pageName, user]);
+  }, [pageName]);
 
   const selectFunc = value => {
     if (pageName === 'gender') {

@@ -88,4 +88,8 @@ const ResultApi = {
   update: PUT('/result/:result_id'),
 };
 
-export { UserApi, NutritionApi, StaticApi, KnowApi, ResultApi };
+const ImageApi = {
+  get: id => `${endpoint}/image/${id}`,
+};
+
+export { UserApi, NutritionApi, StaticApi, KnowApi, ResultApi, ImageApi };

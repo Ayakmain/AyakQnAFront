@@ -17,20 +17,22 @@ import {
   StaticQna,
 } from '../index';
 import { UserApi } from 'api';
+import { localStorage } from 'common/env';
 
 const cx = classNames.bind(styles);
 
 const Main = ({ setUser }) => {
   // localstorage에 있는 데이터들 user로 업데이트 해주는 부분
-  useEffect(() => {
+  useEffect(async () => {
     // localhost에서 user 가져오기
     const localUser = JSON.parse(window.localStorage.getItem('user'));
 
-    if (localUser) {
-      return UserApi.get(localUser._id).then(({ user }) => {
-        if (user) setUser({ ...user });
-        else setUser({ ...localUser });
-      });
+    if (localUser && localUser._id) {
+      const { user } = await UserApi.get(localUser._id);
+      if (user) {
+        localStorage('user', user);
+        setUser({ ...user });
+      }
     }
   }, []);
 
@@ -52,7 +54,7 @@ const Main = ({ setUser }) => {
                 <Route exact path="/info/birth" component={InfoQna} />
                 <Route exact path="/qna" component={QnaPick} />
                 <Route exact path="/qna/:qa" component={Qna} />
-                <Route exact path="/result" component={QnaResult} />
+                <Route exact path="/result/:_id" component={QnaResult} />
                 <Route exact path="/height" component={StaticQna} />
                 <Route exact path="/weight" component={StaticQna} />
                 <Route exact path="/healthy" component={StaticQna} />

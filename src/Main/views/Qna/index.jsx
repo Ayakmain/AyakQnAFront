@@ -54,8 +54,7 @@ const Qna = ({ user, location, history, match }) => {
       // 필터 돌려줘야함 (null이나 중복제거 필요)
       let concatArr = selectNutritions
         .concat(...selectNutrition)
-        .filter(Boolean) // null 제거
-        .filter((item, index) => selectNutritions.indexOf(item) === index);
+        .filter(Boolean); // null 제거
 
       if (pickLength - 1 === index) {
         localStorage('nutrition', '', concatArr);

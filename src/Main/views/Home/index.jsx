@@ -7,6 +7,7 @@ import styles from './stylesheet.scss';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { localStorage } from 'common/env';
+
 const cx = classNames.bind(styles);
 
 const Home = () => {

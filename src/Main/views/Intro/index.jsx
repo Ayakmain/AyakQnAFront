@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { actions as envActions } from 'store/reducers/env';
@@ -9,6 +10,7 @@ import Basic from 'static/images/basicInfo.jpeg';
 import Symptom from 'static/images/symptomInfo.jpeg';
 import Life from 'static/images/lifeInfo.jpeg';
 import styles from './stylesheet.scss';
+// import { ResultApi } from 'api';
 
 const cx = classNames.bind(styles);
 
@@ -16,6 +18,7 @@ const InfoIntro = ({ history, location, user }) => {
   const { pathname } = location;
   const pageName = pathname.split('/')[2];
   const [toggle, setToggle] = useState(false);
+  const result = JSON.parse(window.localStorage.getItem('result'));
 
   useEffect(() => {
     switch (pageName) {
@@ -30,7 +33,8 @@ const InfoIntro = ({ history, location, user }) => {
         break;
       default:
         setTimeout(() => setToggle(true), 1);
-        setTimeout(() => history.push('/result'), 3000);
+        if (result)
+          setTimeout(() => history.push(`/result/${result._id}`), 3000);
         break;
     }
   }, [history, pageName]);

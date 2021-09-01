@@ -39,20 +39,11 @@ const InfoQna = ({ history, location, user, setUser }) => {
   // Local에 저장되어 있는 값 state에 저장
   // name이 없으면 이름 입력창으로 이동xw
   useEffect(() => {
-    const localUser = JSON.parse(window.localStorage.getItem('user'));
-    // /info/name이 아니고 localstorage가 없거나 localStorage.name이 없을 시에 되돌려주는 부분
-    if (
-      pageName !== '/info/name' &&
-      user.name === '' &&
-      localUser.user === ''
-    ) {
-      return history.push('/info/name');
-    }
     // /info/age 일 때 년도를 불러 주는 부분
     if (pageName === '/info/birth') {
       return Years();
     }
-  }, [pageName, history, user]);
+  }, [pageName, history]);
 
   const controlFunc = (type, value) => {
     type === 'year' && setToggle(false);
@@ -65,7 +56,6 @@ const InfoQna = ({ history, location, user, setUser }) => {
       birth: Number(user.birth),
       gender: user.gender,
     };
-    console.log(user.gender);
 
     switch (type) {
       case 'gender':
@@ -73,14 +63,25 @@ const InfoQna = ({ history, location, user, setUser }) => {
       case 'birth':
         if (user.birth) {
           // TODO: error 처리해주기
-          return UserApi.post(userData)
-            .then(({ user }) => {
-              if (user) {
-                setUser({ ...user });
-                return localStorageUpdate(user, '/intro/Symptoms', 'confirm');
-              } else return;
-            })
-            .catch(error => setError(error));
+          if (user._id) {
+            return UserApi.update(user._id, { userData })
+              .then(({ user }) => {
+                if (user) {
+                  setUser({ ...user });
+                  return localStorageUpdate(user, '/intro/Symptoms', 'confirm');
+                } else return;
+              })
+              .catch(error => setError(error));
+          } else {
+            return UserApi.post(userData)
+              .then(({ user }) => {
+                if (user) {
+                  setUser({ ...user });
+                  return localStorageUpdate(user, '/intro/Symptoms', 'confirm');
+                } else return;
+              })
+              .catch(error => setError(error));
+          }
         } else {
           // TODO 오류메세지 넘겨줘야함
           return setError('태어난 연도를 체크해주세요');

@@ -22,7 +22,7 @@ const store = createStore(
 const render = Component =>
   ReactDOM.render(
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Component />
       </BrowserRouter>
     </Provider>,

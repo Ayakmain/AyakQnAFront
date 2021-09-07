@@ -18,7 +18,6 @@ const InfoIntro = ({ history, location, user }) => {
   const { pathname } = location;
   const pageName = pathname.split('/')[2];
   const [toggle, setToggle] = useState(false);
-  const result = JSON.parse(window.localStorage.getItem('result'));
 
   useEffect(() => {
     switch (pageName) {
@@ -33,8 +32,13 @@ const InfoIntro = ({ history, location, user }) => {
         break;
       default:
         setTimeout(() => setToggle(true), 1);
-        if (result)
-          setTimeout(() => history.push(`/result/${result._id}`), 3000);
+        setTimeout(
+          () =>
+            history.push(
+              `/result/${JSON.parse(window.localStorage.getItem('result'))._id}`
+            ),
+          3000
+        );
         break;
     }
   }, [history, pageName]);

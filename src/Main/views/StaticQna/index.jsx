@@ -20,20 +20,14 @@ import { KnowApi, ResultApi, StaticApi, UserApi } from 'api';
 
 const cx = classNames.bind(styles);
 
-const StaticQna = ({
-  history,
-  location,
-  user,
-  setUser,
-  staticData,
-  setStatic,
-}) => {
+const StaticQna = ({ history, location, user, setUser, setStatic }) => {
   const { pathname } = location;
   const pageName = pathname.split('/')[1];
   const [error, setError] = useState(null);
   const [page, setPage] = useState('');
   const [list, setList] = useState([]);
   const [qaList, setQaList] = useState([]);
+  const staticData = JSON.parse(window.localStorage.getItem('staticData'));
 
   useEffect(() => {
     if (
@@ -95,31 +89,20 @@ const StaticQna = ({
         }
       case 'email':
         if (isEmail(value)) {
-          return UserApi.update(user._id, { ...user, value })
-            .then(({ user }) => {
-              if (user) {
-                return localStorageUpdate(
-                  'user',
-                  { ...user, [type]: value },
-                  '/intro/result',
-                  'confirm'
-                );
-              }
-            })
-            .then(() => {
-              const body = {
-                author: user,
-                nutritions: JSON.parse(
-                  window.localStorage.getItem('nutrition')
-                ),
-              };
-              return ResultApi.add(body);
-            })
+          // email 넣어주고 수정
+          user.email = value;
+          const body = {
+            author: user,
+            nutritions: JSON.parse(window.localStorage.getItem('nutrition')),
+          };
+          // 결과 부분 수정
+          return ResultApi.add(body)
             .then(({ result }) => localStorage('result', result))
+            .then(() => history.push('/intro/result'))
             .catch(error => setError(error));
           // TODO: 이부분에서 이메일 체크하고 이메일 보내는 API 적용해야함
         } else {
-          return setError('Email 방식이 올바르지 않습니다.');
+          return setError('Email 방식이 것 올바르지 않습니다.');
         }
       case 'sunning':
         if (!value) {
@@ -148,6 +131,9 @@ const StaticQna = ({
   };
 
   const confirmStatic = () => {
+    const selectNutritions = JSON.parse(
+      window.localStorage.getItem('nutrition')
+    );
     switch (pageName) {
       case 'healthy':
         return localStorageUpdate(
@@ -165,9 +151,12 @@ const StaticQna = ({
         if (user.gender === 'female') {
           return localStorageUpdate(
             'staticData',
-            staticData,
-            pageName,
-            qaList.find((item, i) => list.map(index => index === i)).title,
+            {
+              ...staticData,
+              [pageName]: qaList.find((item, i) =>
+                list.map(index => index === i)
+              ).title,
+            },
             '/pregnant',
             'confirm'
           );
@@ -204,9 +193,6 @@ const StaticQna = ({
           }
         }
       case 'pregnant':
-        const selectNutritions = JSON.parse(
-          window.localStorage.getItem('nutrition')
-        );
         selectNutritions.push(
           ...qaList.find((item, i) => list.map(index => index === i)).nutrition
         );
@@ -222,16 +208,40 @@ const StaticQna = ({
           'confirm'
         );
       case 'pms':
+        selectNutritions.push(
+          ...qaList.find((item, i) => list.map(index => index === i)).nutrition
+        );
+        localStorage('nutrition', '', selectNutritions);
         const body = {
           ...staticData,
           [pageName]: qaList.find((item, i) => list.map(index => index === i))
             .title,
         };
-        return StaticApi.add({ author: user, ...body })
-          .then(({ basic }) => {
-            return localStorageUpdate('staticData', basic, '/know', 'confirm');
-          })
-          .catch(error => alert(error));
+
+        console.log('durl: ', staticData);
+        if (staticData._id) {
+          return StaticApi.update(staticData._id, { author: user, ...body })
+            .then(({ basic }) => {
+              return localStorageUpdate(
+                'staticData',
+                basic,
+                '/know',
+                'confirm'
+              );
+            })
+            .catch(error => alert(error));
+        } else {
+          return StaticApi.add({ author: user, ...body })
+            .then(({ basic }) => {
+              return localStorageUpdate(
+                'staticData',
+                basic,
+                '/know',
+                'confirm'
+              );
+            })
+            .catch(error => alert(error));
+        }
       case 'know':
         return KnowApi.add({
           answerAyak: qaList.find((item, i) => list.map(index => index === i)),

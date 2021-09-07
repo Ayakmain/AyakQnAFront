@@ -31,7 +31,7 @@
         transform: translateY(-50%);
         text-align: left;
         width: 70%;
-        font-size: 3.2rem;
+        font-size: 3rem;
         font-weight: lighter;
         line-height: 4.5rem;
       }
@@ -83,6 +83,7 @@
         width: 80px;
         height: auto;
         margin: auto;
+        border-radius: 15px;
       }
 
       &--question {

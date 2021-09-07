@@ -167,6 +167,10 @@
         }
       }
 
+      ul {
+        min-height: 80px;
+      }
+
       &--description {
         width: 95%;
         line-height: 1.5rem;
@@ -275,8 +279,7 @@
 
     &__daily {
       width: 95%;
-      margin: 10px auto;
-      text-align: right;
+      margin: 15px auto;
     }
   }
 }

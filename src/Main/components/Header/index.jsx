@@ -131,7 +131,7 @@ const Header = ({ location, history, user }) => {
               >
                 <strong>AYAK</strong>
                 <br />
-                PRODUCT
+                IMMUNE
               </Button>
             </li>
             <li className={cx('menu__ul--list')}>
@@ -139,13 +139,13 @@ const Header = ({ location, history, user }) => {
                 className={cx('menu__ul--list--btn')}
                 href={
                   window.innerWidth < 800
-                    ? 'http://m.ayak.kr/company/pharm.html'
-                    : 'http://ayak.kr/company/pharm.html'
+                    ? 'http://m.ayak.kr/product/list.html?cate_no=44'
+                    : 'http://ayak.kr/product/list.html?cate_no=44'
                 }
               >
                 <strong>AYAK</strong>
                 <br />
-                PHARMACY
+                CARE
               </Button>
             </li>
             <li className={cx('menu__ul--list')}>

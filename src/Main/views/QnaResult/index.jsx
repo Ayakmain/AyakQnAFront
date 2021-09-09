@@ -7,8 +7,7 @@ import styles from './stylesheet.scss';
 import Publish from 'static/images/publish.png';
 import AD from 'static/images/ad.jpeg';
 import { Button, MetaTag } from 'components';
-import { ResultList, PublicPopup } from './components';
-// import { Nutrient } from 'static/json/list';
+import { ResultList, PublicPopup, BMIControl } from './components';
 import { ResultApi } from 'api';
 
 const cx = classNames.bind(styles);
@@ -53,12 +52,6 @@ const QnaResult = ({ match }) => {
 
   const toggleFunc = () => setToggle(!toggle);
 
-  // 상담하기 버튼 눌렀을 때 작동되는 것
-  // const resultFunc = () => {
-  //   if (window.innerWidth >= 800) {
-  //   }
-  // };
-
   return (
     user && (
       <Fragment>
@@ -80,98 +73,14 @@ const QnaResult = ({ match }) => {
               </li>
               <li className={cx('result__header--info--item')}>
                 <strong>나이</strong>
-                {/* TODO: 이부분 Back에서 데이터 받아올것 */}
                 {user.age} 세
               </li>
               <li className={cx('result__header--info--item')}>
                 <strong>BMI</strong>
-                {/* 이부분 BMI 계산 결과값 추출해야함 */}
                 {user.bmi}
               </li>
             </ul>
-            <ul className={cx('result__header--bmi')}>
-              <li
-                className={cx(
-                  'result__header--bmi--list',
-                  percent < 20 && 'select'
-                )}
-              >
-                저체중
-              </li>
-              <li
-                className={cx(
-                  'result__header--bmi--list',
-                  percent >= 20 && percent < 40 && 'select'
-                )}
-              >
-                정상
-              </li>
-              <li
-                className={cx(
-                  'result__header--bmi--list',
-                  percent >= 40 && percent < 60 && 'select'
-                )}
-              >
-                과체중
-              </li>
-              <li
-                className={cx(
-                  'result__header--bmi--list',
-                  percent >= 60 && percent < 80 && 'select'
-                )}
-              >
-                비만
-              </li>
-              <li
-                className={cx(
-                  'result__header--bmi--list',
-                  percent >= 80 && 'select'
-                )}
-              >
-                중도비만
-              </li>
-            </ul>
-            <div className={cx('result__header--section')}>
-              <ul className={cx('result__header--bmi', 'result__header--wrap')}>
-                <li
-                  className={cx(
-                    'result__header--bmi--list',
-                    'result__header--bmi--gauge'
-                  )}
-                />
-                <li
-                  className={cx(
-                    'result__header--bmi--list',
-                    'result__header--bmi--gauge'
-                  )}
-                />
-                <li
-                  className={cx(
-                    'result__header--bmi--list',
-                    'result__header--bmi--gauge'
-                  )}
-                />
-                <li
-                  className={cx(
-                    'result__header--bmi--list',
-                    'result__header--bmi--gauge'
-                  )}
-                />
-                <li
-                  className={cx(
-                    'result__header--bmi--list',
-                    'result__header--bmi--gauge'
-                  )}
-                />
-              </ul>
-              <div
-                className={cx('result__header--section--gauge')}
-                style={{
-                  width: `${percent}%`,
-                  maxWidth: '101%',
-                }}
-              />
-            </div>
+            <BMIControl percent={percent} />
             {/* TODO: 이부분 데이터 필요함 */}
             <span className={cx('result__header--intro')}>
               건강한 신체를 위해 체중관리를 하시는 것을 추천 드립니다.

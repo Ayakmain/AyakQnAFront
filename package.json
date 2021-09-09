@@ -26,6 +26,7 @@
     "react-transition-group": "^4.4.2",
     "redux": "^4.1.0",
     "redux-actions": "^2.6.5",
+    "redux-persist": "^6.0.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -36,7 +37,7 @@
     "publish": "git add . && git commit && git push",
     "eslint": "eslint . --ext .jsx --fix, --ignore-pattern node_modules/",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build" 
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

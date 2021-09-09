@@ -37,14 +37,16 @@
 @include media('>medium') {
   .home {
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     &__main {
       padding: 20px;
       width: 90%;
       height: auto;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
 
       &--text {
         display: block;
@@ -74,6 +76,7 @@
 
     &__intro {
       position: absolute;
+      left: 0;
       bottom: 4rem;
       padding-left: 20px;
       margin-bottom: 10px;
@@ -166,15 +169,16 @@
 
 @include media('<=small') {
   .home {
-    margin-top: 80px;
     width: 100%;
-    height: 0;
-    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     &__main {
       padding: 20px;
       width: 90%;
-      transform: translateY(40%);
 
       &--text {
         display: block;
@@ -204,6 +208,7 @@
 
     &__intro {
       position: fixed;
+      left: 0;
       bottom: 3rem;
       padding-left: 20px;
       margin-bottom: 10px;
@@ -251,7 +256,7 @@
 
     &__popup {
       position: fixed;
-      bottom: 9rem;
+      bottom: 8.2rem;
       right: 2%;
       width: 70%;
       height: auto;
@@ -271,7 +276,7 @@
         content: '';
         position: absolute;
         bottom: 0;
-        left: 93%;
+        left: 90%;
         width: 0;
         height: 0;
         border: 20px solid transparent;

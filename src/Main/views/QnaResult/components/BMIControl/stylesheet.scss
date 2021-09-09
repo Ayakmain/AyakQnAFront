@@ -1,0 +1,97 @@
+@import 'common/stylesheet/index.scss';
+
+@include media('>medium') {
+  .bmi {
+    width: 90%;
+    margin: 0 auto 5px;
+    display: flex;
+    height: 30px;
+    background-color: none;
+
+    &__list {
+      width: 20%;
+      height: 1.5rem;
+      text-align: center;
+      font-size: 1.4rem;
+      margin: auto;
+      background-color: none;
+    }
+
+    &__gauge {
+      border-right: 1px solid rgb(230, 230, 230);
+      z-index: 1;
+    }
+
+    &__wrap {
+      border: 1px solid rgb(244, 149, 152);
+      border-radius: 50px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      width: 100% !important;
+    }
+
+    &__section {
+      position: relative;
+      width: 90%;
+      margin: auto;
+
+      &--gauge {
+        position: absolute;
+        top: 0;
+        width: 30%;
+        height: 100%;
+        z-index: 0;
+        background-color: $color-secondary;
+        border-radius: 50px;
+      }
+    }
+  }
+}
+
+@include media('<=small') {
+  .bmi {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    height: 25px;
+    background-color: none;
+
+    &__list {
+      width: 20%;
+      text-align: center;
+      font-size: 0.8rem;
+      background-color: none;
+      margin: auto;
+    }
+
+    &__gauge {
+      height: 1.35rem;
+      border-right: 1px solid rgb(230, 230, 230);
+      z-index: 1;
+    }
+
+    &__section {
+      position: relative;
+      width: 90%;
+      margin: auto;
+
+      &--gauge {
+        position: absolute;
+        top: 0;
+        width: 30%;
+        height: 100%;
+        z-index: 0;
+        background-color: $color-secondary;
+        border-radius: 50px;
+      }
+    }
+
+    &__wrap {
+      border: 1px solid rgb(244, 149, 152);
+      border-radius: 50px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      width: 100% !important;
+    }
+  }
+}

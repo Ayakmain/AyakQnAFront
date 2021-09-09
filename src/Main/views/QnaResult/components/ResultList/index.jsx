@@ -70,9 +70,3 @@ const ResultList = ({ result }) => {
 };
 
 export default withRouter(ResultList);
-
-//  "_id": "612c654947dd38d94ef3ab9e",
-// "originalName": "biotin.png",
-// "_id": "612c662647dd38d94ef3aba1",
-//         "originalName": "vitaminA.png",
-// 612c672b47dd38d94ef3aba9

@@ -1,12 +1,11 @@
 @import 'common/stylesheet/index.scss';
 
 .qna {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-  height: 70vh;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   &__info {
     width: 100%;

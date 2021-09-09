@@ -218,7 +218,6 @@ const StaticQna = ({ history, location, user, setUser, setStatic }) => {
             .title,
         };
 
-        console.log('durl: ', staticData);
         if (staticData._id) {
           return StaticApi.update(staticData._id, { author: user, ...body })
             .then(({ basic }) => {

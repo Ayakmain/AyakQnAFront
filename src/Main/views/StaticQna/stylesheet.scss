@@ -2,19 +2,16 @@
 
 @include media('>medium') {
   .static__list {
-    position: absolute;
-    top: 0 !important;
-    left: 0;
-    right: 0;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-top: 70px;
-    transform: translateY(0) !important;
-    max-height: 75vh;
     overflow-y: auto;
   }
 
   .static__qna {
-    top: 50%;
-    transform: translateY(-50%);
     padding: 50px 20px 150px !important;
 
     &--info {
@@ -28,18 +25,15 @@
 
 @include media('<=small') {
   .static__list {
-    position: absolute;
-    top: 0 !important;
-    left: 0;
-    right: 0;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-top: 70px;
-    transform: translateY(0) !important;
   }
 
   .static__qna {
-    top: 50%;
-    transform: translateY(-50%);
-
     &--info {
       width: 100%;
       height: 100%;

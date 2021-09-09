@@ -1,15 +1,11 @@
 import { combineActions, createAction, handleActions } from 'redux-actions';
 
 const prefix = 'ENVIRONMENT';
-const setAnswers = createAction(`${prefix}/SET_ANSWERS`, answers => ({
-  answers,
-})); // 질문에 대한 답을 저장하는 부분
 const setQuestions = createAction(`${prefix}/SET_QUESTIONS`, questions => ({
   questions,
 })); // 질문 선택하는 부분
 
 export const actions = {
-  setAnswers,
   setQuestions,
 };
 
@@ -26,7 +22,7 @@ const mutables = {};
 export default handleActions(
   {
     // 액션을 묶어주는 부분
-    [combineActions(setAnswers, setQuestions)]: (state, { payload }) => ({
+    [combineActions(setQuestions)]: (state, { payload }) => ({
       ...state,
       ...payload,
     }),

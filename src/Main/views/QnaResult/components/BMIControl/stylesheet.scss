@@ -38,9 +38,10 @@
       &--gauge {
         position: absolute;
         top: 0;
-        width: 30%;
         height: 100%;
         z-index: 0;
+        width: 0%;
+        transition: width 1s linear;
         background-color: $color-secondary;
         border-radius: 50px;
       }
@@ -78,8 +79,8 @@
       &--gauge {
         position: absolute;
         top: 0;
-        width: 30%;
         height: 100%;
+        transition: width 1s linear;
         z-index: 0;
         background-color: $color-secondary;
         border-radius: 50px;

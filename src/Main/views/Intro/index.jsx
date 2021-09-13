@@ -32,6 +32,7 @@ const InfoIntro = ({ history, location, user }) => {
         break;
       default:
         setTimeout(() => setToggle(true), 1);
+        console.log(JSON.parse(window.localStorage.getItem('result')));
         setTimeout(
           () =>
             history.push(

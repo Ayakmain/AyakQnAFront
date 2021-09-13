@@ -22,7 +22,7 @@ const QnaResult = ({ match }) => {
     ResultApi.get(match.params._id)
       .then(({ result }) => {
         setResult(result.nutritions);
-        bmiPercent(result.author.bmi);
+        setTimeout(() => bmiPercent(result.author.bmi), 500);
         return setUser(result.author);
       })
       .then(() => {
@@ -83,7 +83,9 @@ const QnaResult = ({ match }) => {
             <BMIControl percent={percent} />
             {/* TODO: 이부분 데이터 필요함 */}
             <span className={cx('result__header--intro')}>
-              건강한 신체를 위해 체중관리를 하시는 것을 추천 드립니다.
+              {percent <= 40 && percent > 20
+                ? '건강한 신체를 위해 지금처럼 체중관리를 하시는 것을 추천 드립니다.'
+                : '건강한 신체를 위해 체중관리를 하시는 것을 추천 드립니다.'}
             </span>
           </section>
           {/* 영양제 보여주는 부분 */}

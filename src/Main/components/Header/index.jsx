@@ -84,7 +84,6 @@ const Header = ({ location, history, user }) => {
         ) : (
           <img className={cx('header__logo')} src={InfoLogo} alt="메인 로고" />
         )}
-        {/* TODO: Cafe24 홈으로 이동시켜주어야함 */}
         {pathname !== '/intro/result' &&
           (category === 'result' ? (
             <Button

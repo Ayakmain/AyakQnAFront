@@ -64,7 +64,7 @@ const InfoQna = ({ history, location, user, setUser }) => {
         if (user.birth) {
           // TODO: error 처리해주기
           if (user._id) {
-            return UserApi.update(user._id, { userData })
+            return UserApi.update(user._id, { ...userData })
               .then(({ user }) => {
                 if (user) {
                   setUser({ ...user });

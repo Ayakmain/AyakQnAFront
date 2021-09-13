@@ -12,4 +12,8 @@
     height: 1.5vh;
     background-color: $color-secondary;
   }
+
+  &__ani {
+    transition: width 1s ease;
+  }
 }

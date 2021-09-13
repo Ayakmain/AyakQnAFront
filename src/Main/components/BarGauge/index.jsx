@@ -23,30 +23,48 @@ const BarGauge = ({ location, user }) => {
     '/know',
     '/email',
   ]);
+  const [toggle, setToggle] = useState(false);
+
+  const percentFunc = (prevPercent, totalLength) => {
+    return setPercent(prevPercent + (1 / Number(totalLength)) * 100);
+  };
 
   useEffect(() => {
+    setPageList(pageList.splice(1, 0, ...qa.map(item => `/qna/${item.type}`)));
     let totalLength = 11;
 
     if (user.gender === 'female') {
       totalLength += 2;
       pageList.splice(7, 0, ...['/pregnant', '/pms']);
     }
+
     if (qa.length) {
       totalLength += qa.length;
-      setPageList(
-        pageList.splice(1, 0, ...qa.map(item => `/qna/${item.type}`))
-      );
     }
 
-    setPercent(
-      (Number(pageList.indexOf(pathname) + 1) / Number(totalLength)) * 100
+    if (pathname === '/qna') {
+      return percentFunc(0, totalLength);
+    }
+    percentFunc(
+      (Number(pageList.indexOf(pathname) - 1) / Number(totalLength)) * 100,
+      totalLength
     );
+
+    if (pathname !== '/qna') {
+      return setTimeout(() => {
+        setToggle(true);
+        return percentFunc(
+          (Number(pageList.indexOf(pathname)) / Number(totalLength)) * 100,
+          totalLength
+        );
+      }, 500);
+    }
   }, [pathname]);
 
   return (
     <div className={cx('bar')}>
       <div
-        className={cx('bar__gauge')}
+        className={cx('bar__gauge', toggle && 'bar__ani')}
         style={{
           width: `${percent}%`,
         }}

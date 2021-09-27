@@ -12,6 +12,7 @@
     "classnames": "^2.3.1",
     "dotenv": "^10.0.0",
     "gh-pages": "^3.2.3",
+    "history": "^4.10.1",
     "http-proxy-middleware": "^2.0.1",
     "include-media": "^1.4.10",
     "moment": "^2.29.1",

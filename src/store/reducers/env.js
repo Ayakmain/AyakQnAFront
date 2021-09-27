@@ -2,12 +2,14 @@ import { createAction, handleActions } from 'redux-actions';
 
 const prefix = 'ENVIRONMENT';
 const setUser = createAction(`${prefix}/SET_USER`, user => ({ user }));
+const setResult = createAction(`${prefix}/SET_RESULT`, result => ({ result }));
 const setStatic = createAction(`${prefix}/SET_STATIC`, staticData => ({
   staticData,
 }));
 export const actions = {
   setUser,
   setStatic,
+  setResult,
 };
 
 // 변하지 않는 값이 들어가는 곳
@@ -28,6 +30,7 @@ const immutables = {
     pragnant: null,
     pms: null,
   },
+  result: null,
 };
 
 // 변할 수 있는 값이 들어가는 곳
@@ -44,6 +47,10 @@ export default handleActions(
     [setStatic]: (state, { payload }) => {
       const { staticData } = payload;
       return { ...state, staticData };
+    },
+    [setResult]: (state, { payload }) => {
+      const { result } = payload;
+      return { ...state, result };
     },
   },
   {

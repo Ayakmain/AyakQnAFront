@@ -20,7 +20,14 @@ import { KnowApi, ResultApi, StaticApi, UserApi } from 'api';
 
 const cx = classNames.bind(styles);
 
-const StaticQna = ({ history, location, user, setUser, setStatic }) => {
+const StaticQna = ({
+  history,
+  location,
+  user,
+  setUser,
+  setStatic,
+  setResult,
+}) => {
   const { pathname } = location;
   const pageName = pathname.split('/')[1];
   const [error, setError] = useState(null);
@@ -80,10 +87,13 @@ const StaticQna = ({ history, location, user, setUser, setStatic }) => {
       case 'weight':
         if (Number(value) >= 30 && Number(value) <= 190) {
           const body = { ...user, [type]: value };
-          // TODO: User 업데이트 부분 에러처리해줘야함
-          return UserApi.update(user._id, body).then(({ user }) => {
-            return localStorageUpdate('user', user, '/healthy', 'confirm');
-          });
+          return UserApi.update(user._id, body)
+            .then(({ user }) => {
+              return localStorageUpdate('user', user, '/healthy', 'confirm');
+            })
+            .catch(() =>
+              setError('몸무게는 30kg부터 190kg까지 입력가능합니다.')
+            );
         } else {
           return setError('몸무게는 30kg부터 190kg까지 입력가능합니다.');
         }
@@ -97,10 +107,21 @@ const StaticQna = ({ history, location, user, setUser, setStatic }) => {
           };
           // 결과 부분 수정
           return ResultApi.add(body)
-            .then(({ result }) => localStorage('result', result))
-            .then(() => history.push('/intro/result'))
+            .then(({ result }) => {
+              localStorage('result', result);
+              return result;
+            })
+            .then(result =>
+              setTimeout(
+                () =>
+                  history.push({
+                    pathname: '/intro/result',
+                    state: { result },
+                  }),
+                500
+              )
+            )
             .catch(error => setError(error));
-          // TODO: 이부분에서 이메일 체크하고 이메일 보내는 API 적용해야함
         } else {
           return setError('Email 방식이 것 올바르지 않습니다.');
         }
@@ -161,13 +182,11 @@ const StaticQna = ({ history, location, user, setUser, setStatic }) => {
             'confirm'
           );
         } else {
-          //TODO: 이부분 데이터 체크
           const body = {
             ...staticData,
             [pageName]: qaList.find((item, i) => list.map(index => index === i))
               .title,
           };
-          // TODO: 이부분 백엔드 수정 필요
           if (staticData._id) {
             return StaticApi.update(staticData._id, { author: user, ...body })
               .then(({ basic }) => {
@@ -243,7 +262,7 @@ const StaticQna = ({ history, location, user, setUser, setStatic }) => {
         }
       case 'know':
         return KnowApi.add({
-          answerAyak: qaList.find((item, i) => list.map(index => index === i)),
+          answerAyak: qaList.find((item, i) => list[0] === i),
           author: user,
         }).then(() => history.push('/email'));
       default:

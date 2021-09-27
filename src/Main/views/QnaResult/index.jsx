@@ -31,7 +31,6 @@ const QnaResult = ({ match }) => {
         window.localStorage.removeItem('staticData');
         window.localStorage.removeItem('nutrition');
         window.localStorage.removeItem('qa');
-        window.localStorage.removeItem('result');
       });
   }, [match.params._id]);
 
@@ -53,7 +52,8 @@ const QnaResult = ({ match }) => {
   const toggleFunc = () => setToggle(!toggle);
 
   return (
-    user && (
+    user &&
+    result && (
       <Fragment>
         <MetaTag
           keywords="Ayak,ayak,AYAK,아약,맞춤형추천"
@@ -81,7 +81,6 @@ const QnaResult = ({ match }) => {
               </li>
             </ul>
             <BMIControl percent={percent} />
-            {/* TODO: 이부분 데이터 필요함 */}
             <span className={cx('result__header--intro')}>
               {percent <= 40 && percent > 20
                 ? '건강한 신체를 위해 지금처럼 체중관리를 하시는 것을 추천 드립니다.'

@@ -40,10 +40,8 @@ const QnaPick = ({ user, location, history, setQuestions }) => {
       if (pathname === '/qna') {
         // 낮은 순으로 재정렬 해주는 부분
         list.sort((a, b) => a - b);
-        // TODO: 이부분 수정해야함
         const lists = List.filter((item, i) => list.includes(i) && item);
 
-        // TODO: 여기서 Qna 업데이트해줘야함
         setQuestions(lists);
         localStorage('qa', '', [...lists]);
         return history.push(`/qna/${lists[0].type}`);

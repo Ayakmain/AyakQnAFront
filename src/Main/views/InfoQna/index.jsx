@@ -62,7 +62,6 @@ const InfoQna = ({ history, location, user, setUser }) => {
         return localStorageUpdate(userData, '/info/birth', 'confirm');
       case 'birth':
         if (user.birth) {
-          // TODO: error 처리해주기
           if (user._id) {
             return UserApi.update(user._id, { ...userData })
               .then(({ user }) => {
@@ -83,7 +82,6 @@ const InfoQna = ({ history, location, user, setUser }) => {
               .catch(error => setError(error));
           }
         } else {
-          // TODO 오류메세지 넘겨줘야함
           return setError('태어난 연도를 체크해주세요');
         }
       default:

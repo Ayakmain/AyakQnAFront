@@ -1,0 +1,52 @@
+@import 'common/stylesheet/index.scss';
+
+.admin {
+  width: 1220px;
+  margin: 0 auto;
+  background-color: $color-theme;
+
+  &__header {
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
+    background-color: $color-button;
+    box-shadow: 2px 3px 5px 0px;
+    margin-bottom: 2px;
+
+    &--button {
+      font-size: 1.4rem;
+      margin-left: 20px;
+      color: black;
+    }
+  }
+
+  &__nav {
+    width: 20%;
+    height: 100vh;
+    background-color: rgb(47, 53, 59);
+
+    &--item {
+      display: block;
+      margin: 2px 0;
+      width: 100%;
+      height: 3rem;
+      line-height: 3rem;
+      font-size: 1.2rem;
+      color: white;
+      text-align: center;
+    }
+
+    &--select {
+      background-color: rgb(90, 170, 172);
+    }
+  }
+  &__article {
+    width: 100%;
+    display: flex;
+  }
+
+  &__main {
+    padding: 30px;
+    width: 80%;
+  }
+}

@@ -31,7 +31,6 @@ import Sleep from 'static/images/sleep.png';
 const cx = classNames.bind(styles);
 
 const QaHeader = ({ name, location, match, question }) => {
-  // TODO: 이부분 이미지 수정해야함
   const imgList = [
     {
       type: 'eye',

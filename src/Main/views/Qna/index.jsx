@@ -58,7 +58,6 @@ const Qna = ({ user, location, history, match }) => {
 
       if (pickLength - 1 === index) {
         localStorage('nutrition', '', concatArr);
-        // TODO: 이 부분에서 Result API 연결
         return history.push('/intro/Lifestyle');
       } else {
         localStorage('nutrition', '', concatArr);

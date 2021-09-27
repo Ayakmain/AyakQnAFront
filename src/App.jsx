@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { Main } from 'Main/views/index.js';
+import { Admin } from 'Admin/views/index.js';
 import classNames from 'classnames/bind';
 import styles from 'stylesheet.scss';
 
@@ -9,6 +10,7 @@ const cx = classNames.bind(styles);
 const App = () => (
   <div className={cx('app')}>
     <Switch>
+      <Route path="/admin" component={Admin} />
       <Route path="/" component={Main} />
     </Switch>
   </div>

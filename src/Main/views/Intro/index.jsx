@@ -10,11 +10,10 @@ import Basic from 'static/images/basicInfo.jpeg';
 import Symptom from 'static/images/symptomInfo.jpeg';
 import Life from 'static/images/lifeInfo.jpeg';
 import styles from './stylesheet.scss';
-// import { ResultApi } from 'api';
 
 const cx = classNames.bind(styles);
 
-const InfoIntro = ({ history, location, user }) => {
+const InfoIntro = ({ history, location, user, result }) => {
   const { pathname } = location;
   const pageName = pathname.split('/')[2];
   const [toggle, setToggle] = useState(false);
@@ -32,12 +31,15 @@ const InfoIntro = ({ history, location, user }) => {
         break;
       default:
         setTimeout(() => setToggle(true), 1);
-        console.log(JSON.parse(window.localStorage.getItem('result')));
         setTimeout(
           () =>
-            history.push(
-              `/result/${JSON.parse(window.localStorage.getItem('result'))._id}`
-            ),
+            JSON.parse(window.localStorage.getItem('result'))
+              ? history.push(
+                  `/result/${
+                    JSON.parse(window.localStorage.getItem('result'))._id
+                  }`
+                )
+              : history.push(`/result/${result._id}`),
           3000
         );
         break;

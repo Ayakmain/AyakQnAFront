@@ -1,6 +1,9 @@
 @import 'common/stylesheet/index.scss';
 
-.admin__home {
+.admin__user {
+  background-color: white;
+  padding: 10px;
+
   &--header {
     font-size: 1.5rem;
     margin-bottom: 20px;

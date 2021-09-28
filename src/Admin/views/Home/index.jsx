@@ -35,40 +35,40 @@ const Home = () => {
   };
 
   return (
-    <article>
+    <article className={cx('admin__user')}>
       <MetaTag
         keywords="Ayak,ayak,AYAK,아약,맞춤형추천"
         description="아약 맞춤형 추천"
         title="아약 맞춤형 추천"
       />
-      <section className={cx('admin__home--header')}>
+      <section className={cx('admin__user--header')}>
         Ayak 설문조사 참여자
       </section>
-      <table className={cx('admin__home--table')}>
-        <thead className={cx('admin__home--table--header')}>
+      <table className={cx('admin__user--table')}>
+        <thead className={cx('admin__user--table--header')}>
           <tr>
-            <th className={cx('admin__home--table--header--th')}>이름</th>
-            <th className={cx('admin__home--table--header--th')}>성별</th>
-            <th className={cx('admin__home--table--header--th')}>나이</th>
-            <th className={cx('admin__home--table--header--th')}>이메일</th>
+            <th className={cx('admin__user--table--header--th')}>이름</th>
+            <th className={cx('admin__user--table--header--th')}>성별</th>
+            <th className={cx('admin__user--table--header--th')}>나이</th>
+            <th className={cx('admin__user--table--header--th')}>이메일</th>
           </tr>
         </thead>
-        <tbody className={cx('admin__home--table--body')}>
+        <tbody className={cx('admin__user--table--body')}>
           {users.length === 0 ? (
             <tr>설문조사에 참여한 사용자가 없습니다.</tr>
           ) : (
             users.map((user, i) => (
               <tr key={i}>
-                <td className={cx('admin__home--table--body--td')}>
+                <td className={cx('admin__user--table--body--td')}>
                   {user.name}
                 </td>
-                <td className={cx('admin__home--table--body--td')}>
+                <td className={cx('admin__user--table--body--td')}>
                   {user.gender === 'male' ? '남자' : '여자'}
                 </td>
-                <td className={cx('admin__home--table--body--td')}>
+                <td className={cx('admin__user--table--body--td')}>
                   {user.age}
                 </td>
-                <td className={cx('admin__home--table--body--td')}>
+                <td className={cx('admin__user--table--body--td')}>
                   {user.email}
                 </td>
               </tr>
@@ -76,19 +76,34 @@ const Home = () => {
           )}
         </tbody>
       </table>
-      <section className={cx('admin__home--page')}>
+      <section className={cx('admin__user--page')}>
+        <Button
+          onClick={() => currentPage !== 1 && changePage(currentPage - 1)}
+          className={cx('admin__user--page--btn')}
+        >
+          &lt;
+        </Button>
         {pages.map((page, i) => (
           <Button
             key={i}
             onClick={() => changePage(page)}
             className={cx(
-              'admin__home--page--btn',
-              currentPage === page && 'admin__home--page--on'
+              'admin__user--page--btn',
+              currentPage === page && 'admin__user--page--on'
             )}
           >
             {page}
           </Button>
         ))}
+        <Button
+          onClick={() =>
+            pages[pages.length - 1] !== currentPage &&
+            changePage(currentPage + 1)
+          }
+          className={cx('admin__user--page--btn')}
+        >
+          &gt;
+        </Button>
       </section>
     </article>
   );

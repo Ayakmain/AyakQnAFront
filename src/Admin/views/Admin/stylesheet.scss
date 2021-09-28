@@ -4,6 +4,7 @@
   width: 1220px;
   margin: 0 auto;
   background-color: $color-theme;
+  font-family: 'noto sans', serif;
 
   &__header {
     width: 100%;
@@ -23,6 +24,7 @@
   &__nav {
     width: 20%;
     height: 100vh;
+    min-height: 100%;
     background-color: rgb(47, 53, 59);
 
     &--item {
@@ -46,7 +48,8 @@
   }
 
   &__main {
-    padding: 30px;
+    padding: 20px;
     width: 80%;
+    background-color: $color-button;
   }
 }

@@ -5,8 +5,42 @@
   padding: 10px;
 
   &--header {
-    font-size: 1.5rem;
     margin-bottom: 20px;
+
+    &--div {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+  }
+
+  &--search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    &--header {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      line-height: 2rem;
+    }
+
+    &--wrap {
+      display: flex;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      margin-bottom: 10px;
+
+      &--btn {
+        width: 150px;
+        height: 2rem;
+        border: 1px solid rgb(221, 221, 221);
+        margin-left: 10px;
+
+        &:first-child {
+          margin-right: 10px;
+        }
+      }
+    }
   }
 
   &--table {

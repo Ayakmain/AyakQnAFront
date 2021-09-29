@@ -7,7 +7,7 @@
   font-family: 'noto sans', serif;
 
   &__header {
-    width: 100%;
+    width: 1220px;
     height: 3rem;
     line-height: 3rem;
     background-color: $color-button;
@@ -19,6 +19,11 @@
       margin-left: 20px;
       color: black;
     }
+  }
+
+  &__article {
+    width: 1220px;
+    display: flex;
   }
 
   &__nav {
@@ -41,10 +46,6 @@
     &--select {
       background-color: rgb(90, 170, 172);
     }
-  }
-  &__article {
-    width: 100%;
-    display: flex;
   }
 
   &__main {

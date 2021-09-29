@@ -1,0 +1,34 @@
+@import 'common/stylesheet/index.scss';
+
+.calendar__days__wrap {
+  width: 80%;
+  margin: auto;
+  box-sizing: 0;
+  border-spacing: 0;
+
+  .calendar__days {
+    margin: auto;
+    width: 4rem;
+    height: 4rem;
+    box-shadow: 8px 5px 5px $color-box;
+    border-radius: 5px;
+    background-color: #fff;
+
+    button {
+      width: 100%;
+      height: 100%;
+      line-height: 4rem;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+  }
+
+  .calendar__days__before {
+    color: grey;
+  }
+
+  .calendar__days__select {
+    background-color: $color-secondary;
+    color: white;
+  }
+}

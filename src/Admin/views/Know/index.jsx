@@ -12,6 +12,7 @@ const Know = () => {
   const [results, setResults] = useState([]);
   const [pages, setpage] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const [count, setCount] = useState(0);
   const [data, setData] = useState({
     labels: [
       '지인의 추천',
@@ -24,7 +25,14 @@ const Know = () => {
     datasets: [
       {
         data: [],
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+        backgroundColor: [
+          '#3366FF',
+          '#98C906',
+          '#00AEFF',
+          '#FFA500',
+          '#FF4530',
+          '#0E0205',
+        ],
       },
     ],
   });
@@ -36,7 +44,7 @@ const Know = () => {
 
   const apiFunc = (limit, page) => {
     return KnowApi.list({ limit, page }).then(
-      ({ knowayaks, pageCount, list }) => {
+      ({ knowayaks, pageCount, list, knowCount }) => {
         setResults(knowayaks);
         let pageList = [];
 
@@ -44,6 +52,7 @@ const Know = () => {
           pageList.push(i + 1);
         }
         setCurrentPage(page);
+        setCount(knowCount);
         setData({
           labels: [
             '지인의 추천',
@@ -80,10 +89,15 @@ const Know = () => {
     <article className={cx('admin__home')}>
       <MetaTag
         keywords="Ayak,ayak,AYAK,아약,맞춤형추천"
-        description="아약 맞춤형 추천"
-        title="아약 맞춤형 추천"
+        description="아약 맞춤형 추천 관리자"
+        title="아약 맞춤형 추천 관리자"
       />
-      <section className={cx('admin__home--header')}>Ayak 알게된 경위</section>
+      <section className={cx('admin__home--header')}>
+        <div className={cx('admin__home--header--div')}>Ayak 알게된 경위</div>
+        <div className={cx('admin__home--header--count')}>
+          총 검사한 수: {count}
+        </div>
+      </section>
       <ul className={cx('admin__home--nav')}>
         <li className={cx('admin__home--nav--item')}>
           <Button
@@ -121,7 +135,9 @@ const Know = () => {
             </thead>
             <tbody className={cx('admin__home--table--body')}>
               {results.length === 0 ? (
-                <tr>설문조사에 참여자가 없습니다.</tr>
+                <tr>
+                  <td>설문조사에 참여자가 없습니다.</td>
+                </tr>
               ) : (
                 results.map((result, i) => (
                   <tr key={i}>

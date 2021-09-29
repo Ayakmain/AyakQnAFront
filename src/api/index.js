@@ -60,7 +60,7 @@ const NutritionApi = {
   add: POST('/nutrition/'),
   delete: DELETE('/nutrition/:nutrition_id'),
   get: GET('/nutrition/:nutrition_id'),
-  list: GET('/policy/'),
+  list: GET('/nutrition/'),
   update: PUT('/nutrition/:nutrition_id'),
 };
 

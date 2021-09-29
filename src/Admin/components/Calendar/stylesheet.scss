@@ -1,0 +1,47 @@
+@import 'common/stylesheet/index.scss';
+
+.calendar {
+  width: 100%;
+  margin: auto;
+
+  &__control {
+    width: 100%;
+    background-color: rgb(244, 244, 244);
+    height: 5rem;
+    line-height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 8px 5px 5px $color-box;
+    margin-bottom: 10px;
+
+    .calendar__btn {
+      width: 30px;
+      height: 30px;
+      line-height: 4rem;
+      margin: auto;
+
+      &__prev {
+        width: 100%;
+        height: 100%;
+        transform: rotate(90deg);
+      }
+      &__next {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+    }
+
+    .calendar__month__title {
+      line-height: 2rem;
+      margin: auto;
+      text-align: center;
+      font-size: 1.5rem;
+      font-family: $font-family;
+    }
+  }
+
+  &__date__wrap {
+    width: 100%;
+  }
+}

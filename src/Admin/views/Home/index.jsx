@@ -117,9 +117,14 @@ const Home = () => {
           </Button>
         </div>
       </section>
-      <Button onClick={searchDate} className={cx('admin__user--submit')}>
-        검색
-      </Button>
+      <div className={cx('admin__user--submit')}>
+        <Button onClick={searchDate} className={cx('admin__user--submit--btn')}>
+          검색
+        </Button>
+        <Button onClick={searchDate} className={cx('admin__user--submit--btn')}>
+          전체 검색
+        </Button>
+      </div>
       <SubNav toggle={toggle} setToggle={setToggle} />
       {!toggle ? (
         <Graph results={list} />

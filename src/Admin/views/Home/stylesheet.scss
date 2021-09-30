@@ -45,11 +45,21 @@
   }
 
   &--submit {
-    margin: 10px auto 20px;
-    font-size: 1.2rem;
-    background-color: rgb(56, 171, 173);
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
+    display: flex;
+    justify-content: center;
+
+    &--btn {
+      margin: 15px;
+      font-size: 1.2rem;
+      background-color: rgb(56, 171, 173);
+      padding: 10px;
+      border-radius: 5px;
+      color: white;
+
+      &:hover {
+        background-color: rgb(221, 221, 221);
+        color: black;
+      }
+    }
   }
 }

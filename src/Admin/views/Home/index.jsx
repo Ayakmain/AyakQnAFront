@@ -1,13 +1,12 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { MetaTag, Button } from 'components/index';
-import { Calendar } from 'Admin/components';
+import { Graph, SubNav, SubHeader, Table, Modal } from 'Admin/components';
 import styles from './stylesheet.scss';
 import { useEffect } from 'react';
 import { UserApi } from 'api';
-import { Doughnut } from 'react-chartjs-2';
-import Dialog from '@material-ui/core/Dialog';
+import moment from 'moment';
 
 const cx = classNames.bind(styles);
 
@@ -18,30 +17,27 @@ const Home = () => {
   const [count, setCount] = useState(0);
   const [date, setDate] = useState({ start: null, end: null });
   const [toggle, setToggle] = useState(false);
-  const [toggleDate, setToggleDate] = useState(false);
-  const [data, setData] = useState({
-    labels: [],
-    datasets: [
-      {
-        data: [],
-        backgroundColor: [
-          '#3366FF',
-          '#98C906',
-          '#00AEFF',
-          '#FFA500',
-          '#FF4530',
-          '#0E0205',
-        ],
-      },
-    ],
-  });
+  const [toggleDate, setToggleDate] = useState({ start: false, end: false });
+  const [list, setlist] = useState([]);
 
   useEffect(() => {
     return apiFunc(15, 1);
   }, []);
 
-  const apiFunc = (limit, page) => {
-    return UserApi.getList({ limit, page }).then(
+  const apiFunc = (limit, page, date) => {
+    let option = {
+      limit,
+      page,
+    };
+    if (date && date.start && date.end) {
+      option = {
+        limit,
+        page,
+        startDate: date.start,
+        endDate: date.end,
+      };
+    }
+    return UserApi.getList(option).then(
       ({ users, pageCount, userCount, list }) => {
         setUsers(users);
         let pageList = [];
@@ -50,22 +46,7 @@ const Home = () => {
           pageList.push(i + 1);
         }
         setCount(userCount);
-        setData({
-          labels: list.map(item => item.type),
-          datasets: [
-            {
-              data: list.map(item => item.percent),
-              backgroundColor: [
-                '#3366FF',
-                '#98C906',
-                '#00AEFF',
-                '#FFA500',
-                '#FF4530',
-                '#0E0205',
-              ],
-            },
-          ],
-        });
+        setlist(list);
         setCurrentPage(page);
         return setpage(pageList);
       }
@@ -76,6 +57,19 @@ const Home = () => {
     return apiFunc(15, i);
   };
 
+  const selectDate = (e, type) => {
+    setToggleDate({ start: false, end: false });
+    return setDate({ ...date, [type]: moment(e).format('YYYY-MM-DD') });
+  };
+
+  const searchDate = () => {
+    return apiFunc(15, 1, date);
+  };
+
+  const closeFunc = () => {
+    setToggleDate({ start: false, end: false });
+  };
+
   return (
     <article className={cx('admin__user')}>
       <MetaTag
@@ -83,141 +77,61 @@ const Home = () => {
         description="아약 맞춤형 추천"
         title="아약 맞춤형 추천"
       />
-      <section className={cx('admin__user--header')}>
-        <section className={cx('admin__user--header')}>
-          <div className={cx('admin__user--header--div')}>
-            Ayak 설문조사 참여자
-          </div>
-          <div className={cx('admin__user--header--count')}>
-            총 설문조사 참여한 수: {count}
-          </div>
-        </section>
-      </section>
+      <SubHeader
+        header="Ayak 설문조사 참여자"
+        subHeader={`총 설문조사 참여한 수: ${count} 명`}
+      />
       <section className={cx('admin__user--search')}>
         <div className={cx('admin__user--search--header')}>날짜로 검색: </div>
         <div className={cx('admin__user--search--wrap')}>
           <Button
-            onClick={() => setToggleDate(true)}
+            onClick={() => setToggleDate({ ...toggleDate, start: true })}
             className={cx('admin__user--search--wrap--btn')}
           >
             {date.start}
-            {toggleDate && (
-              <Dialog
-                open={toggleDate}
-                onClose={() => setToggleDate(false)}
-                fullWidth={true}
-                // selectDate={}
-              >
-                <Calendar />
-              </Dialog>
+            {toggleDate.start && (
+              <Modal
+                date={date.start}
+                openFunc={() => setToggleDate({ start: true, end: false })}
+                closeFunc={closeFunc}
+                selectDate={selectDate}
+                type="start"
+              />
             )}
           </Button>
           ~
           <Button
-            onClick={() => setToggleDate(true)}
+            onClick={() => setToggleDate({ ...toggleDate, end: true })}
             className={cx('admin__user--search--wrap--btn')}
           >
             {date.end}
-            {toggleDate && (
-              <Dialog
-                open={toggleDate}
-                onClose={() => setToggleDate(false)}
-                fullWidth={true}
-              >
-                <Calendar />
-              </Dialog>
+            {toggleDate.end && (
+              <Modal
+                date={date.end}
+                openFunc={() => setToggleDate({ start: false, end: true })}
+                closeFunc={closeFunc}
+                selectDate={selectDate}
+                type="end"
+              />
             )}
           </Button>
         </div>
       </section>
-      <ul className={cx('admin__home--nav')}>
-        <li className={cx('admin__home--nav--item')}>
-          <Button
-            onClick={() => setToggle(false)}
-            className={cx('admin__home--nav--item--btn', !toggle && 'active')}
-          >
-            차트로 보기
-          </Button>
-        </li>
-        <li className={cx('admin__home--nav--item')}>
-          <Button
-            onClick={() => setToggle(true)}
-            className={cx('admin__home--nav--item--btn', toggle && 'active')}
-          >
-            리스트로 보기
-          </Button>
-        </li>
-      </ul>
+      <Button onClick={searchDate} className={cx('admin__user--submit')}>
+        검색
+      </Button>
+      <SubNav toggle={toggle} setToggle={setToggle} />
       {!toggle ? (
-        <section className={cx('admin__home--gauge')}>
-          <Doughnut data={data} />
-        </section>
+        <Graph results={list} />
       ) : (
-        <Fragment>
-          <table className={cx('admin__user--table')}>
-            <thead className={cx('admin__user--table--header')}>
-              <tr>
-                <th className={cx('admin__user--table--header--th')}>이름</th>
-                <th className={cx('admin__user--table--header--th')}>성별</th>
-                <th className={cx('admin__user--table--header--th')}>나이</th>
-                <th className={cx('admin__user--table--header--th')}>이메일</th>
-              </tr>
-            </thead>
-            <tbody className={cx('admin__user--table--body')}>
-              {users.length === 0 ? (
-                <tr>
-                  <td colSpan="4">설문조사에 참여한 사용자가 없습니다.</td>
-                </tr>
-              ) : (
-                users.map((user, i) => (
-                  <tr key={i}>
-                    <td className={cx('admin__user--table--body--td')}>
-                      {user.name}
-                    </td>
-                    <td className={cx('admin__user--table--body--td')}>
-                      {user.gender === 'male' ? '남자' : '여자'}
-                    </td>
-                    <td className={cx('admin__user--table--body--td')}>
-                      {user.age}
-                    </td>
-                    <td className={cx('admin__user--table--body--td')}>
-                      {user.email}
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-          <section className={cx('admin__user--page')}>
-            <Button
-              onClick={() => currentPage !== 1 && changePage(currentPage - 1)}
-              className={cx('admin__user--page--btn')}
-            >
-              &lt;
-            </Button>
-            {pages.map((page, i) => (
-              <Button
-                key={i}
-                onClick={() => changePage(page)}
-                className={cx(
-                  'admin__user--page--btn',
-                  currentPage === page && 'admin__user--page--on'
-                )}
-              >
-                {page}
-              </Button>
-            ))}
-            <Button
-              onClick={() =>
-                pages[pages.length - 1] !== currentPage &&
-                changePage(currentPage + 1)
-              }
-              className={cx('admin__user--page--btn')}
-            >
-              &gt;
-            </Button>
-          </section>
-        </Fragment>
+        <Table
+          theader={['이름', '성별', '나이', '이메일']}
+          results={users}
+          pages={pages}
+          currentPage={currentPage}
+          changePage={changePage}
+          type="user"
+        />
       )}
     </article>
   );

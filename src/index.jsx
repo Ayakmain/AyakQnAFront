@@ -1,8 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { PersistGate } from 'redux-persist/integration/react';
-// import { persistStore } from 'redux-persist';
-// import { store, persistor } from 'store/reducers/store';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from 'store/reducers/store';
@@ -15,9 +12,7 @@ const render = Component =>
   ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
-        {/* <PersistGate persistor={persistor}> */}
         <Component />
-        {/* </PersistGate> */}
       </BrowserRouter>
     </Provider>,
     MOUNT_NODE
